@@ -77,11 +77,11 @@ return [
         ],
         'input' => [
             'class' => Components\Input::class,
-            'alias' => 'input',
+            'alias' => 'wui-input',
         ],
         'textarea' => [
             'class' => Components\Textarea::class,
-            'alias' => 'textarea',
+            'alias' => 'wui-textarea',
         ],
         'label' => [
             'class' => Components\Label::class,
@@ -89,11 +89,11 @@ return [
         ],
         'error' => [
             'class' => Components\Error::class,
-            'alias' => 'error',
+            'alias' => 'wui-error',
         ],
         'errors' => [
             'class' => Components\Errors::class,
-            'alias' => 'errors',
+            'alias' => 'wui-errors',
         ],
         'inputs.maskable' => [
             'class' => Components\Inputs\MaskableInput::class,
@@ -165,7 +165,7 @@ return [
         ],
         'select' => [
             'class' => Components\Select::class,
-            'alias' => 'select',
+            'alias' => 'wui-select',
         ],
         'select.option' => [
             'class' => Components\Select\Option::class,

@@ -42,35 +42,55 @@ new class extends Component {
                     note</x-button>
             </div>
         @else
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid dark:text-gray-300 grid-cols-3 gap-4">
                 @foreach ($notes as $note)
-                    <x-card wire:key='{{ $note->id }}'>
-                        <div class="flex justify-between">
-                            <div>
-                                @can('update', $note)
-                                    <a href="{{ route('notes.edit', $note) }}" wire:navigate
-                                        class="text-xl font-bold hover:underline hover:text-blue-500">{{ $note->title }}</a>
-                                @else
-                                    <p class="text-xl font-bold text-gray-500">{{ $note->title }}</p>
-                                @endcan
-                                <p class="mt-2 text-xs">{{ Str::limit($note->body, 50) }}</p>
-                            </div>
-                            <div class="text-xs text-gray-500">
-                                {{ \Carbon\Carbon::parse($note->send_date)->format('M-d-Y') }}
-                            </div>
+                    <div class='relative flex flex-col justify-between pb-3 bg-white border border-gray-700 w-96 dark:bg-gray-800 hover:bg-gray-600 custom-shadow rounded-xl '
+                wire:key='{{ $note->id }}'>
+                <div class='flex flex-col justify-center w-full pb-3'>
+
+                    <div class='flex justify-center w-full h-80'>
+                        <img src="{{ asset('storage/' . $note->photo) }}" alt="profile pic" title="bruuvynsons"
+                            class='object-cover w-full h-full img rounded-b-3xl rounded-t-xl' />
+                    </div>
+                    @can('update', $note)
+                        <div class='flex items-center justify-between p-3 pt-1'>
+                            <p class="overflow-hidden text-2xl font-bold text-left">{{ Str::limit($note->name, 30) }}</p>
+                            <x-button.circle href="{{ route('notes.edit', $note) }}" wire:navigate icon="pencil-alt"></x-button.circle>
                         </div>
-                        <div class="flex items-end justify-between mt-4 space-x-1">
-                            <p class="text-xs">Recipient: <span class="font-semibold">{{ $note->recipient }}</span></p>
-                            <div>
-                                <x-button.circle icon="eye"
-                                    href="{{ route('notes.view', $note) }}"></x-button.circle>
+                    @else
+                        <p class="p-3 px-3 overflow-hidden text-2xl font-bold text-left">{{ Str::limit($note->name, 30) }}
+                        </p>
+                    @endcan
+                </div>
+                <div class='flex flex-col justify-between w-full px-3'>
+                    <div class="w-full">
+                        <div class='flex flex-col w-full pb-3'>
+                            <p class="text-sm text-left break-words ">{{ Str::limit($note->description, 120) }}</p>
+                        </div>
+                        <div class="flex flex-col items-end justify-between">
+                            <div class='flex flex-col w-full mb-4'>
+                                <p class="overflow-hidden text-sm font-bold text-left">Field: <span
+                                        class='text-sm font-normal'>{{ $note->area }} </span></p>
+                                <p class="text-sm font-bold">University: <span
+                                        class="text-sm font-normal ">{{ $note->university }}</span>
+                                </p>
+                            </div>
+                            <div class='flex justify-end w-full gap-4'>
+                        <x-button.circle icon="eye" href="{{ route('notes.view', $note) }}"></x-button.circle>
                                 <x-button.circle icon="trash"
                                     wire:click="delete('{{ $note->id }}')"></x-button.circle>
                             </div>
                         </div>
-                    </x-card>
-                @endforeach
+                    </div>
+
+
+                </div>
+
             </div>
-        @endif
-    </div>
+        @endforeach
 </div>
+@endif
+</div>
+
+{{-- <a download="Download-CV" href="{{ asset('storage/'. $note->cv) }}" id="student-download">download</a> --}}
+{{-- <a href="{{($note->linkedin) }}" target="_blank">Link:</a> --}}

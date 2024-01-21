@@ -42,10 +42,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('notes.edit');
 
-    Route::get('view-profile/{note}', function (Note $note) {
-        if (! $note->is_published) {
-            abort(404);
-        }
+    Route::get('note/{note}', function (Note $note) {
     
         $user = $note->user;
     
