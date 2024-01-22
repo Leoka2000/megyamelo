@@ -30,7 +30,7 @@
                         </div>
                     </a>
                     <p class='text-2xl italic text-gray-300'>The fruits of labour</p>
-                    <x-button class='mt-8' primary rounded lg icon-right="plus">Subscribe</x-button>
+                    <x-button class='mt-8' href="{{ route('notes.create') }}" primary rounded lg icon-right="plus">Subscribe</x-button>
                 </div>
                 <span class='absolute z-0 overflow-hidden w-52 lg:-top-24 lg:-right-0' id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"

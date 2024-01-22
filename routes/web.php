@@ -20,11 +20,7 @@ Route::view('/', 'welcome');
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-
-    Route::view('students/createProfile', 'notes.create')
-    ->middleware(['auth'])
-    ->name('notes.create');
-
+    
     Route::view('create-profile', 'notes.create')
     ->middleware(['auth'])
     ->name('notes.create');

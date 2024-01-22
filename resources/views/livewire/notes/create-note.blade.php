@@ -2,10 +2,12 @@
 
 use Livewire\Volt\Component;
 use App\Models\Note;
+use App\Models\User;
 use Livewire\WithFileUploads;
 use Components\Select\Option;
 use Components\Select;
 use WireUi\View\Components\Input;
+use Illuminate\Support\Facades\Session; 
 
 
 
@@ -28,8 +30,10 @@ new class extends Component {
 
 
 
+
     public function submit()
     {
+         $this->authorize('create', Note::class);
         $validated = $this->validate([
             'studentName' => ['required', 'string', 'min:3'],
             'studentEmail' => ['required', 'email'],
