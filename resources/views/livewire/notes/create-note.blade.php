@@ -76,7 +76,8 @@ new class extends Component {
 }; ?>
 
 <div>
-    <x-card title="Personal Information">
+    <x-card title="When you fill out this form, keep in mind that it's your chance to 
+show off your skills to potential employers.">
         <x-wui-errors class="mb-4" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -103,7 +104,7 @@ new class extends Component {
 
             <div class="col-span-1 sm:col-span-2">
                 <x-wui-textarea
-                    label="Write a short description of yourself. You can list things like your career goals and skills."
+                    label="Write a short description of yourself. You can list things such as your career goals and skills."
                     placeholder="I have experience in .... im good at .." wire:model.defer="studentDescription" />
             </div>
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">

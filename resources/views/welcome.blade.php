@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased dark dark:bg-gray-900">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        <div class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <livewire:welcome.navigation />
             @endif
@@ -30,7 +30,7 @@
                         </div>
                     </a>
                     <p class='text-2xl italic text-gray-300'>The fruits of labour</p>
-                    <x-button class='mt-8' href="{{ route('notes.create') }}" primary rounded lg icon-right="plus">Subscribe</x-button>
+                    <x-button icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary rounded lg icon-right="plus">Subscribe</x-button>
                 </div>
                 <span class='absolute z-0 overflow-hidden w-52 lg:-top-24 lg:-right-0' id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"
@@ -104,7 +104,7 @@
                                     job?
                                 </h1>
                             </div>
-                            <x-button class='w-full' primary md rounded icon-right="plus">Click here</x-button>
+                                <x-button class='w-full' href="{{ route('notes.post-create') }}" primary icon="shopping-cart">Create a job advertisent</x-button>
                         </div>
                         <div class='px-8 py-12 bg-gray-800 border border-gray-700 rounded-xl w-96'>
                             <span>
@@ -130,7 +130,7 @@
                             <div class='my-3'>
                                 <h1 class='text-lg'>Are you a student or graduate looking to apply for a job?</h1>
                             </div>
-                            <x-button class='w-full' primary rounded md icon-right="plus">Create note</x-button>
+             <x-button href="{{ route('notes.create') }}" class='w-full' primary icon="user">Create your profile</x-button>
                         </div>
                     </main>
                 </div>
@@ -291,7 +291,7 @@
 
                 <div class="flex flex-col items-center justify-center pb-4 text-center md:w-96">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                        <div class='flex items-center justify-center w-auto mt-2 w-44'>
+                        <div class='flex items-center justify-center mt-2 w-44'>
                             <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}"
                                 alt="sheesh" title="sheesh" />
                         </div>
@@ -310,8 +310,8 @@
 
                     </div>
                     <div class='flex flex-col w-full gap-3'>
-                        <x-button class='mt-8' primary icon-right="plus" label='Subscribe' />
-                        <x-button outline primary label="For enterprises" />
+                        <x-button class='mt-8' primary icon='arrow-right' icon-right="plus" label='Subscribe' />
+                        <x-button outline primary icon='shopping-cart' label="For enterprises" />
                     </div>
                 </div>
                 <div class="text-sm text-center text-gray-400 dark:text-gray-400 sm:text-start">

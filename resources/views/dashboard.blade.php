@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
    <div class="py-12">
-        <div class="px-6 mx-auto  max-w-7xl lg:px-8">
-            <div class="overflow-hidden bg-white border border-gray-700 shadow-sm rounded-xl dark:bg-gray-800 sm:rounded-lg">
+        <div class="px-6 mx-auto max-w-7xl lg:px-8">
+            <div class="overflow-hidden bg-white border border-gray-700 rounded-md shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800">
                     <div class="flex items-center">
                         <div>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <main class="flex flex-col items-center justify-center gap-4 mt-4 sm:justify-start sm:flex-row dark:text-gray-300">
-                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-xl sm:w-96'>
+                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md sm:w-96'>
                     <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_4014_33508)">
@@ -68,9 +68,9 @@
                             job?
                         </h1>
                     </div>
-                    <x-button class='w-full' primary md rounded icon-right="plus">Click here</x-button>
+                    <x-button class='w-full' href="{{ route('notes.post-create') }}" primary icon="shopping-cart">Create a job advertisent</x-button>
                 </div>
-                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-xl sm:w-96'>
+                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md sm:w-96'>
                     <span>
                         <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +93,7 @@
                     <div class='my-3'>
                         <h1 class='text-lg'>Are you a student or graduate looking to apply for a job?</h1>
                     </div>
-                    <x-button class='w-full' primary rounded md icon-right="plus">Create note</x-button>
+                    <x-button href="{{ route('notes.create') }}" class='w-full' primary icon="user">Create your profile</x-button>
                 </div>
             </main>
         </div>

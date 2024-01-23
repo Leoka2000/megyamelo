@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('title');
             $table->text('description');
+            $table->text('apply_link');
         });
     }
 

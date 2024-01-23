@@ -32,8 +32,32 @@ new class extends Component {
     }
 }; ?>
 
+
+
 <div>
-    <div class="space-y-2">
+<style>
+    .custom-shadow {
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    .custom-shadow:hover {
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+    }
+    @media (max-width: 1060px) {
+      
+    .responsive {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    }
+  
+    @media (max-width: 700px) {
+      .responsive {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+    }
+</style>
+    <div class="space-y-2 ">
         @if ($notes->isEmpty())
             <div class="text-center dark:text-gray-300">
                 <p class="text-xl  font-bold">No notes yet</p>
@@ -42,15 +66,15 @@ new class extends Component {
                     note</x-button>
             </div>
         @else
-            <div class="grid dark:text-gray-300 grid-cols-3 gap-4">
+            <div class="grid dark:text-gray-300 grid-cols-3 gap-4 responsive">
                 @foreach ($notes as $note)
-                    <div class='relative flex flex-col justify-between pb-3 bg-white border border-gray-700 w-96 dark:bg-gray-800 hover:bg-gray-600 custom-shadow rounded-xl '
+                    <div class='relative flex flex-col custom-shadow  justify-between pb-3 bg-white border border-gray-700 w-96 dark:bg-gray-800 hover:bg-gray-600 custom-shadow rounded-xl '
                 wire:key='{{ $note->id }}'>
                 <div class='flex flex-col justify-center w-full pb-3'>
 
-                    <div class='flex justify-center w-full h-80'>
+                    <div class='flex justify-center w-full h-80 p-4'>
                         <img src="{{ asset('storage/' . $note->photo) }}" alt="profile pic" title="bruuvynsons"
-                            class='object-cover w-full h-full img rounded-b-3xl rounded-t-xl' />
+                            class='object-cover w-full h-full img rounded-b-2xl rounded-t-xl' />
                     </div>
                     @can('update', $note)
                         <div class='flex items-center justify-between p-3 pt-1'>
