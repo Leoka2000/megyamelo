@@ -20,9 +20,11 @@ new class extends Component {
                 <div>
                     <div class='flex gap-2'>
                         <div>
-                            <div class='flex justify-center items-center md:min-w-96 h-full p-3'>
-                                <img src="{{asset('storage/' . $job->image) }}" alt="profile pic" title="bruuvynsons"
-                                    class='object-cover w-full h-full img rounded-xl' />
+                             <div class='w-80 h-80'>
+                                <div class='flex justify-center items-center w-full w-full h-full p-3'>
+                                    <img src="{{ asset('storage/' . $job->image) }}" alt="profile pic" title="bruuvynsons"
+                                        class='object-cover w-full h-full img rounded-xl' />
+                                </div>
                             </div>
                         </div>
                         <div class='flex flex-col text-start items-start justify-start p-4'>
