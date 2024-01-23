@@ -29,6 +29,13 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth'])
     ->name('notes.index');
 
+    Route::view('show-jobs', 'notes.jobs')
+    ->middleware(['auth'])
+    ->name('notes.jobs');
+
+    Route::view('create-post', 'notes.post-create')
+    ->middleware(['auth'])
+    ->name('notes.post-create');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

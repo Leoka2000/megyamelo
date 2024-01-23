@@ -47,6 +47,12 @@ new class extends Component
                      <x-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')" wire:navigate>
                         {{ __('Students list') }}
                     </x-nav-link>
+                     <x-nav-link :href="route('notes.jobs')" :active="request()->routeIs('notes.jobs')" wire:navigate>
+                        {{ __('Job list') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('notes.post-create')" :active="request()->routeIs('notes.post-create')" wire:navigate>
+                        {{ __('Create post') }}
+                    </x-nav-link>
                 </div>
             </div>
 
