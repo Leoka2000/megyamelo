@@ -7,11 +7,7 @@ use Livewire\WithFileUploads;
 use Components\Select\Option;
 use Components\Select;
 use WireUi\View\Components\Input;
-use Illuminate\Support\Facades\Session; 
-
-
-
-
+use Illuminate\Support\Facades\Session;
 
 new class extends Component {
     use WithFileUploads;
@@ -27,13 +23,9 @@ new class extends Component {
     public $studentLinkedin;
     public $studentAccept;
 
-
-
-
-
     public function submit()
     {
-         $this->authorize('create', Note::class);
+        $this->authorize('create', Note::class);
         $validated = $this->validate([
             'studentName' => ['required', 'string', 'min:3'],
             'studentEmail' => ['required', 'email'],
@@ -59,24 +51,22 @@ new class extends Component {
                 'area' => $this->studentArea,
                 'description' => $this->studentDescription,
                 'cv' => $this->studentCV->store('curriculums', 'public'),
-                  'send_date' => now(),
+                'send_date' => now(),
                 'linkedin' => $this->studentLinkedin,
                 'accept' => $this->studentAccept,
             ]);
         redirect(route('dashboard'));
     }
 
-
- public function universities()
+    public function universities()
     {
         return ['Health Sciences', 'Economics and Business', 'Engineering', 'Science and Technology', 'Child and Special Needs Education', 'Music', 'Humanities', 'Law', 'Design', 'Informatics', 'Agriculture, Food Sciences and Environmental Management'];
     }
-
-   
 }; ?>
 
 <div>
-    <x-card title="When you fill out this form, keep in mind that it's your chance to 
+    <x-card
+        title="When you fill out this form, keep in mind that it's your chance to 
 show off your skills to potential employers.">
         <x-wui-errors class="mb-4" />
 
@@ -96,8 +86,8 @@ show off your skills to potential employers.">
                 </div>
             </div>
 
-            <x-wui-select class='z-10' label="Which field best describes your profile?"
-                placeholder="Engineering" wire:model.defer="studentArea" :options="$this->universities()" />
+            <x-wui-select class='z-10' label="Which field best describes your profile?" placeholder="Engineering"
+                wire:model.defer="studentArea" :options="$this->universities()" />
 
             <x-wui-input label="The link to your LinkedIn profile (optional)"
                 placeholder="https://www.linkedin.com/in/leoreus/" wire:model.defer="studentLinkedin" />
@@ -123,7 +113,12 @@ show off your skills to potential employers.">
 
                 </div>
             </div>
-            <x-toggle label="Accept the terms and conditions" primary wire:model.defer="studentAccept" />
+            <div class='w-full'>
+                <div class='flex items-center justify-start gap-1 w-80'>
+                    <x-toggle primary wire:model.defer="studentAccept" />
+                    I accept the <a href='#' class='text-indigo-500 hover:border-b border-b-indigo-500'> terms and conditions</a>
+                </div>
+            </div>
         </div>
 
         <x-slot name="footer">

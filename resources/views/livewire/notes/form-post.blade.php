@@ -23,15 +23,17 @@ new class extends Component {
 
         if ($currentUser->role !== 'admin') {
             abort(403, 'You do not have permission to access this component.');
+            
         }
- $this->redirect('/', navigate: true);
 
+ 
  
     }
 
 
     public function submit()
     {
+         $this->authorize('create', Post::class);
         $validated = $this->validate([
             'companyAuthor' => ['required', 'string', 'min:3'],
             'companyTitle' => ['required', 'string', 'min:3'],
@@ -55,25 +57,27 @@ new class extends Component {
     }
 }; ?>
 
+
+
+<div>
+
 <script>
     document.addEventListener('livewire:load', function () {
         Livewire.on('redirectToDashboard', function () {
             setTimeout(function () {
-                window.location.href = '{{ route('dashboard') }}';
+                location.reload(); // Refresh the page
             }, 3000); // 3000 milliseconds (3 seconds) delay
         });
     });
 </script>
-
-<div>
-
-
     <x-card title="Post a job advertisement">
         <x-wui-errors class="mb-4" />
 
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div class="flex flex-col gap-6">
             <x-wui-input label="Your company's name" placeholder="Company ABC Kft" wire:model.defer="companyAuthor" />
-            <x-wui-input label="Title " placeholder="Title of your advertisement" wire:model.defer="companyTitle" />
+
+            <p class='font-semibold'>Details of your post</p>
+                 <x-wui-input label="Title" placeholder="Software Engineer Part Time" wire:model.defer="companyTitle" />
             <div class="col-span-1 sm:col-span-2">
                 <x-wui-textarea
                     label="Description of your advertisement"

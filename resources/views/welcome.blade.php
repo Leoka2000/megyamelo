@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-   <wireui:scripts />
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="antialiased dark dark:bg-gray-900">
-        <div class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <livewire:welcome.navigation />
-            @endif
+    <title>Laravel</title>
 
-           <main class="flex flex-col items-center justify-center w-full mx-auto ">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <wireui:scripts />
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body class="antialiased dark dark:bg-gray-900">
+    <div
+        class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        @if (Route::has('login'))
+            <livewire:welcome.navigation />
+        @endif
+
+        <main class="flex flex-col items-center justify-center w-full mx-auto ">
             <section
-                class='relative flex items-center justify-center w-full border-b border-gray-800 lg:pt-52 lg:pb-64 dark:bg-gray-900'>
+                class='relative flex items-center justify-center w-full border-b border-gray-800 py-60 sm:pt-52 sm:pb-64 dark:bg-gray-900'>
                 <div class="flex flex-col justify-center text-center">
                     <a href="{{ route('dashboard') }}" wire:navigate>
-                        <div class='flex items-center justify-center w-auto mt-2 lg:h-52'>
+                        <div class='flex items-center justify-center w-auto mt-2 h-36 md:h-64'>
                             <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}"
                                 alt="sheesh" title="sheesh" />
                         </div>
                     </a>
-                    <p class='text-2xl italic text-gray-300'>The fruits of labour</p>
-                    <x-button icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary rounded lg icon-right="plus">Subscribe</x-button>
+                    <p class='text-3xl italic text-gray-300'>The fruits of labour</p>
+                    <x-button icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary rounded lg
+                        icon-right="plus">Subscribe</x-button>
                 </div>
-                <span class='absolute z-0 overflow-hidden w-52 lg:-top-24 lg:-right-0' id="silhouette">
+                <span class='absolute overflow-hidden -z-0 w-52 sm:-top-24 sm:-right-0 -right-0 -top-40'
+                    id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="294.897" cy="294.897" r="293.332" stroke="#7F6AFF" stroke-width="3.12971" />
@@ -45,7 +50,7 @@
                     </svg>
 
                 </span>
-                <span class='absolute z-0 lg:-bottom-40 lg:-left-40' id="silhouette">
+                <span class='absolute z-0 sm:-bottom-40 sm:-left-40 -bottom-52 -left-52' id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="294.897" cy="294.897" r="293.332" stroke="#7F6AFF" stroke-width="3.12971" />
@@ -65,12 +70,12 @@
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
             <section class='z-10 w-full py-20 dark:bg-gray-900 dark:text-gray-300'>
-                <div class="flex flex-col items-center justify-center mb-5">
-                    <header class='max-w-4xl pb-12 mb-5 text-center md:text-4xl'>
+                <div class="flex flex-col items-center justify-center px-5 mb-5">
+                    <header class='max-w-4xl pb-12 mb-5 text-xl text-center md:text-4xl'>
                         <h1>Check out some of the things we do to make people closer to the hungarian job market</h1>
                     </header>
-                    <main class="flex gap-24 landing-main">
-                        <div class='px-8 py-12 bg-gray-800 border border-gray-700 rounded-xl w-96'>
+                    <main class="flex flex-col gap-4 sm:flex-row landing-main">
+                        <div class='px-8 py-12 bg-gray-800 border border-gray-700 rounded-xl sm:w-72 lg:w-96'>
                             <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4014_33508)">
@@ -104,15 +109,16 @@
                                     job?
                                 </h1>
                             </div>
-                                <x-button class='w-full' href="{{ route('notes.post-create') }}" primary icon="shopping-cart">Create a job advertisent</x-button>
+                            <x-button class='w-full' href="{{ route('notes.post-create') }}" primary
+                                icon="shopping-cart">Create a job advertisent</x-button>
                         </div>
-                        <div class='px-8 py-12 bg-gray-800 border border-gray-700 rounded-xl w-96'>
+                        <div class='px-8 py-12 bg-gray-800 border border-gray-700 sm:w-72 rounded-xl lg:w-96'>
                             <span>
                                 <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4014_33527)">
-                                        <circle cx="70" cy="70" r="69" fill="lightgray" stroke="#0C0C0C"
-                                            stroke-width="2" />
+                                        <circle cx="70" cy="70" r="69" fill="lightgray"
+                                            stroke="#0C0C0C" stroke-width="2" />
                                         <circle cx="70.0001" cy="60.7476" r="31.8537" stroke="#7F6AFF"
                                             stroke-width="1.49398" />
                                         <rect x="61.9763" y="96.5801" width="16.0478" height="15.2729"
@@ -130,7 +136,8 @@
                             <div class='my-3'>
                                 <h1 class='text-lg'>Are you a student or graduate looking to apply for a job?</h1>
                             </div>
-             <x-button href="{{ route('notes.create') }}" class='w-full' primary icon="user">Create your profile</x-button>
+                            <x-button href="{{ route('notes.create') }}" class='w-full' primary icon="user">Create
+                                your profile</x-button>
                         </div>
                     </main>
                 </div>
@@ -139,12 +146,12 @@
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
-            <section class='relative w-full border-t border-gray-700 pb-52 '>
+            <section class='relative w-full pb-64 border-t border-gray-700 pt-52 '>
                 <div class='flex flex-col items-center w-full gap-4'>
-                    <header class='max-w-4xl pt-24 mb-12 text-center md:text-4xl dark:text-gray-300'>
+                    <header class='max-w-4xl mb-12 text-2xl text-center md:text-4xl dark:text-gray-300'>
                         <h1>Frequently asked questions</h1>
                     </header>
-                    <main class="flex flex-col max-w-3xl gap-4">
+                    <main class="flex flex-col max-w-3xl gap-4 px-4">
                         <div>
                             <div class="p-6 border border-gray-700 rounded-lg shadow-lg dark:bg-gray-800">
                                 <div class="flex items-center">
@@ -259,7 +266,7 @@
                     </main>
                 </div>
 
-                <span class='absolute z-0 overflow-hidden w-52 lg:-top-24 lg:-right-0' id="silhouette">
+                <span class='absolute z-0 overflow-hidden w-52 lg:-top-42 -top-56 -right-0 lg:-right-0' id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="294.897" cy="294.897" r="293.332" stroke="#7F6AFF" stroke-width="3.12971" />
@@ -272,7 +279,7 @@
                     </svg>
 
                 </span>
-                <span class='absolute z-0 lg:-bottom-40 lg:-left-40' id="silhouette">
+                <span class='absolute z-0 lg:-bottom-40 lg:-left-40 -bottom-52 -left-36' id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="294.897" cy="294.897" r="293.332" stroke="#7F6AFF" stroke-width="3.12971" />
@@ -287,7 +294,7 @@
                 </span>
             </section>
 
-            <footer class='z-10 flex flex-col items-center justify-center w-full py-12 bg-slate-800'>
+            <footer class='z-10 flex flex-col items-center justify-center w-full px-2 py-12 bg-slate-800'>
 
                 <div class="flex flex-col items-center justify-center pb-4 text-center md:w-96">
                     <a href="{{ route('dashboard') }}" wire:navigate>
@@ -297,27 +304,25 @@
                         </div>
                     </a>
                     <div class='w-full dark:text-gray-300'>
-                        Check out our <a class='text-violet-600 hover:border-b-violet-600 hover:border-b'
+                        Check out our <a class='text-sm text-violet-600 ms:text-base hover:border-b-violet-600 hover:border-b'
                             href='https://docs.google.com/document/d/1kIyryix2maBfMEm3BJUJltVEL0fZh6Cm4pZxTPxzVeM'
                             target='_value'>Terms and Services (EN) </a>
 
                     </div>
-                    <div class='w-full dark:text-gray-300'>
+                    <div class='w-full text-sm ms:text-base dark:text-gray-300'>
                         Check out our <a class='text-violet-600 hover:border-b-violet-600 hover:border-b'
-
                             href='https://docs.google.com/document/d/1kIyryix2maBfMEm3BJUJltVEL0fZh6Cm4pZxTPxzVeM'
                             target='_value'>Privacy Policy (EN) </a>
 
                     </div>
                     <div class='flex flex-col w-full gap-3'>
-                        <x-button class='mt-8' primary icon='arrow-right' icon-right="plus" label='Subscribe' />
-                        <x-button outline primary icon='shopping-cart' label="For enterprises" />
+                        <x-button class='mt-8' primary icon='arrow-right' href="{{ route('notes.create') }}" icon-right="plus" label='Subscribe' />
+                        <x-button outline primary icon='shopping-cart' href="{{ route('notes.post-create') }}"  label="For enterprises" />
                     </div>
                 </div>
                 <div class="text-sm text-center text-gray-400 dark:text-gray-400 sm:text-start">
                     <div class="flex items-center gap-4">
-                        <a href="https://www.linkedin.com/in/leoreus"
-                        target='_value'
+                        <a href="https://www.linkedin.com/in/leoreus" target='_value'
                             class="inline-flex items-center group hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5"

@@ -6,9 +6,9 @@
     </x-slot>
  <livewire:test lazy />
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="px-2 mx-auto max-w-7xl sm:px-4 lg:px-6">
             <div class="p-6 text-gray-900">
-                 <x-button wire:navigate icon="arrow-left" class="mb-8" href="{{ route('dashboard') }}">Back</x-button>
+             
                 <livewire:notes.show-notes lazy />
             </div>
         </div>

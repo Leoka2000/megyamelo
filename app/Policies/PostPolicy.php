@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Log;
 
 class PostPolicy
 {
@@ -27,9 +28,22 @@ class PostPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(): bool
     {
-        //
+        $userVariable = auth()->user();
+        $numberPosts = $userVariable->posts()->get()->count();
+        
+        if ($numberPosts >= 2) {
+            // Display an error message to the user
+            
+            Log::info('You cannot create more than TWO BIIITCH!');
+            throw new \Illuminate\Auth\Access\AuthorizationException('You can not create more than two posts.');
+            return false;
+        } else {
+            Log::info('youre allowed!');
+            
+            return true;
+        }
     }
 
     /**

@@ -45,7 +45,7 @@ new class extends Component {
             }
         }
     </style>
-    <div class='flex flex-col gap-6 custom-shadow '>
+    <div class='flex flex-col gap-6 '>
         @foreach ($jobs as $job)
             <x-card title='{{ $job->title }}'
                 class='relative flex flex-col justify-between w-full dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-600 '
@@ -53,27 +53,35 @@ new class extends Component {
                 <div class='flex justify-start '>
                     <div class='w-full sm:w-80'>
                         <div class='mb-8 w-50 h-50'>
-                            <img class='object-cover w-full h-full rounded-md sm:max-h-56'
+                            <img class='object-cover w-full h-full rounded-md max-h-80 sm:max-h-56'
                                 src="{{ asset('storage/' . $job->image) }}" />
                         </div>
                     </div>
                 </div>
                 <x-slot name="footer">
-                    <div class='flex items-center justify-between w-full'>
+                    <div class='flex items-center justify-between w-full gap-4'>
                         <a class="w-full" href="{{ $job->apply_link }}" target='_blank'>
-                            <x-button label="Apply" class='w-full lg:w-1/4' primary />
+                            <x-button label="Apply" class='w-full sm:w-3/4 lg:w-1/4' primary />
                         </a>
-                        <x-button icon="trash" flat negative wire:click="delete('{{ $job->id }}')"
-                            label='Delete' />
+                        @can('delete', $job)
+                            <x-button icon="trash" flat negative outline wire:click="delete('{{ $job->id }}')"
+                                label='Delete' />
+                        @else
+                            <p>
+
+                            </p>
+                        @endcan
+
                     </div>
                 </x-slot>
                 <div class='flex flex-col w-full'>
 
                     <div class='flex items-center w-full gap-2'>
                         <p class='mb-5 break-words md:text-base '> {{ $job->author }}</p>
-                        <p class='mb-5 text-gray-500 break-words '> two hours ago</p>
+                        <p class='mb-5 text-gray-500 break-words '> posted on {{ $job->created_at->format('Y-m-d') }}
+                        </p>
                     </div>
-                    <p class='w-full break-words'> {{ $job->description }} </p>
+                    <p class='w-full text-sm break-words sm:text-base'> {{ $job->description }} </p>
                 </div>
 
             </x-card>
