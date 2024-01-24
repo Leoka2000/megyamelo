@@ -11,6 +11,8 @@ use WireUi\View\Components\Input;
 new class extends Component {
     use WithFileUploads;
 
+
+public $showModal = false;
     public $companyAuthor;
     public $companyTitle;
     public $companyDescription;
@@ -28,6 +30,15 @@ new class extends Component {
 
  
  
+    }
+    public function openModal()
+    {
+        $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
     }
 
 
@@ -60,16 +71,20 @@ new class extends Component {
 
 
 <div>
+<div>
 
-<script>
-    document.addEventListener('livewire:load', function () {
-        Livewire.on('redirectToDashboard', function () {
-            setTimeout(function () {
-                location.reload(); // Refresh the page
-            }, 3000); // 3000 milliseconds (3 seconds) delay
-        });
-    });
-</script>
+
+    @if ($showModal)
+        <x-modal wire:model="showModal" class="" title="Simple Modal">
+            <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                <p class='mb-4 sm:text-base'>Are you sure that you want to spend a coin creating this post?</p>
+                <x-button outlined icon='arrow-left' wire:click="closeModal">Back</x-button>
+                <x-button wire:click='submit' primary icon='plus'>Post</x-button>
+            </div>
+        </x-modal>
+    @endif
+</div>
+
     <x-card title="Post a job advertisement">
         <x-wui-errors class="mb-4" />
 
@@ -98,7 +113,7 @@ new class extends Component {
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button wire:click="submit" label="Post" spinner="save" primary />
+                <x-button wire:click="openModal" label="Post" spinner="save" primary />
             </div>
         </x-slot>
     </x-card>

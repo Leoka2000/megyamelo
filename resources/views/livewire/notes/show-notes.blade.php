@@ -4,6 +4,8 @@ use Livewire\Volt\Component;
 use App\Models\Note;
 
 new class extends Component {
+
+public $selectedArea = 'None';
     public function delete($noteId)
     {
         $note = Note::where('id', $noteId)->first();
@@ -11,12 +13,23 @@ new class extends Component {
         $note->delete();
     }
 
-    public function with(): array
+  public function with(): array
     {
+        $notes = $this->getFilteredNotes();
         return [
-            'notes' => Note::all(),
+            'notes' => $notes,
         ];
     }
+
+    private function getFilteredNotes()
+    {
+        // Filter notes based on the selected area
+        return ($this->selectedArea == 'None') ? Note::all() : Note::where('area', $this->selectedArea)->get();
+    }
+
+    
+
+    
 }; ?>
 
 
@@ -44,10 +57,27 @@ new class extends Component {
         
     </style>
 
+    
+
     <div class="space-y-2 responsive-flex ">
     
           <x-button class='' wire:navigate icon="arrow-left" class="mb-8" href="{{ route('dashboard') }}">Back</x-button>
         
+        <select wire:model="selectedArea" wire:change="$refresh">
+    <option value="None">All Areas</option>
+    <option value="Health Sciences">Health Sciences</option>
+    <option value="Economics and Business">Economics and Business</option>
+    <option value="Engineering">Engineering</option>
+    <option value="Science and Technology">Science and Technology</option>
+    <option value="Child and Special Needs Education">Child and Special Needs Education</option>
+    <option value="Music">Music</option>
+    <option value="Humanities">Humanities</option>
+    <option value="Law">Law</option>
+    <option value="Design">Design</option>
+    <option value="Informatics">Informatics</option>
+    <option value="Agriculture, Food Sciences and Environmental Management">Agriculture, Food
+            Sciences and Environmental Management</option>
+</select>
         <div class="flex justify-center mb-2">
           
             <div class="flex flex-wrap gap-3 px-26 dark:text-gray-300 responsive">

@@ -4,6 +4,20 @@ use Livewire\Volt\Component;
 use App\Models\Post;
 
 new class extends Component {
+
+       public $showModal = false;
+
+
+ public function openModal()
+    {
+        $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+    }
+
     public function delete($postId)
     {
         $post = Post::where('id', $postId)->first();
@@ -17,11 +31,17 @@ new class extends Component {
             'jobs' => Post::all(),
         ];
     }
+
+    
 }; ?>
 
 
 
 <div>
+
+
+
+
     <style>
         .custom-shadow {
             box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
@@ -64,7 +84,7 @@ new class extends Component {
                             <x-button label="Apply" class='w-full sm:w-3/4 lg:w-1/4' primary />
                         </a>
                         @can('delete', $job)
-                            <x-button icon="trash" flat negative outline wire:click="delete('{{ $job->id }}')"
+                            <x-button.circle icon="trash" flat negative outline wire:click='openModal' spinner='save'
                                 label='Delete' />
                         @else
                             <p>
@@ -85,6 +105,21 @@ new class extends Component {
                 </div>
 
             </x-card>
+
+
+            <div>
+    
+
+    @if ($showModal)
+        <x-modal wire:model="showModal" class="" title="Simple Modal">
+            <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                <p class='mb-4 sm:text-base'>Are you sure that you want to delete the post? After deleting, you will not be able to recover your coins.</p>
+                <x-button primary  icon='arrow-left' wire:click="closeModal">Back</x-button>
+                <x-button flat negative outline icon='trash' wire:click="delete('{{ $job->id }}')">Delete</x-button>
+            </div>
+        </x-modal>
+    @endif
+</div>
         @endforeach
     </div>
 </div>
