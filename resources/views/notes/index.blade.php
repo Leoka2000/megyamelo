@@ -4,7 +4,7 @@
             {{ __('Notes') }}
         </h2>
     </x-slot>
- <livewire:test lazy />
+
     <div class="py-12">
         <div class="px-2 mx-auto max-w-7xl sm:px-4 lg:px-6">
             <div class="p-6 text-gray-900">
