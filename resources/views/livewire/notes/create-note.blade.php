@@ -25,24 +25,39 @@ new class extends Component {
 
     public function submit()
     {
+
+         if ($this->studentLinkedin) {
+            $validated = $this->validate([
+                'studentLinkedin' => ['url'],
+            ]);
+        }
+        if ($this->studentCV) {
+            $validated = $this->validate([
+                'studentCV' => 'file|mimes:png,jpg,pdf|max:102400',
+            ]);
+        }
+        
         $this->authorize('create', Note::class);
         $validated = $this->validate([
             'studentName' => ['required', 'string', 'min:3'],
             'studentEmail' => ['required', 'email'],
             'studentUniversity' => ['required', 'string', 'min:3'],
-            'studentPhoto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'studentPhoto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:102400',
             'studentDegree' => ['required', 'string', 'min:5'],
             'studentArea' => ['required', 'string'],
             'studentDescription' => ['required', 'string', 'min:5'],
-            'studentCV' => 'file|mimes:png,jpg,pdf|max:102400',
-            'studentLinkedin' => ['string', 'min:5'],
             'studentAccept' => ['required', 'boolean'],
         ]);
+
+       
+
 
         auth()
             ->user()
             ->notes()
             ->create([
+                               
+                    
                 'name' => $this->studentName,
                 'email' => $this->studentEmail,
                 'university' => $this->studentUniversity,
@@ -50,12 +65,17 @@ new class extends Component {
                 'degree' => $this->studentDegree,
                 'area' => $this->studentArea,
                 'description' => $this->studentDescription,
-                'cv' => $this->studentCV->store('curriculums', 'public'),
-                'send_date' => now(),
-                'linkedin' => $this->studentLinkedin,
                 'accept' => $this->studentAccept,
+                'cv' => $this->studentCV->store('curriculums', 'public'),
+                'linkedin' => $this->studentLinkedin,
+             
+                    
             ]);
-        redirect(route('dashboard'));
+     
+
+         
+        
+           redirect(route('notes.index'));
     }
 
     public function universities()
@@ -116,7 +136,8 @@ show off your skills to potential employers.">
             <div class='w-full'>
                 <div class='flex items-center justify-start gap-1 w-80'>
                     <x-toggle primary wire:model.defer="studentAccept" />
-                    I accept the <a href='#' class='text-indigo-500 hover:border-b border-b-indigo-500'> terms and conditions</a>
+                    I accept the <a href='#' class='text-indigo-500 hover:border-b border-b-indigo-500'> terms and
+                        conditions</a>
                 </div>
             </div>
         </div>

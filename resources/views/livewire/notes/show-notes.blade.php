@@ -5,11 +5,25 @@ use App\Models\Note;
 
 new class extends Component {
     public $selectedArea = 'None';
+    public $showModal = false;
+
+
+    public function openModal()
+    {
+        $this->showModal = true;
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+    }
+    
     public function delete($noteId)
     {
         $note = Note::where('id', $noteId)->first();
         $this->authorize('delete', $note);
         $note->delete();
+        $this->closeModal();
     }
 
     public function with(): array
@@ -53,6 +67,8 @@ new class extends Component {
 
 
     <div class="space-y-2 responsive-flex ">
+
+    
           <x-button class='mb-16' wire:navigate icon="arrow-left" 
                         href="{{ route('dashboard') }}">Back</x-button>
         <header class='flex justify-start w-full mb-8'>
@@ -94,13 +110,16 @@ new class extends Component {
                             <div class='flex items-center justify-between p-3 pt-1'>
                                 <p class="overflow-hidden text-2xl font-bold text-left">
                                     {{ Str::limit($note->name, 30) }}</p>
-                                <x-button.circle href="{{ route('notes.edit', $note) }}" wire:navigate
+                                <x-button.circle href="{{ route('notes.edit', $note) }}" green outline
                                     icon="pencil-alt"></x-button.circle>
                             </div>
                         @else
-                            <p class="p-3 px-3 overflow-hidden text-2xl font-bold text-left">
-                                {{ Str::limit($note->name, 30) }}
-                            </p>
+                           <div class='flex items-center justify-between p-3 pt-1'>
+                                <p class="overflow-hidden text-2xl font-bold text-left">
+                                    {{ Str::limit($note->name, 30) }}</p>
+                                <x-button.circle href="{{ route('notes.edit', $note) }}" 
+                                    icon="pencil-alt"></x-button.circle>
+                            </div>
                         @endcan
                     </div>
                     <div class='flex flex-col justify-between w-full px-3'>
@@ -118,10 +137,15 @@ new class extends Component {
                                     </p>
                                 </div>
                                 <div class='flex justify-end w-full gap-4'>
-                                    <x-button.circle icon="eye"
+                                    <x-button.circle icon="eye" primary outline
                                         href="{{ route('notes.view', $note) }}"></x-button.circle>
-                                    <x-button.circle icon="trash"
+                                        @can('delete', $note)
+                                    <x-button.circle icon="trash" red outline
+                                        wire:click="openModal"></x-button.circle>
+                                        @else
+                                             <x-button.circle icon="trash"
                                         wire:click="delete('{{ $note->id }}')"></x-button.circle>
+                                         @endcan
                                 </div>
                             </div>
                         </div>
@@ -130,7 +154,19 @@ new class extends Component {
                     </div>
 
                 </div>
+                 @if ($showModal)
+                    <x-modal wire:model="showModal" class="" title="Simple Modal">
+                        <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                            <p class='mb-4 sm:text-base'>Are you sure you want to delete the profile?</p>
+                            <x-button primary icon='arrow-left' wire:click="closeModal">Back</x-button>
+                            <x-button flat negative outline icon='trash'
+                                wire:click="delete('{{ $note->id }}')">Delete</x-button>
+                        </div>
+                    </x-modal>
+                @endif
             @endforeach
+
+            
         </div>
     </div>
 

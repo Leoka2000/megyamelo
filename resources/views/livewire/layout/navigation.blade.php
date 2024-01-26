@@ -39,7 +39,7 @@ new class extends Component
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                        {{ __('Home') }}
                     </x-nav-link>
                      <x-nav-link :href="route('notes.create')" :active="request()->routeIs('notes.create')" wire:navigate>
                         {{ __('Create profile') }}
@@ -54,6 +54,7 @@ new class extends Component
                         {{ __('Create post') }}
                     </x-nav-link>
                 </div>
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -116,6 +117,8 @@ new class extends Component
              <x-responsive-nav-link :href="route('notes.post-create')" :active="request()->routeIs('notes.post-create')" wire:navigate>
                 {{ __('Create a job advertisement') }}
             </x-responsive-nav-link>
+           
+
 
         </div>
 

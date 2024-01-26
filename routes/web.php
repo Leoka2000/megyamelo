@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Note;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -33,6 +34,10 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth'])
     ->name('notes.jobs');
 
+    Route::view('payment-stripe', 'notes.payment-index')
+    ->middleware(['auth'])
+    ->name('notes.payment-index');
+
     Route::view('create-post', 'notes.post-create')
     ->middleware(['auth'])
     ->name('notes.post-create');
@@ -44,6 +49,11 @@ Route::view('profile', 'profile')
     Volt::route('profile/{note}/edit', 'notes.edit-note')
     ->middleware(['auth'])
     ->name('notes.edit');
+
+
+    Volt::route('post/{post}/edit', 'notes.edit-post')
+    ->middleware(['auth'])
+    ->name('notes.edit-post');
 
     Route::get('note/{note}', function (Note $note) {
     

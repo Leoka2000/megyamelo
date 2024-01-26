@@ -75,7 +75,7 @@
                         <h1>Check out some of the things we do to make people closer to the hungarian job market</h1>
                     </header>
                     <main class="flex flex-col gap-4 sm:flex-row landing-main">
-                        <div class='px-8 py-12 bg-gray-800 border border-gray-700 rounded-xl sm:w-72 lg:w-96'>
+                        <div class='px-8 py-10 bg-gray-800 border border-gray-700 rounded-xl sm:w-72 lg:w-96'>
                             <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4014_33508)">
@@ -112,7 +112,7 @@
                             <x-button class='w-full' href="{{ route('notes.post-create') }}" primary
                                 icon="shopping-cart">Create a job advertisent</x-button>
                         </div>
-                        <div class='px-8 py-12 bg-gray-800 border border-gray-700 sm:w-72 rounded-xl lg:w-96'>
+                        <div class='px-6 py-10 bg-gray-800 border border-gray-700 sm:w-72 rounded-xl lg:w-96'>
                             <span>
                                 <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +148,7 @@
             {{-- SECTION BREAK --}}
             <section class='relative w-full pb-64 border-t border-gray-700 pt-52 '>
                 <div class='flex flex-col items-center w-full gap-4'>
-                    <header class='max-w-4xl mb-12 text-2xl text-center md:text-4xl dark:text-gray-300'>
+                    <header class='max-w-4xl px-2 mb-12 text-2xl text-center lg:w-96 md:text-4xl dark:text-gray-300'>
                         <h1>Frequently asked questions</h1>
                     </header>
                     <main class="flex flex-col max-w-3xl gap-4 px-4">
@@ -279,7 +279,7 @@
                     </svg>
 
                 </span>
-                <span class='absolute z-0 lg:-bottom-40 lg:-left-40 -bottom-52 -left-36' id="silhouette">
+                <span class='absolute z-0 lg:-bottom-40 lg:-left-40 -bottom-56 -left-48' id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="294.897" cy="294.897" r="293.332" stroke="#7F6AFF" stroke-width="3.12971" />
@@ -316,7 +316,7 @@
 
                     </div>
                     <div class='flex flex-col w-full gap-3'>
-                        <x-button class='mt-8' primary icon='arrow-right' href="{{ route('notes.create') }}" icon-right="plus" label='Subscribe' />
+                        <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}" icon-right="plus" label='Subscribe' />
                         <x-button outline primary icon='shopping-cart' href="{{ route('notes.post-create') }}"  label="For enterprises" />
                     </div>
                 </div>

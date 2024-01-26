@@ -21,10 +21,9 @@ return new class extends Migration
             $table->string('degree');
             $table->string('area');
             $table->text('description');
-            $table->string('cv');
+            $table->string('cv')->default('default_value');
             $table->boolean('accept');
-            $table->string('linkedin');
-            $table->date('send_date');
+            $table->string('linkedin')->default('');
             $table->boolean('is_published')->default(false);
             $table->integer('heart_count')->default(0);
             $table->timestamps();

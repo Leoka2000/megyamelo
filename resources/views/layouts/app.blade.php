@@ -30,14 +30,11 @@
             @endif
 
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-            <footer class='py-8 pl-8'>
-             <div class="text-sm text-center text-gray-400 dark:text-gray-400 sm:text-start">
+            <main class='relative'>
+             <div class="absolute z-30 text-sm text-center text-gray-400 top-3 right-3 dark:text-gray-400 sm:text-start">
                     <div class="flex items-center gap-4">
                         <a href="https://www.linkedin.com/in/leoreus" target='_value'
-                            class="flex items-center justify-center group hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">
+                            class="flex items-center justify-center text-xs group hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 class="w-5 h-5 -mt-px me-1 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400">
@@ -48,7 +45,13 @@
                         </a>
                     </div>
                 </div>
-            </footer>
+                {{ $slot }}
+
+        <livewire:coins />
+            </main>
+            
+            
+           
         </div>
     </body>
 </html>

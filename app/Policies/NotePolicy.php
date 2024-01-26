@@ -45,6 +45,7 @@ class NotePolicy
                 Log::info('You cannot create more than oone BIIITCH!');
                 throw new \Illuminate\Auth\Access\AuthorizationException('You can not create more than one profile.');
                 return false;
+                
             } else {
                 Log::info('youre allowed!');
                 

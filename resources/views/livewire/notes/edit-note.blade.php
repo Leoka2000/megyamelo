@@ -12,19 +12,18 @@ new #[Layout('layouts.app')] class extends Component {
     public $studentName;
     public $studentEmail;
     public $studentUniversity;
-    public $studentPhoto;
     public $studentDegree;
     public $studentArea;
     public $studentDescription;
-    public $studentCV;
     public $studentLinkedin;
-
+    public $studentPhoto;
+    public $studentCV;
 
     public function mount(Note $note)
     {
         $this->authorize('update', $note);
         $this->fill($note);
-      $this->studentName = $note->name;
+        $this->studentName = $note->name;
         $this->studentEmail = $note->email;
         $this->studentUniversity = $note->university;
         $this->studentDegree = $note->degree;
@@ -42,9 +41,31 @@ new #[Layout('layouts.app')] class extends Component {
             'studentDegree' => ['string', 'min:3'],
             'studentArea' => ['string', 'min:3'],
             'studentDescription' => ['string', 'min:5'],
-            'studentLinkedin' => ['string', 'min:5'],
+            'studentLinkedin' => ['url'],
         ]);
+        if ($this->studentPhoto) {
+            $validated = $this->validate([
+                'studentPhoto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:102400',
+            ]);
+        }
+        if ($this->studentCV) {
+            $validated = $this->validate([
+                'studentCV' => 'file|mimes:png,jpg,pdf|max:102400',
+            ]);
+        }
 
+        if ($this->studentPhoto) {
+     
+            $this->note->update([
+                'photo' => $this->studentPhoto->store('photos', 'public'),
+            ]);
+        }
+        if ($this->studentCV) {
+    
+            $this->note->update([
+                'cv' => $this->studentCV->store('curriculums', 'public'),
+            ]);
+        }
         $this->note->update([
             'name' => $this->studentName,
             'email' => $this->studentEmail,
@@ -70,7 +91,8 @@ new #[Layout('layouts.app')] class extends Component {
     </h2>
 </x-slot>
 
-<div class="py-12 lg:px-64 md:px-36 px-4">
+<div class="px-4 py-12 lg:px-64 md:px-36">
+       <x-button wire:navigate icon="arrow-left" class="mb-8" href="{{ route('notes.index') }}">Back</x-button>
     <x-card title="Edit your profile">
         <x-wui-errors class="mb-4" />
 
@@ -101,12 +123,28 @@ new #[Layout('layouts.app')] class extends Component {
                     label="Write a short description of yourself. You can list things like your career goals and skills."
                     placeholder="I have experience in .... im good at .." wire:model.defer="studentDescription" />
             </div>
+            <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
+                <div class="col-span-1 sm:col-span-4">
+                    <label>
+                        Please, upload a photo of yourself</label>
+                    <input class='w-full text-gray-400' label="Upload a photo of yourself" type='file' type="file"
+                        id="Profile Pic" wire:model="studentPhoto" />
+
+                </div>
+
+                <div class="col-span-1 sm:col-span-3">
+                    <label>Please, upload your CV (optional) </label>
+                    <input class='w-full text-gray-400' label="Selecione uma foto do produto" type='file'
+                        type="file" id="exampleInputName" wire:model="studentCV" />
+
+                </div>
+            </div>
         </div>
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
                 <x-button wire:click="saveNote" label="Save" spinner="save" primary />
-                   <x-action-message on="note-saved" />
+                <x-action-message on="note-saved" />
             </div>
         </x-slot>
     </x-card>

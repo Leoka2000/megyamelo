@@ -15,6 +15,9 @@ class Post extends Model
         'id',
     ];
 
+    public $showPaymentModal = false;
+
+
 
     public function user()
     {

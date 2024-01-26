@@ -28,22 +28,17 @@ class PostPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(): bool
+    public function create(User $user): bool
     {
-        $userVariable = auth()->user();
-        $numberPosts = $userVariable->posts()->get()->count();
-        
-        if ($numberPosts >= 2) {
-            // Display an error message to the user
-            
-            Log::info('You cannot create more than TWO BIIITCH!');
-            throw new \Illuminate\Auth\Access\AuthorizationException('You can not create more than two posts.');
-            return false;
-        } else {
-            Log::info('youre allowed!');
-            
+        if ($user->coins > 0) {
+            // User has enough coins to create a post
             return true;
+        } else {
+            // User does not have enough coins to create a post
+            return false;
+    
         }
+        
     }
 
     /**

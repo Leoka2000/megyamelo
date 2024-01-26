@@ -4,11 +4,9 @@ use Livewire\Volt\Component;
 use App\Models\Post;
 
 new class extends Component {
+    public $showModal = false;
 
-       public $showModal = false;
-
-
- public function openModal()
+    public function openModal()
     {
         $this->showModal = true;
     }
@@ -23,6 +21,7 @@ new class extends Component {
         $post = Post::where('id', $postId)->first();
         $this->authorize('delete', $post);
         $post->delete();
+        $this->closeModal();
     }
 
     public function with(): array
@@ -31,8 +30,6 @@ new class extends Component {
             'jobs' => Post::all(),
         ];
     }
-
-    
 }; ?>
 
 
@@ -66,6 +63,14 @@ new class extends Component {
         }
     </style>
     <div class='flex flex-col gap-6 '>
+
+
+    @if ($jobs->isEmpty())
+        <div class="text-center dark:text-gray-300">
+            <p class="text-xl font-bold ">No jobs posted yet</p>
+               <x-button class='mt-4' href="{{ route('notes.post-create') }}" primary icon="shopping-cart">Create a job advertisement</x-button>
+        </div>
+    @else
         @foreach ($jobs as $job)
             <x-card title='{{ $job->title }}'
                 class='relative flex flex-col justify-between w-full dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-600 '
@@ -84,8 +89,12 @@ new class extends Component {
                             <x-button label="Apply" class='w-full sm:w-3/4 lg:w-1/4' primary />
                         </a>
                         @can('delete', $job)
-                            <x-button.circle icon="trash" flat negative outline wire:click='openModal' spinner='save'
-                                label='Delete' />
+                            <div class='flex items-center justify-center gap-2'>
+                                {{--  href="{{ route('notes.edit', $note) }}" --}}
+                                <x-button.circle icon="pencil-alt" href="{{ route('notes.edit-post', $job) }}" wire:navigate  />
+                                <x-button.circle icon="trash" flat negative outline wire:click='openModal' spinner='save'
+                                    label='Delete' />
+                            </div>
                         @else
                             <p>
 
@@ -108,20 +117,23 @@ new class extends Component {
 
 
             <div>
-    
 
-    @if ($showModal)
-        <x-modal wire:model="showModal" class="" title="Simple Modal">
-            <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
-                <p class='mb-4 sm:text-base'>Are you sure that you want to delete the post? After deleting, you will not be able to recover your coins.</p>
-                <x-button primary  icon='arrow-left' wire:click="closeModal">Back</x-button>
-                <x-button flat negative outline icon='trash' wire:click="delete('{{ $job->id }}')">Delete</x-button>
+
+                @if ($showModal)
+                    <x-modal wire:model="showModal" class="" title="Simple Modal">
+                        <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                            <p class='mb-4 sm:text-base'>Are you sure that you want to delete the post? After deleting,
+                                you will not be able to recover your coins.</p>
+                            <x-button primary icon='arrow-left' wire:click="closeModal">Back</x-button>
+                            <x-button flat negative outline icon='trash'
+                                wire:click="delete('{{ $job->id }}')">Delete</x-button>
+                        </div>
+                    </x-modal>
+                @endif
             </div>
-        </x-modal>
-    @endif
-</div>
         @endforeach
     </div>
+    @endif 
 </div>
 
 {{-- {{ $job->title }} {{ $job->author }} src="{{ asset('storage/' . $job->image) }} {{ $job->description }}" --}}
