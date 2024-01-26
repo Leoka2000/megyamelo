@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Models\Note;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -34,9 +35,13 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth'])
     ->name('notes.jobs');
 
-    Route::view('payment-stripe', 'notes.payment-index')
-    ->middleware(['auth'])
-    ->name('notes.payment-index');
+    Route::get('/payment', [ProductController::class, 'index']);
+                                                      //checkout method here(checkoutfunction)
+    Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+    Route::get('/success', [ProductController::class, 'success'])->name('notes.payment.checkout-success');
+Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
+Route::post('/webhook', [ProductController::class, 'webhook'])->name('checkout.webhook');
+
 
     Route::view('create-post', 'notes.post-create')
     ->middleware(['auth'])
