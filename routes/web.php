@@ -35,11 +35,11 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth'])
     ->name('notes.jobs');
 
-    Route::get('/payment', [ProductController::class, 'index']);
+    Route::get('/payment', [ProductController::class, 'index'])->name('notes.payment.payment-index');
                                                       //checkout method here(checkoutfunction)
     Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
     Route::get('/success', [ProductController::class, 'success'])->name('notes.payment.checkout-success');
-Route::get('/cancel', [ProductController::class, 'cancel'])->name('checkout.cancel');
+Route::get('/cancel', [ProductController::class, 'cancel'])->name('notes.payment.checkout-cancel');
 Route::post('/webhook', [ProductController::class, 'webhook'])->name('checkout.webhook');
 
 

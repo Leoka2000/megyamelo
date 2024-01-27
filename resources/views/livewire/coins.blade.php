@@ -35,11 +35,11 @@ new class extends Component {
 
     @if ($this->userRole  === 'admin')
       @if ($this->coins  === 0)
-       <x-button class='absolute z-20 h-8 custom right-3 ' href="{{ route('notes.payment-index') }}" icon="currency-dollar" red md
+       <x-button class='absolute z-20 h-8 custom right-3 ' href="{{ route('notes.payment.payment-index') }}" icon="currency-dollar" red md
     >Advertisements left: {{ $this->coins }}</x-button>
         
         @else
-            <x-button class='absolute z-20 h-8 custom right-3' href="{{ route('notes.payment-index') }}" icon="currency-dollar" green md
+            <x-button class='absolute z-20 h-8 custom right-3' href="{{ route('notes.payment.payment-index') }}" icon="currency-dollar" green md
        >Advertisements left: {{ $this->coins }} </x-button>
        @endif
 
