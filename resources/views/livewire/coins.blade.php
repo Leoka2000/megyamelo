@@ -33,13 +33,13 @@ new class extends Component {
         }
     </style>
 
-    @if ($this->userRole  === 'admin')
+    @if ($this->userRole  === 'admin' || $this->userRole === 'superadmin')
       @if ($this->coins  === 0)
-       <x-button class='absolute z-20 h-8 custom right-3 ' href="{{ route('notes.payment.payment-index') }}" icon="currency-dollar" red md
+       <x-button sm class='absolute z-20 h-8 custom right-3 ' href="{{ route('notes.payment.payment-index') }}" icon="currency-dollar" red 
     >Advertisements left: {{ $this->coins }}</x-button>
         
         @else
-            <x-button class='absolute z-20 h-8 custom right-3' href="{{ route('notes.payment.payment-index') }}" icon="currency-dollar" green md
+            <x-button sm class='absolute z-20 h-8 custom right-3' href="{{ route('notes.payment.payment-index') }}" icon="currency-dollar" green 
        >Advertisements left: {{ $this->coins }} </x-button>
        @endif
 

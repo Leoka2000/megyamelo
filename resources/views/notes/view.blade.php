@@ -35,11 +35,12 @@
                             <x-button href="{{ $note->linkedin }}" target="_blank" outline primary
                                 icon="link">Linkedin</x-button>
                         @endif
-                        @if ($note->cv)
+                        @if ($note->cv === 'default_value')
+                            <p></p>
+                        @else
                             <x-button download="Download-CV" href="{{ asset('storage/' . $note->cv) }}" primary
                                 icon="document">CV</x-button>
                         @endif
-
                     </div>
 
                 </div>

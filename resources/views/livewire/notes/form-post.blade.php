@@ -7,9 +7,12 @@ use Livewire\WithFileUploads;
 use Components\Select\Option;
 use Components\Select;
 use WireUi\View\Components\Input;
+use WireUi\Traits\Actions;
 
 new class extends Component {
     use WithFileUploads;
+    use Actions;
+    
 
     public $showModal = false;
     public $showPaymentModal = false;
@@ -20,14 +23,14 @@ new class extends Component {
     public $companyImage;
     public $companyLink;
 
-    public function mount()
-    {
-        $currentUser = auth()->user();
+   public function mount()
+{
+    $currentUser = auth()->user();
 
-        if ($currentUser->role !== 'admin') {
-            abort(403, 'You do not have permission to access this component.');
-        }
+    if ($currentUser->role !== 'admin' && $currentUser->role !== 'superadmin') {
+        abort(403, 'You do not have permission to access this component.');
     }
+}
     public function openModal()
     {
         $this->showModal = true;
@@ -51,6 +54,7 @@ public function openPaymentModal()
 
     public function submit()
     {
+         $this->closeModal();
         $validated = $this->validate([
             'companyAuthor' => ['required', 'string', 'min:3'],
             'companyTitle' => ['required', 'string', 'min:3'],
@@ -62,7 +66,7 @@ public function openPaymentModal()
         $user = auth()->user();
         if ($user->coins <= 0) {
             // User has insufficient coins, display modal
-            $this->closeModal();
+           
             $this->showPaymentModal = true;
         } else {
             // User has enough coins, proceed with post creation
@@ -83,15 +87,18 @@ public function openPaymentModal()
                     'apply_link' => $this->companyLink,
                     'image' => $this->companyImage->store('company', 'public'),
                 ]);
-            redirect(route('dashboard'));
+      $this->notification()->success(
+            $title = 'Post created',
+            $description = 'Your post was successfully published'
+        ); 
         }
     }
 }; ?>
 
 
 
-<div>
-    <div>
+<div class='shadow-2xl shadow-black'>
+    <div class=''>
 
 
         @if ($showModal)
@@ -109,7 +116,7 @@ public function openPaymentModal()
                 <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
                     <p class='mb-4 sm:text-base'>You have no coins left. In order to publish more advertisements, you need to buy more coins</p>
                     <x-button outlined icon='arrow-left' wire:click="closeModal">Back</x-button>
-                    <x-button wire:click='submit' green icon='shopping-cart'>Buy coins</x-button>
+                    <x-button href="{{ route('notes.payment.payment-index') }}" green icon='shopping-cart'>Buy coins</x-button>
                 </div>
             </x-modal>
         @endif
@@ -143,7 +150,7 @@ public function openPaymentModal()
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button wire:click="openModal" label="Post" spinner="save" primary />
+                <x-button wire:click="openModal"  label="Post" spinner primary />
             </div>
         </x-slot>
     </x-card>

@@ -8,8 +8,11 @@ use Components\Select\Option;
 use Components\Select;
 use WireUi\View\Components\Input;
 use Illuminate\Support\Facades\Session;
+use WireUi\Traits\Actions;
+
 
 new class extends Component {
+    use Actions;
     use WithFileUploads;
 
     public $studentName;
@@ -65,17 +68,33 @@ new class extends Component {
                 'degree' => $this->studentDegree,
                 'area' => $this->studentArea,
                 'description' => $this->studentDescription,
-                'accept' => $this->studentAccept,
-                'cv' => $this->studentCV->store('curriculums', 'public'),
-                'linkedin' => $this->studentLinkedin,
-             
+                'accept' => $this->studentAccept,     
                     
             ]);
+
+            if ($this->studentCV) {
+    auth()
+        ->user()
+        ->notes()
+        ->where('email', $this->studentEmail) // Assuming email is unique and used as a reference to find the note
+        ->update(['cv' => $this->studentCV->store('curriculums', 'public')]);
+}
+
+if ($this->studentLinkedin) {
+    auth()
+        ->user()
+        ->notes()
+        ->where('email', $this->studentEmail) // Assuming email is unique and used as a reference to find the note
+        ->update(['linkedin' => $this->studentLinkedin]);
+}
      
 
-         
+          $this->notification()->success(
+            $title = 'Profile created',
+            $description = 'Your profile was successfully created'
+        ); 
         
-           redirect(route('notes.index'));
+          
     }
 
     public function universities()
@@ -84,11 +103,11 @@ new class extends Component {
     }
 }; ?>
 
-<div>
+<div class='mb-4 shadow-2xl shadow-black'>
     <x-card
         title="When you fill out this form, keep in mind that it's your chance to 
 show off your skills to potential employers.">
-        <x-wui-errors class="mb-4" />
+        <x-wui-errors class="px-2 mb-4 shadow-xl shadow-gray-black" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <x-wui-input label="Full name" placeholder="Leo Reus Oli...." wire:model.defer="studentName" />

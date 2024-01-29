@@ -1,41 +1,30 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
+        <h2 class="text-base font-semibold leading-tight text-gray-800 sm:text-xl dark:text-gray-200">
             {{ __('Home') }}
         </h2>
     </x-slot>
-
    <div class="py-12">
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
-            <div class="overflow-hidden bg-white border border-gray-700 rounded-md shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <div class="p-6 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+            <div class="overflow-hidden bg-white border border-gray-700 rounded-md shadow-lg shadow-black dark:bg-gray-800 sm:rounded-lg">
+                <div class="p-6 bg-white rounded-lg dark:bg-gray-800">
                     <div class="flex items-center">
                         <div>
-                            <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">welcome</p>
+                            <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">Welcome to Megy a Meló</p>
                         </div>
                     </div>
                     <div class="mt-6">
-                        <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">Aqui virá um texto descritivo sobre
-                            o
-                            marketplace e suas funcionalidadesAqui virá um texto descritivo sobre o marketplace e suas
-                            funcionalidadesAqui virá um texto descritivo sobre o marketplace e suas funcionalidadesAqui
-                            virá um
-                            texto descritivo sobre o marketplace e suas funcionalidadesAqui virá um texto descritivo
-                            sobre o
-                            marketplace e suas funcionalidadesAqui virá um texto descritivo sobre o marketplace e suas
-                            funcionalidadesAqui virá um texto descritivo sobre o marketplace e suas funcionalidadesAqui
-                            virá um
-                            texto descritivo sobre o marketplace e suas funcionalidadesAqui virá um texto descritivo
-                            sobre o
-                            marketplace e suas funcionalidadesAqui virá um texto descritivo sobre o marketplace e suas
-                            funcionalidades
+                        <p class="text-sm leading-9 text-gray-900 dark:text-gray-400">
+                          The platform where we help student / graduates to get jobs while facilitating the life of companies to easily find talented employees. <br/>
+                          <strong class='text-gray-300'>FOR STUDENTS: </strong> on  <a href="{{ route('notes.create') }}" class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Create profile' </a> section, you will have the chance to show potential employers your skills and tell them a little bit of your history. You can also view our latest published job advertisements on the <a href="{{ route('notes.jobs') }}" class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Job list' </a> section <br/>
+                         <strong class='text-gray-300'>FOR COMPANIES: </strong> on the <a href="{{ route('notes.post-create') }}" class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Create post' </a> section your company will be able to create a job advertisement for people to see. Send me a message through this <livewire:company-access.request-access />  <p class='inline-block text-sm dark:text-gray-400'> to request for admin access to our platform to start posting advertisements </p>
                         </p>
                     </div>
 
                 </div>
             </div>
             <main class="flex flex-col items-center justify-center gap-4 mt-4 sm:justify-start sm:flex-row dark:text-gray-300">
-                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md sm:w-96'>
+                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md shadow-lg shadow-black sm:w-96'>
                     <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_4014_33508)">
@@ -68,9 +57,9 @@
                             job?
                         </h1>
                     </div>
-                    <x-button class='w-full' href="{{ route('notes.post-create') }}" primary icon="shopping-cart">Create a job advertisent</x-button>
+                    <x-button class='w-full' href="{{ route('notes.payment.payment-index') }}" primary icon="shopping-cart">Create a job advertisent</x-button>
                 </div>
-                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md sm:w-96'>
+                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md shadow-lg shadow-black sm:w-96'>
                     <span>
                         <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">

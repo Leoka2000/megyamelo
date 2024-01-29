@@ -40,7 +40,7 @@ class Note extends Model
             Log::info('You cannot create more than one note!');
             
             return false;
-        } else {
+        } else  {
             Log::info('You can create');
             return true;
         }

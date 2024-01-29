@@ -57,7 +57,7 @@ new #[Layout('layouts.app')] class extends Component {
     }
 }; ?>
 
-<div class='pt-24 px-96'>
+<div class='py-24 px-96'>
 
     <x-card title="Edit your job advertisement">
         <x-wui-errors class="mb-4" />

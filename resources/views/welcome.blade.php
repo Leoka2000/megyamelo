@@ -171,10 +171,10 @@
                                 </div>
                                 <div class="mt-6">
 
-                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">It costs 10000 Ft to
+                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">It costs 8000 Ft to
                                         post
                                         a
-                                        job position on our platform.
+                                        two job positions on our platform.
                                         funcionalidades
                                     </p>
                                 </div>
@@ -191,17 +191,15 @@
                                                     d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
                                             </svg>
                                         </span>
-                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">How
-                                            much
-                                            does
-                                            it cost to post a job position advertisement?</p>
+                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
+                                           Do the university students have to pay in order to subscribe?/p>
                                     </div>
                                 </div>
                                 <div class="mt-6">
                                     <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">No. The platform is
                                         free
                                         for
-                                        everyone. Subscribe to the platform by clicking here.
+                                        everyone. Subscribe to the platform by <a href="{{ route('notes.create')}}" class='text-indigo-600 hover:border-b hover:border-b-indigo-500' > clicking here.</a>
                                     </p>
                                 </div>
                             </div>
@@ -217,19 +215,12 @@
                                                     d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
                                             </svg>
                                         </span>
-                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">How
-                                            much
-                                            does
-                                            it cost to post a job position advertisement?</p>
+                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
+                                          Can any student or alumni apply?</p>
                                     </div>
                                 </div>
                                 <div class="mt-6">
-                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">Yes, as long as you
-                                        are
-                                        regularly enrolled at any Hungarian University or already has an university
-                                        degree.
-                                        To
-                                        register click here.
+                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">Yes, as long as you are regularly enrolled at any Hungarian University or already has an university degree. To register <a href="{{ route('notes.create')}}" class='text-indigo-600 hover:border-b hover:border-b-indigo-500' >click here.</a>
                                     </p>
                                 </div>
                             </div>
@@ -245,7 +236,8 @@
                                                     d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
                                             </svg>
                                         </span>
-                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">How
+                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
+                                        How
                                             much
                                             does
                                             it cost to post a job position advertisement?</p>
@@ -317,7 +309,7 @@
                     </div>
                     <div class='flex flex-col w-full gap-3'>
                         <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}" icon-right="plus" label='Subscribe' />
-                        <x-button outline primary icon='shopping-cart' href="{{ route('notes.post-create') }}"  label="For enterprises" />
+                        <x-button outline primary icon='shopping-cart' href="{{ route('notes.payment.payment-index') }}"  label="For enterprises" />
                     </div>
                 </div>
                 <div class="text-sm text-center text-gray-400 dark:text-gray-400 sm:text-start">

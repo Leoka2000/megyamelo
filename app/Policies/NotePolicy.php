@@ -35,7 +35,6 @@ class NotePolicy
     public function create(): bool
     {
         
-        
             $userVariable = auth()->user();
             $numberNotes = $userVariable->notes()->get()->count();
             
@@ -51,6 +50,7 @@ class NotePolicy
                 
                 return true;
             }
+        
     }
     
 
@@ -59,7 +59,7 @@ class NotePolicy
      */
     public function update(User $user, Note $note): bool
     {
-        return $user->id === $note->user_id;
+        return $user->id === $note->user_id || $user->role === 'superadmin';
     }
 
  
@@ -69,7 +69,10 @@ class NotePolicy
      */
     public function delete(User $user, Note $note): bool
     {
-        return $user->id === $note->user_id;
+       
+   
+        return $user->id === $note->user_id || $user->role === 'superadmin';
+     
     }
 
     /**
