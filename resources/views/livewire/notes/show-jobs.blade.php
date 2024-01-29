@@ -79,7 +79,7 @@ new class extends Component {
         @if ($jobs->isEmpty())
             <div class="text-center dark:text-gray-300">
                 <p class="text-xl font-bold ">No jobs posted yet</p>
-                <x-button class='mt-4' href="{{ route('notes.post-create') }}" primary icon="shopping-cart">Create a job
+                <x-button class='mt-4' href="{{ route('notes.post-create') }}" primary spinner icon="shopping-cart">Create a job
                     advertisement</x-button>
             </div>
         @else
