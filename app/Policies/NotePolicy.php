@@ -34,7 +34,7 @@ class NotePolicy
      */
     public function create(): bool
     {
-        /*
+       
             $userVariable = auth()->user();
             $numberNotes = $userVariable->notes()->get()->count();
             
@@ -50,8 +50,7 @@ class NotePolicy
                 
                 return true;
             }
-            */
-            return true;
+          
         
     }
     

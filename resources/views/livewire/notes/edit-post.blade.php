@@ -58,7 +58,7 @@ new #[Layout('layouts.app')] class extends Component {
 }; ?>
 
 <div class='py-24 px-96'>
-
+      <x-button wire:navigate icon="arrow-left" class="mb-8" href="{{ route('notes.jobs') }}">Back</x-button>
     <x-card title="Edit your job advertisement">
         <x-wui-errors class="mb-4" />
 
