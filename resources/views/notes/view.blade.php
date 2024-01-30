@@ -60,8 +60,16 @@
                         BusinessEconomics and BusinessEconomics and BusinessEconomics and BusinessEconomics and
                         BusinessEconomics and BusinessEconomics and BusinessEconomics and BusinessEconomics and
                         BusinessEconomics and BusinessEconomics and BusinessEconomics and BusinessEconomics and
-                        BusinessEconomics and BusinessEconomics and BusinessEconomics and Business</div>
+                        BusinessEconomics and BusinessEconomics and BusinessEconomics and Business
+                    </div>
+                      @if ($note->other_links)
+                    <div class='w-full text-base lg:text-xl 2xl:text-3xl'>
+                        <x-button href="{{ $note->other_links }}" target="_blank" outline primary
+                            icon="link">Portfolio</x-button>
+                    </div>
+                @endif
                 </div>
+              
 
             </div>
         </main>

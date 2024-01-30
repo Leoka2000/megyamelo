@@ -25,6 +25,7 @@ new class extends Component {
     public $studentCV;
     public $studentLinkedin;
     public $studentAccept;
+    public $studentOther_links;
 
     public function submit()
     {
@@ -37,6 +38,11 @@ new class extends Component {
         if ($this->studentCV) {
             $validated = $this->validate([
                 'studentCV' => 'file|mimes:png,jpg,pdf|max:102400',
+            ]);
+        }
+         if ($this->studentOther_links) {
+            $validated = $this->validate([
+               'studentOther_links' => ['url'],
             ]);
         }
         
@@ -87,6 +93,13 @@ if ($this->studentLinkedin) {
         ->where('email', $this->studentEmail) // Assuming email is unique and used as a reference to find the note
         ->update(['linkedin' => $this->studentLinkedin]);
 }
+if ($this->studentOther_links) {
+    auth()
+        ->user()
+        ->notes()
+        ->where('email', $this->studentEmail) // Assuming email is unique and used as a reference to find the note
+        ->update(['other_links' => $this->studentOther_links]);
+}
      
 
           $this->notification()->success(
@@ -110,7 +123,7 @@ show off your skills to potential employers.">
         <x-wui-errors class="px-2 mb-4 shadow-xl shadow-gray-black" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <x-wui-input label="Full name" placeholder="Leo Reus Oli...." wire:model.defer="studentName" />
+            <x-wui-input label="Full name" placeholder="Kovács László" wire:model.defer="studentName" />
             <x-wui-input label="Email" placeholder="leo.oli@gmail.com" wire:model.defer="studentEmail" />
 
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
@@ -130,6 +143,10 @@ show off your skills to potential employers.">
 
             <x-wui-input label="The link to your LinkedIn profile (optional)"
                 placeholder="https://www.linkedin.com/in/leoreus/" wire:model.defer="studentLinkedin" />
+
+
+            <x-wui-input label="Link to your portfolio (optional)"
+                placeholder="https://myportfolio.com" wire:model.defer="studentOther_links" />
 
             <div class="col-span-1 sm:col-span-2">
                 <x-wui-textarea

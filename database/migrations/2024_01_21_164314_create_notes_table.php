@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('cv')->default('default_value');
             $table->boolean('accept');
             $table->string('linkedin')->default('');
+            $table->string('other_links')->default('');
             $table->boolean('is_published')->default(false);
             $table->integer('heart_count')->default(0);
             $table->timestamps();

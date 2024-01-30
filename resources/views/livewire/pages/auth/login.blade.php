@@ -29,20 +29,24 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div class='pt-3 pb-12 bg-gray-800 border border-gray-700 rounded-lg shadow-lg shadow-black px-14'>
+
  <div class='flex justify-center'>
                 <a>
-                    <div class='flex items-center justify-center w-40 h-auto mt-2 opacity-80'>
+                    <div class='flex items-center justify-center w-40 h-auto my-5 mt-2 opacity-80'>
                         <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}" alt="sheesh"
                             title="sheesh" />
                     </div>
                 </a>
             </div>
+             <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}" wire:navigate>
+                    {{ __("Don't have an account? Create one here") }}
+                </a>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form wire:submit="login">
         <!-- Email Address -->
-        <div>
+        <div class='pt-5'>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="form.email" id="email" class="block w-full mt-1" type="email" name="email" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />

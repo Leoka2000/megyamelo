@@ -18,6 +18,7 @@ new #[Layout('layouts.app')] class extends Component {
     public $studentLinkedin;
     public $studentPhoto;
     public $studentCV;
+        public $studentOther_links;
 
     public function mount(Note $note)
     {
@@ -30,6 +31,7 @@ new #[Layout('layouts.app')] class extends Component {
         $this->studentArea = $note->area;
         $this->studentDescription = $note->description;
         $this->studentLinkedin = $note->linkedin;
+          $this->studentOther_links = $note->other_links;
     }
 
     public function saveNote()
@@ -75,6 +77,7 @@ new #[Layout('layouts.app')] class extends Component {
             'description' => $this->studentDescription,
             'send_date' => now(),
             'linkedin' => $this->studentLinkedin,
+                'other_links' => $this->studentOther_links,
         ]);
 
         $this->dispatch('note-saved');
@@ -115,8 +118,11 @@ new #[Layout('layouts.app')] class extends Component {
             <x-wui-select class='z-10' label="Which field best describes your profile?" placeholder="Engineering"
                 wire:model.defer="studentArea" :options="$this->universities()" />
 
-            <x-wui-input label="The link to your LinkedIn profile (optional)"
+            <x-wui-input label="Link to your LinkedIn profile (optional)"
                 placeholder="https://www.linkedin.com/in/leoreus/" wire:model.defer="studentLinkedin" />
+
+                    <x-wui-input label="Link to your portfolio (optional)"
+                placeholder="https://www.myportfolio.com" wire:model.defer="studentOther_links" />
 
             <div class="col-span-1 sm:col-span-2">
                 <x-wui-textarea
