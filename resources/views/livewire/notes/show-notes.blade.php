@@ -117,9 +117,9 @@ new class extends Component {
                     wire:key='{{ $note->id }}'>
                     <div class='flex flex-col justify-center w-full pb-3'>
                         <div class='flex items-center justify-center'>
-                            <div class='h-64 p-4 w-80'>
+                            <div class='p-4 h-80 w-80'>
                                 <img src="{{ asset('storage/' . $note->photo) }}" alt="profile pic" title="bruuvynsons"
-                                    class='object-cover w-full h-full rounded-t-lg rounded-b-xl' />
+                                    class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl' />
                             </div>
                         </div>
                         @can('update', $note)

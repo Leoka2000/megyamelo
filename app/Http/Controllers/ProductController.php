@@ -36,7 +36,7 @@ public function checkout()
                     'currency' => 'huf',
                     'product_data' => [
                         'name' => $product->name,
-                        'images' => [$product->image]
+                      
                     ],
                     'unit_amount' => $product->price * 100,
                 ],
