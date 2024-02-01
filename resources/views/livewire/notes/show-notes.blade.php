@@ -43,7 +43,9 @@ new class extends Component {
     private function getFilteredNotes()
     {
         // Filter notes based on the selected area
-        return $this->selectedArea == 'None' ? Note::all() : Note::where('area', $this->selectedArea)->get();
+    return $this->selectedArea == 'None' ?
+            Note::orderBy('created_at', 'desc')->get() :
+            Note::where('area', $this->selectedArea)->orderBy('created_at', 'desc')->get();
     }
 
     public function placeholder()
@@ -152,6 +154,7 @@ new class extends Component {
                                             class="text-sm font-normal dark:text-gray-400 ">{{ $note->university }}</span>
                                     </p>
                                 </div>
+                               
                                 <div class='flex justify-end w-full gap-4'>
                                     <x-button.circle icon="eye" primary outline
                                         href="{{ route('notes.view', $note) }}"></x-button.circle>
