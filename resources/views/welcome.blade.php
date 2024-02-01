@@ -26,10 +26,10 @@
             <section
                 class='relative flex items-center justify-center w-full border-b border-gray-800 py-60 sm:pt-52 sm:pb-64 dark:bg-gray-900'>
                 <div class="flex flex-col justify-center text-center">
-                    <a href="{{ route('dashboard') }}" wire:navigate>
-                        <div class='flex items-center justify-center w-auto mt-2 h-36 md:h-64'>
+                    <a href="{{ route('dashboard') }}" class='flex items-center justify-center' wire:navigate>
+                        <div class='flex items-center justify-center w-full h-32 mt-2 md:h-64'>
                             <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}"
-                                alt="sheesh" title="sheesh" />
+                                alt="logo" title="logo" />
                         </div>
                     </a>
                     <p class='text-3xl italic text-gray-300'>The fruits of labour</p>
