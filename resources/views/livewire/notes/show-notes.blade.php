@@ -94,7 +94,7 @@ new class extends Component {
             <div class='flex flex-col items-center mb-8 max-w-56'>
                 <x-button class='w-full mb-8 ' wire:navigate icon="arrow-left"
                     href="{{ route('dashboard') }}">Back</x-button>
-                <x-native-select label='Filter by area' class='shadow-md max-w-56 shadow-black ' wire:model="selectedArea"
+                <x-native-select label='Filter by area' class='shadow-md max-w-56 dark:bg-gray-950 shadow-black ' wire:model="selectedArea"
                     wire:change="$refresh">
                     <option value="None">All Areas</option>
                     <option value="Health Sciences">Health Sciences</option>
@@ -115,7 +115,7 @@ new class extends Component {
 
         <div class="grid justify-center grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($notes as $note)
-                <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border border-gray-600 rounded-lg shadow-lg md:w-72 sm:w-96 hover:shadow-2xl hover:bg-gray-900 hover:shadow-black hover:border-gray-500 dark:bg-gray-800 shadow-black '
+                <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border border-gray-800 rounded-lg shadow-lg md:w-72 sm:w-96 hover:shadow-2xl hover:bg-gray-900 hover:shadow-black hover:border-gray-500 dark:bg-gray-950 shadow-black '
                     wire:key='{{ $note->id }}'>
                     <div class='flex flex-col justify-center w-full pb-3'>
                         <div class='flex items-center justify-center'>

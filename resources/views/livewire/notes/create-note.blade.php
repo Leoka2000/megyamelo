@@ -119,7 +119,7 @@ if ($this->studentOther_links) {
 <div class='mb-4 shadow-2xl shadow-black'>
     <x-card
         title="When you fill out this form, keep in mind that it's your chance to 
-show off your skills to potential employers.">
+show off your skills to potential employers. You can write in Hungarian or English">
         <x-wui-errors class="px-2 mb-4 shadow-xl shadow-gray-black" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -172,7 +172,7 @@ show off your skills to potential employers.">
             <div class='w-full'>
                 <div class='flex items-center justify-start gap-1 w-80'>
                     <x-toggle primary wire:model.defer="studentAccept" />
-                    I accept the <a href='#' class='text-indigo-500 hover:border-b border-b-indigo-500'> terms and
+                    I accept the <a target='_blank' href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit' class='text-indigo-500 hover:border-b border-b-indigo-500'> terms and
                         conditions</a>
                 </div>
             </div>

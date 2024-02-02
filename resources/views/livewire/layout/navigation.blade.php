@@ -44,7 +44,7 @@ new class extends Component {
                     </x-nav-link>
                     <x-nav-link :href="route('notes.create')" :active="request()->routeIs('notes.create')" wire:navigate>
                         <p class='text-xs lg:text-sm'>
-                            {{ __('Create profile') }}
+                            {{ __('Subscribe') }}
                         </p>
                     </x-nav-link>
                     <x-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')" wire:navigate>

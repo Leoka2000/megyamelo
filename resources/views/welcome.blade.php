@@ -192,7 +192,7 @@
                                             </svg>
                                         </span>
                                         <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
-                                           Do the university students have to pay in order to subscribe?/p>
+                                           Do the university students have to pay in order to subscribe?
                                     </div>
                                 </div>
                                 <div class="mt-6">
@@ -295,15 +295,10 @@
                                 alt="sheesh" title="sheesh" />
                         </div>
                     </a>
-                    <div class='w-full dark:text-gray-300'>
-                        Check out our <a class='text-sm text-violet-600 ms:text-base hover:border-b-violet-600 hover:border-b'
-                            href='https://docs.google.com/document/d/1kIyryix2maBfMEm3BJUJltVEL0fZh6Cm4pZxTPxzVeM'
-                            target='_value'>Terms and Services (EN) </a>
-
-                    </div>
+                   
                     <div class='w-full text-sm ms:text-base dark:text-gray-300'>
                         Check out our <a class='text-violet-600 hover:border-b-violet-600 hover:border-b'
-                            href='https://docs.google.com/document/d/1kIyryix2maBfMEm3BJUJltVEL0fZh6Cm4pZxTPxzVeM'
+                            href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit'
                             target='_value'>Privacy Policy (EN) </a>
 
                     </div>

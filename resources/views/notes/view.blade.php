@@ -38,7 +38,7 @@
                         @if ($note->cv === 'default_value')
                             <p></p>
                         @else
-                            <x-button download="Download-CV" href="{{ asset('storage/' . $note->cv) }}" primary
+                            <x-button download="CV {{ $note->name }}" href="{{ asset('storage/' . $note->cv) }}" primary
                                 icon="document">CV</x-button>
                         @endif
                     </div>
@@ -53,14 +53,10 @@
                             <x-button icon="mail" href="{{ 'mailto:' . $note->email }}" /> Contact me
                         </a>
                     </div>
-                    <div class='text-base lg:text-xl 2xl:text-3xl'><strong>My degree:</strong> Economics and Business
+                    <div class='text-base lg:text-xl 2xl:text-3xl'><strong>My degree:</strong> {{$note->degree}}
                     </div>
-                    <div class='text-base lg:text-xl 2xl:text-3xl'><strong>About me:</strong> Economics and
-                        BusinessEconomics and
-                        BusinessEconomics and BusinessEconomics and BusinessEconomics and BusinessEconomics and
-                        BusinessEconomics and BusinessEconomics and BusinessEconomics and BusinessEconomics and
-                        BusinessEconomics and BusinessEconomics and BusinessEconomics and BusinessEconomics and
-                        BusinessEconomics and BusinessEconomics and BusinessEconomics and Business
+                    <div class='text-base lg:text-xl 2xl:text-3xl'><strong>About me:</strong> {{$note->description}}
+                      
                     </div>
                       @if ($note->other_links)
                     <div class='w-full text-base lg:text-xl 2xl:text-3xl'>
