@@ -26,13 +26,13 @@
             <section
                 class='relative flex items-center justify-center w-full border-b border-gray-800 py-60 sm:pt-52 sm:pb-64 dark:bg-gray-900'>
                 <div class="flex flex-col justify-center text-center">
-                    <a href="{{ route('dashboard') }}" class='flex items-center justify-center' wire:navigate>
-                        <div class='flex items-center justify-center w-full h-32 mt-2 md:h-64'>
-                            <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}"
+                    <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full' wire:navigate>
+                        <div class='flex items-center justify-center mt-2 md:h-64'>
+                            <img class='object-cover h-32 rounded-md w-60 md:w-full md:h-full' src="{{ asset('logo.png') }}"
                                 alt="logo" title="logo" />
                         </div>
                     </a>
-                    <p class='text-3xl italic text-gray-300'>The fruits of labour</p>
+                    <p class='text-2xl italic text-gray-300 md:text-3xl'>The fruits of labour</p>
                     <x-button icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary rounded lg
                         icon-right="plus">Subscribe</x-button>
                 </div>
