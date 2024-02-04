@@ -17,6 +17,18 @@ new class extends Component {
         $this->showModal = true;
     }
 
+    public function mount()
+    {
+        // Retrieve the selectedArea from localStorage if available
+        $this->selectedArea = session('selected_area', 'None');
+    }
+
+    public function updatedSelectedArea($value)
+    {
+        // Store the selected area value in the session
+        session(['selected_area' => $value]);
+    }
+
     public function closeModal()
     {
         $this->showModal = false;
@@ -34,6 +46,8 @@ new class extends Component {
 
     public function with(): array
     {
+ $storedArea = session('selected_area', 'None');
+
         $notes = $this->getFilteredNotes();
         return [
             'notes' => $notes,
@@ -42,10 +56,11 @@ new class extends Component {
 
     private function getFilteredNotes()
     {
-        
-    return $this->selectedArea == 'None' ?
-            Note::orderBy('created_at', 'desc')->get() :
-            Note::where('area', $this->selectedArea)->orderBy('created_at', 'desc')->get();
+        return $this->selectedArea == 'None'
+            ? Note::orderBy('created_at', 'desc')->get()
+            : Note::where('area', $this->selectedArea)
+                ->orderBy('created_at', 'desc')
+                ->get();
     }
 
     public function placeholder()
@@ -60,7 +75,6 @@ new class extends Component {
         </div>
         HTML;
     }
-    
 }; ?>
 
 
@@ -92,10 +106,10 @@ new class extends Component {
 
         <header class='flex justify-center'>
             <div class='flex flex-col items-center mb-8 max-w-56'>
-                <x-button class='w-full mb-8 ' wire:navigate icon="arrow-left"
-                    href="{{ route('dashboard') }}"> {{ __('show-notes.show-notes-2') }}</x-button>
-                <x-native-select label='Filter by area' class='shadow-md max-w-56 dark:bg-gray-950 shadow-black ' wire:model="selectedArea"
-                    wire:change="$refresh">
+                <x-button class='w-full mb-8 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">
+                    {{ __('show-notes.show-notes-2') }}</x-button>
+                <x-native-select label='Filter by area' class='shadow-md max-w-56 dark:bg-gray-950 shadow-black '
+                    wire:model="selectedArea" wire:change="$refresh">
                     <option value="None">{{ __('show-notes.show-notes-3') }}</option>
                     <option value="Health Sciences">{{ __('show-notes.show-notes-6.1') }}</option>
                     <option value="Economics and Business">{{ __('show-notes.show-notes-6.2') }}</option>
@@ -107,7 +121,8 @@ new class extends Component {
                     <option value="Law">{{ __('show-notes.show-notes-6.8') }}</option>
                     <option value="Design">Design</option>
                     <option value="Informatics">{{ __('show-notes.show-notes-6.10') }}</option>
-                    <option value="Agriculture, Food Sciences and Environmental Management">{{ __('show-notes.show-notes-6.11') }}</option>
+                    <option value="Agriculture, Food Sciences and Environmental Management">
+                        {{ __('show-notes.show-notes-6.11') }}</option>
                 </x-native-select>
             </div>
         </header>
@@ -147,13 +162,15 @@ new class extends Component {
                             </div>
                             <div class="flex flex-col items-end justify-between">
                                 <div class='flex flex-col w-full mb-4'>
-                                    <p class="overflow-hidden text-sm font-bold text-left">{{ __('show-notes.show-notes-4') }} <span
-                                            class='text-sm font-normal dark:text-gray-400'>{{ $note->area }} </span></p>
+                                    <p class="overflow-hidden text-sm font-bold text-left">
+                                        {{ __('show-notes.show-notes-4') }} <span
+                                            class='text-sm font-normal dark:text-gray-400'>{{ $note->area }} </span>
+                                    </p>
                                     <p class="text-sm font-bold">{{ __('show-notes.show-notes-5') }} <span
                                             class="text-sm font-normal dark:text-gray-400 ">{{ $note->university }}</span>
                                     </p>
                                 </div>
-                               
+
                                 <div class='flex justify-end w-full gap-4'>
                                     <x-button.circle icon="eye" primary outline
                                         href="{{ route('notes.view', $note) }}"></x-button.circle>
@@ -187,6 +204,3 @@ new class extends Component {
 
         </div>
     </div>
-
-    {{-- <a download="Download-CV" href="{{ asset('storage/'. $note->cv) }}" id="student-download">download</a> --}}
-    {{-- <a href="{{($note->linkedin) }}" target="_blank">Link:</a> --}}

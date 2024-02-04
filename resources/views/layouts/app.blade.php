@@ -38,7 +38,7 @@
        
         <!-- Page Content -->
         <main class='relative'>
-            < {{ $slot }} <livewire:coins />
+             {{ $slot }} <livewire:coins />
  <div class='absolute top-2 dark:text-gray-300 right-2'>
             <livewire:change-language />
         </div>
