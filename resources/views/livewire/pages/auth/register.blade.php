@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUser;
 
 new #[Layout('layouts.guest')] class extends Component
 {
@@ -34,6 +36,7 @@ new #[Layout('layouts.guest')] class extends Component
         Auth::login($user);
 
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
+          Mail::to('lreusoliveira@gmail.com')->send(new NewUser());
     }
 }; ?>
 
