@@ -3,15 +3,17 @@
 use Livewire\Volt\Component;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
+use WireUi\Traits\Actions;
 
 new class extends Component {
-    public $showModal = false;
 
+    use Actions;
+    public $showModal = false;
     public $name;
     public $email;
     public $topic;
 
-  public function openModal()
+    public function openModal()
     {
         $this->showModal = true;
     }
@@ -22,24 +24,22 @@ new class extends Component {
     }
     public function submit()
     {
-       $validatedData = $this->validate([
-        'name' => ['required', 'string', 'min:3'],
-        'email' => ['required', 'email'],
-        'topic' => ['required', 'string'],
-    ]);
+        $validatedData = $this->validate([
+            'name' => ['required', 'string', 'min:3'],
+            'email' => ['required', 'email'],
+            'topic' => ['required', 'string'],
+        ]);
 
-    Mail::to('lreusoliveira@gmail.com')->send(new ContactFormMail(
-        $validatedData['name'],
-        $validatedData['email'],
-        $validatedData['topic']
-    ));
+        Mail::to('lreusoliveira@gmail.com')->send(new ContactFormMail($validatedData['name'], $validatedData['email'], $validatedData['topic']));
 
-    $this->showModal = false;
-    session()->flash('message', 'Form submitted successfully!');
+        $this->showModal = false;
+
+      $this->dialog()->show([
+            'icon' => 'success',
+            'title' => 'Message sent!',
+            'description' => 'Your message was successfully sent',
+        ]);
     }
-    
-
-  
 }; ?>
 
 <div>
@@ -60,7 +60,7 @@ new class extends Component {
                     <!-- Correct order of form inputs -->
                     <label for="name">Your name:</label>
                     <x-wui-input type="text" id="name" wire:model.defer="name" />
-                      <label for="email">Your email:</label>
+                    <label for="email">Your email:</label>
                     <x-wui-input type="text" id="email" wire:model.defer="email" />
 
                     <label for="topic">Tell me what is on your mind</label>

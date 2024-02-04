@@ -16,7 +16,7 @@ return [
 
    
     'dashboardz-1' => 'CÉGEKNEK',
-    'dashboardz-2' => 'A',
+    'dashboardz-2' => 'Az',
     'dashboardz-3' => 'Álláshirdetés létrehozása',
     'dashboardz-4' => 'szakaszban a vállalata hirdetést készíthet az emberek számára.',
     'dashboardz-5' => 'Küldj nekem üzenetet',

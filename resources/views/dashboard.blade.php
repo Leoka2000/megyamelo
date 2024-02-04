@@ -5,18 +5,17 @@
         </h2>
     </x-slot>
 
-   @if (session('success'))
-   
-    <div class="alert alert-success">
-         <x-modal wire:model="showModal" class="" title="Simple Modal">
+    @if (session('success'))
+        <div class="alert alert-success">
+            <x-modal wire:model="showModal" class="" title="Simple Modal">
                 <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
-                <x-badge positive class='h-10 mb-2' lg  icon="check" />
+                    <x-badge positive class='h-10 mb-2' lg icon="check" />
                     <p class='mb-1 font-bold sm:text-base'>Message sent!</p>
-                       <p class='sm:text-base'>We will reply soon with instructions on partnering with us</p>
+                    <p class='sm:text-base'>We will reply soon with instructions on partnering with us</p>
                 </div>
             </x-modal>
-    </div>
-@endif
+        </div>
+    @endif
 
     <div class="py-12">
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
@@ -30,23 +29,24 @@
                         </div>
                     </div>
                     <div class="mt-6">
-                        <p class="text-sm leading-9 text-gray-900 dark:text-gray-400">
+                        <div class="inline-block text-sm leading-9 text-gray-900 dark:text-gray-400">
                             The platform where we help student / graduates to get jobs while facilitating the life of
                             companies to easily find talented employees. <br />
                             <strong class='text-gray-300'>FOR STUDENTS: </strong> on <a
                                 href="{{ route('notes.create') }}"
-                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Create profile' </a>
+                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>Create profile </a>
                             section, you will have the chance to show potential employers your skills and tell them a
                             little bit of your history. You can also view our latest published job advertisements on the
                             <a href="{{ route('notes.jobs') }}"
-                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Job list' </a> section
+                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>Job list </a> section
                             <br />
-                            <strong class='text-gray-300'> {{__('dashboardz.dashboardz-1')}} </strong> {{__('dashboardz.dashboardz-2')}} <a
-                                href="{{ route('notes.post-create') }}"
-                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>{{__('dashboardz.dashboardz-3')}}</a>
-                           {{__('dashboardz.dashboardz-4')}} {{__('dashboardz.dashboardz-5')}} <livewire:company-access.request-access />
-                        <p class='inline-block text-sm dark:text-gray-400'> {{__('dashboardz.dashboardz-7')}} </p>
-                        </p>
+                            <strong class='text-gray-300'> {{ __('dashboardz.dashboardz-1') }} </strong>
+                            {{ __('dashboardz.dashboardz-2') }} <a href="{{ route('notes.post-create') }}"
+                                class='inline-block text-indigo-500 hover:border-b hover:border-b-indigo-500'>{{ __('dashboardz.dashboardz-3') }}</a>
+                            {{ __('dashboardz.dashboardz-4') }} {{ __('dashboardz.dashboardz-5') }}
+                            <livewire:company-access.request-access />
+                        {{ __('dashboardz.dashboardz-7') }} 
+                        </div>
                     </div>
 
                 </div>
