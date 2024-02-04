@@ -1,30 +1,60 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-base font-semibold leading-tight text-gray-800 sm:text-xl dark:text-gray-200">
-            {{ __('Home') }}
+            {{ __('create-note.create-02') }}
         </h2>
     </x-slot>
-   <div class="py-12">
+
+   @if (session('success'))
+   
+    <div class="alert alert-success">
+         <x-modal wire:model="showModal" class="" title="Simple Modal">
+                <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                <x-badge positive class='h-10 mb-2' lg  icon="check" />
+                    <p class='mb-1 font-bold sm:text-base'>Message sent!</p>
+                       <p class='sm:text-base'>We will reply soon with instructions on partnering with us</p>
+                </div>
+            </x-modal>
+    </div>
+@endif
+
+    <div class="py-12">
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
-            <div class="overflow-hidden bg-white border border-gray-700 rounded-md shadow-lg shadow-black dark:bg-gray-800 sm:rounded-lg">
+            <div
+                class="overflow-hidden bg-white border border-gray-800 rounded-md shadow-md shadow-black dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 bg-white rounded-lg dark:bg-gray-800">
                     <div class="flex items-center">
                         <div>
-                            <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">Welcome to Megy a Meló</p>
+                            <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">Welcome to Megy a
+                                Meló</p>
                         </div>
                     </div>
                     <div class="mt-6">
                         <p class="text-sm leading-9 text-gray-900 dark:text-gray-400">
-                          The platform where we help student / graduates to get jobs while facilitating the life of companies to easily find talented employees. <br/>
-                          <strong class='text-gray-300'>FOR STUDENTS: </strong> on  <a href="{{ route('notes.create') }}" class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Create profile' </a> section, you will have the chance to show potential employers your skills and tell them a little bit of your history. You can also view our latest published job advertisements on the <a href="{{ route('notes.jobs') }}" class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Job list' </a> section <br/>
-                         <strong class='text-gray-300'>FOR COMPANIES: </strong> on the <a href="{{ route('notes.post-create') }}" class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Create post' </a> section your company will be able to create a job advertisement for people to see. Send me a message through this <livewire:company-access.request-access />  <p class='inline-block text-sm dark:text-gray-400'> to request for admin access to our platform to start posting advertisements </p>
+                            The platform where we help student / graduates to get jobs while facilitating the life of
+                            companies to easily find talented employees. <br />
+                            <strong class='text-gray-300'>FOR STUDENTS: </strong> on <a
+                                href="{{ route('notes.create') }}"
+                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Create profile' </a>
+                            section, you will have the chance to show potential employers your skills and tell them a
+                            little bit of your history. You can also view our latest published job advertisements on the
+                            <a href="{{ route('notes.jobs') }}"
+                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>'Job list' </a> section
+                            <br />
+                            <strong class='text-gray-300'> {{__('dashboardz.dashboardz-1')}} </strong> {{__('dashboardz.dashboardz-2')}} <a
+                                href="{{ route('notes.post-create') }}"
+                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>{{__('dashboardz.dashboardz-3')}}</a>
+                           {{__('dashboardz.dashboardz-4')}} {{__('dashboardz.dashboardz-5')}} <livewire:company-access.request-access />
+                        <p class='inline-block text-sm dark:text-gray-400'> {{__('dashboardz.dashboardz-7')}} </p>
                         </p>
                     </div>
 
                 </div>
             </div>
-            <main class="flex flex-col items-center justify-center gap-4 mt-4 sm:justify-start sm:flex-row dark:text-gray-300">
-                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md shadow-lg shadow-black sm:w-96'>
+            <main
+                class="flex flex-col items-center justify-center gap-4 mt-4 sm:justify-start sm:flex-row dark:text-gray-300">
+                <div
+                    class='flex flex-col justify-between px-8 py-10 border border-gray-800 shadow-md shadow-black dark:bg-gray-800 rounded-xl sm:w-72 lg:w-96'>
                     <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_4014_33508)">
@@ -53,13 +83,14 @@
                             </defs>
                         </svg></span>
                     <div class='my-3'>
-                        <h1 class='text-lg'>Are you a company and need to hire someone for an internship or a
-                            job?
+                        <h1 class='text-lg'>{{ __('welcome.landing-2') }}
                         </h1>
                     </div>
-                    <x-button class='w-full' href="{{ route('notes.payment.payment-index') }}" primary icon="shopping-cart">Create a job advertisent</x-button>
+                    <x-button class='w-full' href="{{ route('notes.post-create') }}" primary
+                        icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
                 </div>
-                <div class='w-full px-8 py-12 bg-gray-800 border border-gray-700 rounded-md shadow-lg shadow-black sm:w-96'>
+                <div
+                    class='flex flex-col justify-between px-6 py-10 border border-gray-800 shadow-md shadow-black dark:bg-gray-800 sm:w-72 rounded-xl lg:w-96'>
                     <span>
                         <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -80,9 +111,11 @@
                         </svg></span>
 
                     <div class='my-3'>
-                        <h1 class='text-lg'>Are you a student or graduate looking to apply for a job?</h1>
+                        <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
+                        <br />
                     </div>
-                    <x-button href="{{ route('notes.create') }}" class='w-full' primary icon="user">Create your profile</x-button>
+                    <x-button href="{{ route('notes.create') }}" class='w-full' primary
+                        icon="user">{{ __('welcome.landing-5') }} </x-button>
                 </div>
             </main>
         </div>

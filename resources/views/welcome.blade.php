@@ -26,15 +26,17 @@
             <section
                 class='relative flex items-center justify-center w-full border-b border-gray-800 py-60 sm:pt-52 sm:pb-64 dark:bg-gray-900'>
                 <div class="flex flex-col justify-center text-center">
-                    <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full' wire:navigate>
+                    <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full'
+                        wire:navigate>
                         <div class='flex items-center justify-center mt-2 md:h-64'>
-                            <img class='object-cover h-32 rounded-md w-60 md:w-full md:h-full' src="{{ asset('logo.png') }}"
-                                alt="logo" title="logo" />
+                            <img class='object-cover h-32 rounded-md w-60 md:w-full md:h-full'
+                                src="{{ asset('logo.png') }}" alt="logo" title="logo" />
                         </div>
                     </a>
-                    <p class='text-2xl italic text-gray-300 md:text-3xl'>The fruits of labour</p>
+                    <p class='text-2xl italic text-gray-300 md:text-3xl'>{{ __('welcome.hero_slogan') }}</p>
                     <x-button icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary rounded lg
-                        icon-right="plus">Subscribe</x-button>
+                        icon-right="plus">{{ __('welcome.landing-5') }}</x-button>
+
                 </div>
                 <span class='absolute overflow-hidden -z-0 w-52 sm:-top-24 sm:-right-0 -right-0 -top-40'
                     id="silhouette">
@@ -72,10 +74,11 @@
             <section class='z-10 w-full py-20 dark:bg-gray-900 dark:text-gray-300'>
                 <div class="flex flex-col items-center justify-center px-5 mb-5">
                     <header class='max-w-4xl pb-12 mb-5 text-xl text-center md:text-4xl'>
-                        <h1>Check out some of the things we do to make people closer to the hungarian job market</h1>
+                        <h1>{{ __('welcome.landing-1') }}</h1>
                     </header>
                     <main class="flex flex-col gap-4 sm:flex-row landing-main">
-                        <div class='px-8 py-10 bg-gray-800 border border-gray-700 rounded-xl sm:w-72 lg:w-96'>
+                        <div
+                            class='flex flex-col justify-between px-8 py-10 border border-gray-800 dark:bg-gray-800 rounded-xl sm:w-72 lg:w-96'>
                             <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4014_33508)">
@@ -105,14 +108,14 @@
                                     </defs>
                                 </svg></span>
                             <div class='my-3'>
-                                <h1 class='text-lg'>Are you a company and need to hire someone for an internship or a
-                                    job?
+                                <h1 class='text-lg'>{{ __('welcome.landing-2') }}
                                 </h1>
                             </div>
                             <x-button class='w-full' href="{{ route('notes.post-create') }}" primary
-                                icon="shopping-cart">Create a job advertisent</x-button>
+                                icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
                         </div>
-                        <div class='px-6 py-10 bg-gray-800 border border-gray-700 sm:w-72 rounded-xl lg:w-96'>
+                        <div
+                            class='flex flex-col justify-between px-6 py-10 border border-gray-800 dark:bg-gray-800 sm:w-72 rounded-xl lg:w-96'>
                             <span>
                                 <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -134,10 +137,10 @@
                                 </svg></span>
 
                             <div class='my-3'>
-                                <h1 class='text-lg'>Are you a student or graduate looking to apply for a job?</h1>
+                                <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
                             </div>
-                            <x-button href="{{ route('notes.create') }}" class='w-full' primary icon="user">Create
-                                your profile</x-button>
+                            <x-button href="{{ route('notes.create') }}" class='w-full' primary
+                                icon="user">{{ __('welcome.landing-5') }} </x-button>
                         </div>
                     </main>
                 </div>
@@ -149,11 +152,11 @@
             <section class='relative w-full pb-64 border-t border-gray-700 pt-52 '>
                 <div class='flex flex-col items-center w-full gap-4'>
                     <header class='max-w-4xl px-2 mb-12 text-2xl text-center lg:w-96 md:text-4xl dark:text-gray-300'>
-                        <h1>Frequently asked questions</h1>
+                        <h1>{{ __('welcome.faq-1') }} </h1>
                     </header>
                     <main class="flex flex-col max-w-3xl gap-4 px-4">
                         <div>
-                            <div class="p-6 border border-gray-700 rounded-lg shadow-lg dark:bg-gray-800">
+                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
                                 <div class="flex items-center">
                                     <div class='flex items-center justify-start gap-4'>
                                         <span class='p-2 rounded-md text-slate-300 bg-slate-700'><svg
@@ -163,25 +166,19 @@
                                                     d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
                                             </svg>
                                         </span>
-                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">How
-                                            much
-                                            does
-                                            it cost to post a job position advertisement?</p>
+                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
+                                            {{ __('welcome.faq-2') }} </p>
                                     </div>
                                 </div>
                                 <div class="mt-6">
 
-                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">It costs 8000 Ft to
-                                        post
-                                        a
-                                        two job positions on our platform.
-                                        funcionalidades
-                                    </p>
+                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">
+                                        {{ __('welcome.faq-3') }} </p>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="p-6 border border-gray-700 rounded-lg shadow-lg dark:bg-gray-800">
+                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
                                 <div class="flex items-center">
                                     <div class='flex items-center justify-start gap-4'>
                                         <span class='p-2 rounded-md text-slate-300 bg-slate-700'><svg
@@ -192,20 +189,20 @@
                                             </svg>
                                         </span>
                                         <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
-                                           Do the university students have to pay in order to subscribe?
+                                            {{ __('welcome.faq-4') }}
                                     </div>
                                 </div>
                                 <div class="mt-6">
-                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">No. The platform is
-                                        free
-                                        for
-                                        everyone. Subscribe to the platform by <a href="{{ route('notes.create')}}" class='text-indigo-600 hover:border-b hover:border-b-indigo-500' > clicking here.</a>
+                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">
+                                        {{ __('welcome.faq-5') }} <a href="{{ route('notes.create') }}"
+                                            class='text-indigo-600 hover:border-b hover:border-b-indigo-500'>
+                                            {{ __('welcome.faq-5.1') }} </a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <div class="p-6 border border-gray-700 rounded-lg shadow-lg dark:bg-gray-800">
+                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
                                 <div class="flex items-center">
                                     <div class='flex items-center justify-start gap-4'>
                                         <span class='p-2 rounded-md text-slate-300 bg-slate-700'><svg
@@ -216,41 +213,13 @@
                                             </svg>
                                         </span>
                                         <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
-                                          Can any student or alumni apply?</p>
+                                            {{ __('welcome.faq-6') }}</p>
                                     </div>
                                 </div>
                                 <div class="mt-6">
-                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">Yes, as long as you are regularly enrolled at any Hungarian University or already has an university degree. To register <a href="{{ route('notes.create')}}" class='text-indigo-600 hover:border-b hover:border-b-indigo-500' >click here.</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="p-6 border border-gray-700 rounded-lg shadow-lg dark:bg-gray-800">
-                                <div class="flex items-center">
-                                    <div class='flex items-center justify-start gap-4'>
-                                        <span class='p-2 rounded-md text-slate-300 bg-slate-700'><svg
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-                                            </svg>
-                                        </span>
-                                        <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
-                                        How
-                                            much
-                                            does
-                                            it cost to post a job position advertisement?</p>
-                                    </div>
-                                </div>
-                                <div class="mt-6">
-                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">On the 'job
-                                        positions'
-                                        Tab
-                                        there is an email address for each job offer. Just send an e-mail to the
-                                        enterprise
-                                        who
-                                        is offering this position.
+                                    <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">
+                                        {{ __('welcome.faq-7') }} <a href="{{ route('notes.create') }}"
+                                            class='text-indigo-600 hover:border-b hover:border-b-indigo-500'>{{ __('welcome.faq-7.1') }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -258,7 +227,8 @@
                     </main>
                 </div>
 
-                <span class='absolute z-0 overflow-hidden w-52 lg:-top-42 -top-56 -right-0 lg:-right-0' id="silhouette">
+                <span class='absolute z-0 overflow-hidden w-52 lg:-top-42 -top-56 -right-0 lg:-right-0'
+                    id="silhouette">
                     <svg width="400" height="400" viewBox="0 0 590 590" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="294.897" cy="294.897" r="293.332" stroke="#7F6AFF" stroke-width="3.12971" />
@@ -292,19 +262,23 @@
                     <a href="{{ route('dashboard') }}" wire:navigate>
                         <div class='flex items-center justify-center mt-2 w-44'>
                             <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}"
-                                alt="sheesh" title="sheesh" />
+                                alt="logo" title="logo" />
                         </div>
                     </a>
-                   
+
                     <div class='w-full text-sm ms:text-base dark:text-gray-300'>
-                        Check out our <a class='text-violet-600 hover:border-b-violet-600 hover:border-b'
+                        {{ __('welcome.footer-1') }} <a
+                            class='text-violet-600 hover:border-b-violet-600 hover:border-b'
                             href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit'
-                            target='_value'>Privacy Policy (EN) </a>
+                            target='_value'> {{ __('welcome.footer-2') }} </a>
 
                     </div>
                     <div class='flex flex-col w-full gap-3'>
-                        <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}" icon-right="plus" label='Subscribe' />
-                        <x-button outline primary icon='shopping-cart' href="{{ route('notes.payment.payment-index') }}"  label="For enterprises" />
+                        <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}"
+                            icon-right="plus" label="{{ __('welcome.footer-3') }}" />
+                        <x-button outline primary icon='shopping-cart'
+                            href="{{ route('notes.payment.payment-index') }}"
+                            label="{{ __('welcome.footer-4') }}" />
                     </div>
                 </div>
                 <div class="text-sm text-center text-gray-400 dark:text-gray-400 sm:text-start">
@@ -317,7 +291,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                             </svg>
-                            Made by Leo Reus
+                            {{ __('welcome.footer-5') }} Leo Reus
                         </a>
                     </div>
                 </div>

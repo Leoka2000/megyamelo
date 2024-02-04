@@ -12,25 +12,25 @@ use WireUi\Traits\Actions;
 new class extends Component {
     use WithFileUploads;
     use Actions;
-    
 
     public $showModal = false;
     public $showPaymentModal = false;
-    
+    public $showPermanentModal = false;
+
     public $companyAuthor;
     public $companyTitle;
     public $companyDescription;
     public $companyImage;
     public $companyLink;
 
-   public function mount()
-{
-    $currentUser = auth()->user();
+    public function mount()
+    {
+        $currentUser = auth()->user();
 
-    if ($currentUser->role !== 'admin' && $currentUser->role !== 'superadmin') {
-        abort(403, 'You do not have permission to access this component.');
+        if ($currentUser->role !== 'admin' && $currentUser->role !== 'superadmin') {
+            $this->openPermanentModal();
+        }
     }
-}
     public function openModal()
     {
         $this->showModal = true;
@@ -41,7 +41,12 @@ new class extends Component {
         $this->showModal = false;
     }
 
-public function openPaymentModal()
+    public function openPermanentModal()
+    {
+        $this->showPermanentModal = true;
+    }
+
+    public function openPaymentModal()
     {
         $this->showPaymentModal = true;
     }
@@ -51,10 +56,9 @@ public function openPaymentModal()
         $this->showPaymentModal = false;
     }
 
-
     public function submit()
     {
-         $this->closeModal();
+        $this->closeModal();
         $validated = $this->validate([
             'companyAuthor' => ['required', 'string', 'min:3'],
             'companyTitle' => ['required', 'string', 'min:3'],
@@ -66,12 +70,12 @@ public function openPaymentModal()
         $user = auth()->user();
         if ($user->coins <= 0) {
             // User has insufficient coins, display modal
-           
+
             $this->showPaymentModal = true;
         } else {
             // User has enough coins, proceed with post creation
             $this->authorize('create', Post::class);
-                  $this->showModal = false;
+            $this->showModal = false;
 
             // Decrease the user's coins by one
             $user->coins -= 1;
@@ -87,10 +91,7 @@ public function openPaymentModal()
                     'apply_link' => $this->companyLink,
                     'image' => $this->companyImage->store('company', 'public'),
                 ]);
-      $this->notification()->success(
-            $title = 'Post created',
-            $description = 'Your post was successfully published'
-        ); 
+            $this->notification()->success($title = 'Post created', $description = 'Your post was successfully published');
         }
     }
 }; ?>
@@ -105,8 +106,24 @@ public function openPaymentModal()
             <x-modal wire:model="showModal" class="" title="Simple Modal">
                 <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
                     <p class='mb-4 sm:text-base'>Are you sure that you want to spend a coin creating this post?</p>
-                    <x-button outlined icon='arrow-left' wire:click="closeModal">Back</x-button>
+                    <x-button outlined icon='arrow-left'
+                        wire:click="closeModal">{{ __('show-notes.show-notes-2') }}</x-button>
                     <x-button wire:click='submit' primary icon='plus'>Post</x-button>
+                </div>
+            </x-modal>
+        @endif
+        @if ($showPermanentModal)
+            <x-modal wire:model="showPermanentModal" blur="sm" persistent title="Simple Modal">
+                <div class='inline-block h-auto gap-2 p-12 text-lg text-center dark:bg-gray-900 dark:text-gray-400 w-96 rounded-xl'>
+                    <strong class='inline-block dark:text-gray-300'> {{__('job.create-job.1')}}</strong>
+                   {{__('job.create-job.2')}}
+        
+                  {{__('job.create-job.4')}}
+                    </p>
+                    <div class='flex flex-col gap-2 mt-5'>
+                        <livewire:company-access.request-button />
+                        <x-button href="{{ route('dashboard') }}" outlined red outline icon='arrow-left'>{{ __('show-notes.show-notes-2') }}</x-button>
+                    </div>
                 </div>
             </x-modal>
         @endif
@@ -114,33 +131,38 @@ public function openPaymentModal()
         @if ($showPaymentModal)
             <x-modal wire:model="showPaymentModal" class="" title="PAYMENT MODAL">
                 <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
-                    <p class='mb-4 sm:text-base'>You have no coins left. In order to publish more advertisements, you need to buy more coins</p>
-                    <x-button outlined icon='arrow-left' wire:click="closeModal">Back</x-button>
-                    <x-button href="{{ route('notes.payment.payment-index') }}" green icon='shopping-cart'>Buy coins</x-button>
+                    <p class='mb-4 sm:text-base'>You have no coins left. In order to publish more advertisements, you
+                        need to buy more coins</p>
+                    <x-button outlined icon='arrow-left'
+                        wire:click="closePaymentModal">{{ __('show-notes.show-notes-2') }}</x-button>
+                    <x-button href="{{ route('notes.payment.payment-index') }}" green icon='shopping-cart'>Buy
+                        coins</x-button>
                 </div>
             </x-modal>
         @endif
     </div>
 
-    <x-card title="Post a job advertisement">
+    <x-card title="{{ __('job.post-job.1') }}">
         <x-wui-errors class="mb-4" />
 
         <div class="flex flex-col gap-6">
-            <x-wui-input label="Your company's name" placeholder="Company ABC Kft" wire:model.defer="companyAuthor" />
+            <x-wui-input label="{{ __('job.post-job.2') }}" placeholder="Company ABC Kft"
+                wire:model.defer="companyAuthor" />
 
-            <p class='font-semibold'>Details of your post</p>
-            <x-wui-input label="Title" placeholder="Software Engineer Part Time" wire:model.defer="companyTitle" />
+            <p class='font-semibold'>{{ __('job.post-job.3') }}</p>
+            <x-wui-input label="{{ __('job.post-job.4') }}" placeholder="Software Engineer Part Time"
+                wire:model.defer="companyTitle" />
             <div class="col-span-1 sm:col-span-2">
-                <x-wui-textarea label="Description of your advertisement"
+                <x-wui-textarea label="{{ __('job.post-job.5') }}"
                     placeholder="We are hiring for a accounts payable intern at the Budapest office this summer, your roles will be ... you are expected to..."
                     wire:model.defer="companyDescription" />
             </div>
-            <div class='col-span-1'> <x-wui-input label="Link to apply" placeholder="https://example.com/apply"
-                    wire:model.defer="companyLink" /></div>
+            <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.6') }}"
+                    placeholder="https://example.com/apply" wire:model.defer="companyLink" /></div>
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
                     <label>
-                        You can include a photo in your post</label>
+                        {{ __('job.post-job.7') }}</label>
                     <input class='w-full text-gray-400' label="Upload a photo of yourself" type='file' type="file"
                         id="Profile Pic" wire:model="companyImage" />
 
@@ -150,7 +172,7 @@ public function openPaymentModal()
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button wire:click="openModal"  label="Post" spinner primary />
+                <x-button wire:click="openModal" label="{{ __('job.post-job.8') }}" spinner primary />
             </div>
         </x-slot>
     </x-card>

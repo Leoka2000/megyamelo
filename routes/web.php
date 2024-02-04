@@ -35,6 +35,15 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth'])
     ->name('notes.jobs');
 
+    Route::get('/language/{locale}', function ($locale) {
+        if (array_key_exists($locale, config('app.supported_locales'))) {
+            session()->put('locale', $locale);
+        }
+    
+        return redirect()->back();
+    })->name('locale');
+
+
     Route::get('/payment', [ProductController::class, 'index'])->name('notes.payment.payment-index');
                                                       //checkout method here(checkoutfunction)
     Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');

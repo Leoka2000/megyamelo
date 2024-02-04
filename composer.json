@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "livewire/volt": "^1.0",
+        "outhebox/blade-flags": "^1.2",
         "stripe/stripe-php": "^13.9",
         "wireui/wireui": "^1.18"
     },

@@ -42,7 +42,7 @@ new class extends Component {
 
     private function getFilteredNotes()
     {
-        // Filter notes based on the selected area
+        
     return $this->selectedArea == 'None' ?
             Note::orderBy('created_at', 'desc')->get() :
             Note::where('area', $this->selectedArea)->orderBy('created_at', 'desc')->get();
@@ -93,29 +93,28 @@ new class extends Component {
         <header class='flex justify-center'>
             <div class='flex flex-col items-center mb-8 max-w-56'>
                 <x-button class='w-full mb-8 ' wire:navigate icon="arrow-left"
-                    href="{{ route('dashboard') }}">Back</x-button>
+                    href="{{ route('dashboard') }}"> {{ __('show-notes.show-notes-2') }}</x-button>
                 <x-native-select label='Filter by area' class='shadow-md max-w-56 dark:bg-gray-950 shadow-black ' wire:model="selectedArea"
                     wire:change="$refresh">
-                    <option value="None">All Areas</option>
-                    <option value="Health Sciences">Health Sciences</option>
-                    <option value="Economics and Business">Economics and Business</option>
-                    <option value="Engineering">Engineering</option>
-                    <option value="Science and Technology">Science and Technology</option>
-                    <option value="Child and Special Needs Education">Child and Special Needs Education</option>
-                    <option value="Music">Music</option>
-                    <option value="Humanities">Humanities</option>
-                    <option value="Law">Law</option>
+                    <option value="None">{{ __('show-notes.show-notes-3') }}</option>
+                    <option value="Health Sciences">{{ __('show-notes.show-notes-6.1') }}</option>
+                    <option value="Economics and Business">{{ __('show-notes.show-notes-6.2') }}</option>
+                    <option value="Engineering">{{ __('show-notes.show-notes-6.3') }}</option>
+                    <option value="Science and Technology">{{ __('show-notes.show-notes-6.4') }}</option>
+                    <option value="Child and Special Needs Education">{{ __('show-notes.show-notes-6.5') }}</option>
+                    <option value="Music">{{ __('show-notes.show-notes-6.6') }}</option>
+                    <option value="Humanities">{{ __('show-notes.show-notes-6.7') }}</option>
+                    <option value="Law">{{ __('show-notes.show-notes-6.8') }}</option>
                     <option value="Design">Design</option>
-                    <option value="Informatics">Informatics</option>
-                    <option value="Agriculture, Food Sciences and Environmental Management">Agriculture, Food
-                        Sciences and Environmental Management</option>
+                    <option value="Informatics">{{ __('show-notes.show-notes-6.10') }}</option>
+                    <option value="Agriculture, Food Sciences and Environmental Management">{{ __('show-notes.show-notes-6.11') }}</option>
                 </x-native-select>
             </div>
         </header>
 
         <div class="grid justify-center grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($notes as $note)
-                <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border border-gray-800 rounded-lg shadow-lg md:w-72 sm:w-96 hover:shadow-2xl hover:bg-gray-900 hover:shadow-black hover:border-gray-500 dark:bg-gray-950 shadow-black '
+                <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border border-gray-800 rounded-lg shadow-lg md:w-72 sm:w-96 hover:shadow-2xl hover:bg-gray-900 hover:shadow-black hover:border-gray-500 dark:bg-gray-950 hover:dark:bg-gray-800 shadow-black '
                     wire:key='{{ $note->id }}'>
                     <div class='flex flex-col justify-center w-full pb-3'>
                         <div class='flex items-center justify-center'>
@@ -148,9 +147,9 @@ new class extends Component {
                             </div>
                             <div class="flex flex-col items-end justify-between">
                                 <div class='flex flex-col w-full mb-4'>
-                                    <p class="overflow-hidden text-sm font-bold text-left">Field: <span
+                                    <p class="overflow-hidden text-sm font-bold text-left">{{ __('show-notes.show-notes-4') }} <span
                                             class='text-sm font-normal dark:text-gray-400'>{{ $note->area }} </span></p>
-                                    <p class="text-sm font-bold">University: <span
+                                    <p class="text-sm font-bold">{{ __('show-notes.show-notes-5') }} <span
                                             class="text-sm font-normal dark:text-gray-400 ">{{ $note->university }}</span>
                                     </p>
                                 </div>

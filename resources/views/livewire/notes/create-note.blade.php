@@ -116,71 +116,69 @@ if ($this->studentOther_links) {
     }
 }; ?>
 
-<div class='mb-4 shadow-2xl shadow-black'>
+<div class='mb-4 shadow-md shadow-black'>
     <x-card
-        title="When you fill out this form, keep in mind that it's your chance to 
-show off your skills to potential employers. You can write in Hungarian or English">
+        title=" {{__('create-note.create-2')}} ">
         <x-wui-errors class="px-2 mb-4 shadow-xl shadow-gray-black" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <x-wui-input label="Full name" placeholder="Kovács László" wire:model.defer="studentName" />
-            <x-wui-input label="Email" placeholder="leo.oli@gmail.com" wire:model.defer="studentEmail" />
+            <x-wui-input label="{{__('create-note.create-3')}}" placeholder="Kovács László" wire:model.defer="studentName" />
+            <x-wui-input label="{{__('create-note.create-4')}}" placeholder="leo.oli@gmail.com" wire:model.defer="studentEmail" />
 
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
-                    <x-wui-input label="University" placeholder="University of Debrecen"
+                    <x-wui-input label="{{__('create-note.create-5')}}" placeholder="University of Debrecen"
                         wire:model.defer="studentUniversity" />
                 </div>
 
                 <div class="col-span-1 sm:col-span-3">
-                    <x-wui-input label="Degree" placeholder="Biochemical Engineering BSc"
+                    <x-wui-input label="{{__('create-note.create-6')}}" placeholder="Biochemical Engineering BSc"
                         wire:model.defer="studentDegree" />
                 </div>
             </div>
 
-            <x-wui-select class='z-10' label="Which field best describes your profile?" placeholder="Engineering"
+            <x-wui-select class='z-10' label="{{__('create-note.create-7')}}" placeholder="Engineering"
                 wire:model.defer="studentArea" :options="$this->universities()" />
 
-            <x-wui-input label="The link to your LinkedIn profile (optional)"
+            <x-wui-input label="{{__('create-note.create-8')}}"
                 placeholder="https://www.linkedin.com/in/leoreus/" wire:model.defer="studentLinkedin" />
 
 
-            <x-wui-input label="Link to your portfolio (optional)"
+            <x-wui-input label="{{__('create-note.create-9')}}"
                 placeholder="https://myportfolio.com" wire:model.defer="studentOther_links" />
 
             <div class="col-span-1 sm:col-span-2">
                 <x-wui-textarea
-                    label="Write a short description of yourself. You can list things such as your career goals and skills."
+                    label="{{__('create-note.create-10')}}"
                     placeholder="I have experience in .... im good at .." wire:model.defer="studentDescription" />
             </div>
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
                     <label>
-                        Please, upload a photo of yourself</label>
-                    <input class='w-full text-gray-400' label="Upload a photo of yourself" type='file' type="file"
+                       {{__('create-note.create-11')}}</label>
+                    <input class='w-full text-gray-400' label="{{__('create-note.create-11')}}" type='file' type="file"
                         id="Profile Pic" wire:model="studentPhoto" />
 
                 </div>
 
                 <div class="col-span-1 sm:col-span-3">
-                    <label>Please, upload your CV (optional) </label>
+                    <label>{{__('create-note.create-12')}}</label>
                     <input class='w-full text-gray-400' label="Selecione uma foto do produto" type='file'
                         type="file" id="exampleInputName" wire:model="studentCV" />
 
                 </div>
             </div>
             <div class='w-full'>
-                <div class='flex items-center justify-start gap-1 w-80'>
+                <div class='flex items-center justify-start w-full gap-1 sm:w-96'>
                     <x-toggle primary wire:model.defer="studentAccept" />
-                    I accept the <a target='_blank' href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit' class='text-indigo-500 hover:border-b border-b-indigo-500'> terms and
-                        conditions</a>
+                 {{__('create-note.create-13')}} <a target='_blank' href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit' class='text-indigo-500 hover:border-b border-b-indigo-500'> {{__('create-note.create-14')}}</a>
                 </div>
             </div>
         </div>
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button wire:click="submit" label="Save" spinner="save" primary />
+                <x-button wire:click="submit" label="{{__('create-note.create-15')}}" spinner="save" primary />
             </div>
         </x-slot>
     </x-card>
