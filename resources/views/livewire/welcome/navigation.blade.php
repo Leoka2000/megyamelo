@@ -1,19 +1,23 @@
 <div
     class="fixed z-20 flex items-center justify-between w-full h-20 pr-2 border-b border-gray-700 sm:top-0 sm:right-0 text-end bg-slate-900">
     <a href="{{ route('dashboard') }}" wire:navigate>
-        <div class='flex items-center justify-center mt-2 w-36'>
+        <div class='flex items-center justify-center w-20 mt-2 sm:w-36'>
             <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo-top.png') }}" alt="logo"
                 title="logo" />
         </div>
     </a>
-      <x-dropdown>
-        <x-slot name="trigger">
-            <button class='flex gap-2'> <x-flag-country-hu class="w-5 h-5" /><x-flag-country-us class="w-5 h-5" /></button>
-        </x-slot>
-        <x-dropdown.item class='flex gap-2'  spinner href="{{ route('locale', 'hu') }}"> <x-flag-country-hu class="w-6 h-6" /> Hungarian</x-dropdown.item>
-        <x-dropdown.item class='flex gap-2'  spinner href="{{ route('locale', 'en') }}" > <x-flag-country-us class="w-6 h-6" /> English</x-dropdown.item>
-    </x-dropdown>
-
+     <div class='absolute sm:right-4 right-2 top-24'>
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <button class='flex gap-2'> <x-flag-country-hu class="w-5 h-5 sm:w-6 sm:h-6" /><x-flag-country-us
+                                    class="w-5 h-5 sm:w-6 sm:h-6" /></button>
+                        </x-slot>
+                        <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'hu') }}">
+                            <x-flag-country-hu class="w-6 h-6" /> Hungarian</x-dropdown.item>
+                        <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'en') }}">
+                            <x-flag-country-us class="w-6 h-6" /> English</x-dropdown.item>
+                    </x-dropdown>
+                </div>
     @auth
 
         <x-button primary icon='arrow-right' href="{{ url('dashboard') }}" 

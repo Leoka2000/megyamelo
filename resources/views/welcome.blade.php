@@ -25,6 +25,8 @@
         <main class="flex flex-col items-center justify-center w-full mx-auto ">
             <section
                 class='relative flex items-center justify-center w-full border-b border-gray-800 py-60 sm:pt-52 sm:pb-64 dark:bg-gray-900'>
+                
+
                 <div class="flex flex-col justify-center text-center">
                     <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full'
                         wire:navigate>
@@ -72,7 +74,7 @@
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
             <section class='z-10 w-full py-20 dark:bg-gray-900 dark:text-gray-300'>
-                <div class="flex flex-col items-center justify-center px-5 mb-5">
+                <div class="flex flex-col items-center justify-center px-3 mb-5">
                     <header class='max-w-4xl pb-12 mb-5 text-xl text-center md:text-4xl'>
                         <h1>{{ __('welcome.landing-1') }}</h1>
                     </header>
@@ -154,7 +156,7 @@
                     <header class='max-w-4xl px-2 mb-12 text-2xl text-center lg:w-96 md:text-4xl dark:text-gray-300'>
                         <h1>{{ __('welcome.faq-1') }} </h1>
                     </header>
-                    <main class="flex flex-col max-w-3xl gap-4 px-4">
+                    <main class="flex flex-col max-w-3xl gap-4 px-3">
                         <div>
                             <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
                                 <div class="flex items-center">
