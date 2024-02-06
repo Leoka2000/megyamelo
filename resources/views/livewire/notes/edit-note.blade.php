@@ -77,7 +77,7 @@ new #[Layout('layouts.app')] class extends Component {
             'description' => $this->studentDescription,
             'send_date' => now(),
             'linkedin' => $this->studentLinkedin,
-                'other_links' => $this->studentOther_links,
+            'other_links' => $this->studentOther_links,
         ]);
 
         $this->dispatch('note-saved');

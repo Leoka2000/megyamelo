@@ -24,21 +24,18 @@
                 <div class="p-6 bg-white rounded-lg dark:bg-gray-800">
                     <div class="flex items-center">
                         <div>
-                            <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">Welcome to Megy a
-                                Meló</p>
+                            <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">  {{ __('dashboardz.dashboardz-01') }}</p>
                         </div>
                     </div>
                     <div class="mt-6">
                         <div class="inline-block text-sm leading-9 text-gray-900 dark:text-gray-400">
-                            The platform where we help student / graduates to get jobs while facilitating the life of
-                            companies to easily find talented employees. <br />
-                            <strong class='text-gray-300'>FOR STUDENTS: </strong> on <a
+                        {{ __('dashboardz.dashboardz-02') }} <br />
+                            <strong class='text-gray-300'> {{ __('dashboardz.dashboardz-03') }}</strong>  {{ __('dashboardz.dashboardz-04') }} <a
                                 href="{{ route('notes.create') }}"
-                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>Create profile </a>
-                            section, you will have the chance to show potential employers your skills and tell them a
-                            little bit of your history. You can also view our latest published job advertisements on the
+                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'> {{ __('dashboardz.dashboardz-05') }}</a>
+                                {{ __('dashboardz.dashboardz-06') }}
                             <a href="{{ route('notes.jobs') }}"
-                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>Job list </a> section
+                                class='text-indigo-500 hover:border-b hover:border-b-indigo-500'> {{ __('dashboardz.dashboardz-07') }}</a>
                             <br />
                             <strong class='text-gray-300'> {{ __('dashboardz.dashboardz-1') }} </strong>
                             {{ __('dashboardz.dashboardz-2') }} <a href="{{ route('notes.post-create') }}"

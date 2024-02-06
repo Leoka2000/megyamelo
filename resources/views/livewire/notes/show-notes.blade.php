@@ -102,8 +102,6 @@ new class extends Component {
 
 
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
-
-
         <header class='flex justify-center'>
             <div class='flex flex-col items-center mb-8 max-w-56'>
                 <x-button class='w-full mb-8 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">

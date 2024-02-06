@@ -13,6 +13,13 @@ return [
     |
     */
 
+    'dashboardz-01' => 'Welcome to Megy a Meló',
+    'dashboardz-02' => 'The platform where we help students and graduates to get jobs while facilitating the life of companies to easily find talented employees.',
+    'dashboardz-03' => 'FOR STUDENTS:',
+    'dashboardz-04' => 'on the',
+    'dashboardz-05' => 'Create profile section',
+    'dashboardz-06' => 'you will have the chance to show potential employers your skills and tell them a little bit of your history. You can also view our latest published job advertisements on the',
+    'dashboardz-07' => 'Job list section',
 
 
     'dashboardz-1' => 'FOR COMPANIES:',

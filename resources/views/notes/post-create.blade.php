@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-base font-semibold leading-tight text-gray-800 sm:text-xl">
-            {{ __('Create post') }}
+        <h2 class="text-sm font-semibold leading-tight text-gray-800 dark:text-gray-300 sm:text-xl">
+            {{ __('nav.nav-create-post') }}
         </h2>
     </x-slot>
 
