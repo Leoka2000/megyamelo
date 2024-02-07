@@ -272,8 +272,14 @@
                             class='text-indigo-600 hover:border-b-indigo-600 hover:border-b'
                             href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit'
                             target='_value'> {{ __('welcome.footer-2') }} </a>
-
                     </div>
+                     <div class='w-full text-sm ms:text-base dark:text-gray-300'>
+                        {{ __('welcome.footer-1') }} <a
+                            class='text-indigo-600 hover:border-b-indigo-600 hover:border-b'
+                            href='https://docs.google.com/document/d/1kIyryix2maBfMEm3BJUJltVEL0fZh6Cm4pZxTPxzVeM/edit'
+                            target='_value'> {{ __('welcome.footer-2.1') }} </a>
+                    </div>
+                    
                     <div class='flex flex-col w-full gap-3'>
                         <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}"
                             icon-right="plus" label="{{ __('welcome.footer-3') }}" />

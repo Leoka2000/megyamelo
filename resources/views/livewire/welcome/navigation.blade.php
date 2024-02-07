@@ -13,7 +13,7 @@
                                     class="w-5 h-5 sm:w-6 sm:h-6" /></button>
                         </x-slot>
                         <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'hu') }}">
-                            <x-flag-country-hu class="w-6 h-6" /> Hungarian</x-dropdown.item>
+                            <x-flag-country-hu class="w-6 h-6" /> Magyarul</x-dropdown.item>
                         <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'en') }}">
                             <x-flag-country-us class="w-6 h-6" /> English</x-dropdown.item>
                     </x-dropdown>
@@ -27,12 +27,12 @@
         <div class='flex'>
             <x-button primary icon='arrow-right' href="{{ route('login') }}"
               sm  class="font-semibold text-gray-300 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                wire:navigate>Log in</x-button>
+                wire:navigate> {{__('nav.nav-login')}} </x-button>
 
             @if (Route::has('register'))
                 <x-button outline icon='clipboard' primary href="{{ route('register') }}" 
                     sm class="font-semibold text-gray-300 ms-4 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                    wire:navigate>Register</x-button>
+                    wire:navigate>{{__('nav.nav-register')}} </x-button>
             @endif
         </div>
     @endauth

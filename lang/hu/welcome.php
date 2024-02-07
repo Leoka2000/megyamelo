@@ -56,7 +56,7 @@ return [
 
     'footer-1' => 'Tekintse meg',
     'footer-2' => 'Általános Adatvédelmi Rendeletet',
-
+    'footer-2.1' => 'Általános Szerződési Feltételek',
     'footer-3' => 'Feliratkozás',
     'footer-4' => 'Cégeknek',
     'footer-5' => 'Fejlesztő:',

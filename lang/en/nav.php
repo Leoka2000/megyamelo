@@ -17,6 +17,12 @@ return [
     'nav-job-seekers' => 'Job seekers',
     'nav-job-list' => 'Job list',
     'nav-create-post' => 'Create post',
+
+    'nav-login' => 'Log in',
+    'nav-register' => 'Register',
+    'nav-logout' => 'Log out',
+
+
   
 
 ];

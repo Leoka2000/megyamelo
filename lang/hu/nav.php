@@ -20,4 +20,8 @@ return [
     'nav-job-seekers' => 'Álláskeresők',
     'nav-job-list' => 'Állások',
     'nav-create-post' => 'Álláshirdetés készítése',
+
+    'nav-login' => 'Bejelentkezés',
+    'nav-register' => 'Regisztráció',
+    'nav-logout' => 'Kijelentkezés',
 ];

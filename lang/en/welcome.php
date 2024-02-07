@@ -56,7 +56,7 @@ return [
 
     'footer-1' => 'Check out our',
     'footer-2' => 'Privacy Policy Guidelines',
-
+    'footer-2.1' => 'General Terms and Services',
     'footer-3' => 'Subscribe',
     'footer-4' => 'For companies',
     'footer-5' => 'Developed by:',
