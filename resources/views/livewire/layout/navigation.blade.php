@@ -28,7 +28,7 @@ new class extends Component {
                 <!-- Logo -->
                 <div class="flex items-center cursor-pointer shrink-0">
                     <a wire:click='goToIndex'>
-                        <div class='flex items-center justify-center w-12 h-10 mt-2 opacity-80'>
+                        <div class='flex items-center justify-center w-20 h-20 mt-9 opacity-90'>
                             <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo-top.png') }}"
                                 alt="logo" title="logo" />
                         </div>

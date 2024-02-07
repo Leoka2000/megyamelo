@@ -4,9 +4,11 @@ use Livewire\Volt\Component;
 use Livewire\Attributes\Layout;
 use App\Models\Note;
 use Livewire\WithFileUploads;
+use WireUi\Traits\Actions;
 
 new #[Layout('layouts.app')] class extends Component {
     use WithFileUploads;
+    use Actions;
     public Note $note;
 
     public $studentName;
@@ -18,7 +20,7 @@ new #[Layout('layouts.app')] class extends Component {
     public $studentLinkedin;
     public $studentPhoto;
     public $studentCV;
-        public $studentOther_links;
+    public $studentOther_links;
 
     public function mount(Note $note)
     {
@@ -31,7 +33,7 @@ new #[Layout('layouts.app')] class extends Component {
         $this->studentArea = $note->area;
         $this->studentDescription = $note->description;
         $this->studentLinkedin = $note->linkedin;
-          $this->studentOther_links = $note->other_links;
+        $this->studentOther_links = $note->other_links;
     }
 
     public function saveNote()
@@ -57,13 +59,11 @@ new #[Layout('layouts.app')] class extends Component {
         }
 
         if ($this->studentPhoto) {
-     
             $this->note->update([
                 'photo' => $this->studentPhoto->store('photos', 'public'),
             ]);
         }
         if ($this->studentCV) {
-    
             $this->note->update([
                 'cv' => $this->studentCV->store('curriculums', 'public'),
             ]);
@@ -80,7 +80,10 @@ new #[Layout('layouts.app')] class extends Component {
             'other_links' => $this->studentOther_links,
         ]);
 
-        $this->dispatch('note-saved');
+        $this->dialog()->show([
+            'icon' => 'success',
+            'title' => 'Profile edited!',
+        ]);
     }
 
     public function universities()
@@ -88,69 +91,70 @@ new #[Layout('layouts.app')] class extends Component {
         return ['Health Sciences', 'Economics and Business', 'Engineering', 'Science and Technology', 'Child and Special Needs Education', 'Music', 'Humanities', 'Law', 'Design', 'Informatics', 'Agriculture, Food Sciences and Environmental Management'];
     }
 }; ?>
+
+
 <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800">
-        {{ __('Edit Note') }}
+    <h2 class="relative text-xl font-semibold leading-tight text-gray-800 dark:text-gray-300">
+        {{ __('create-note.note-edit.1') }}
     </h2>
 </x-slot>
 
 <div class="px-4 py-12 lg:px-64 md:px-36">
-       <x-button wire:navigate icon="arrow-left" class="mb-8" href="{{ route('notes.index') }}">Back</x-button>
-    <x-card title="Edit your profile">
+    <x-button wire:navigate icon="arrow-left" class="mb-8" href="{{ route('notes.index') }}">
+        {{ __('create-note.create-1') }} </x-button>
+    <x-card title="{{ __('create-note.note-edit.1') }}">
         <x-wui-errors class="mb-4" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <x-wui-input label="Full name" placeholder="Leo Reus Oli...." wire:model.defer="studentName" />
-            <x-wui-input label="Email" placeholder="leo.oli@gmail.com" wire:model.defer="studentEmail" />
+            <x-wui-input label="{{ __('create-note.create-3') }}" placeholder="Leo Reus Oli...." wire:model.defer="studentName" />
+            <x-wui-input label="{{ __('create-note.create-4') }}" placeholder="leo.oli@gmail.com" wire:model.defer="studentEmail" />
 
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
-                    <x-wui-input label="University" placeholder="University of Debrecen"
+                    <x-wui-input label="{{ __('create-note.create-5') }}" placeholder="University of Debrecen"
                         wire:model.defer="studentUniversity" />
                 </div>
 
                 <div class="col-span-1 sm:col-span-3">
-                    <x-wui-input label="Degree" placeholder="Biochemical Engineering BSc"
+                    <x-wui-input label="{{ __('create-note.create-6') }}" placeholder="Biochemical Engineering BSc"
                         wire:model.defer="studentDegree" />
                 </div>
             </div>
 
-            <x-wui-select class='z-10' label="Which field best describes your profile?" placeholder="Engineering"
+            <x-wui-select class='z-10' label="{{ __('create-note.create-7') }}" placeholder="Engineering"
                 wire:model.defer="studentArea" :options="$this->universities()" />
 
-            <x-wui-input label="Link to your LinkedIn profile (optional)"
+            <x-wui-input label="{{ __('create-note.create-8') }}"
                 placeholder="https://www.linkedin.com/in/leoreus/" wire:model.defer="studentLinkedin" />
 
-                    <x-wui-input label="Link to your portfolio (optional)"
-                placeholder="https://www.myportfolio.com" wire:model.defer="studentOther_links" />
+            <x-wui-input label="{{ __('create-note.create-9') }}" placeholder="https://www.myportfolio.com"
+                wire:model.defer="studentOther_links" />
 
             <div class="col-span-1 sm:col-span-2">
                 <x-wui-textarea
-                    label="Write a short description of yourself. You can list things like your career goals and skills."
+                   label="{{ __('create-note.create-10') }}"
                     placeholder="I have experience in .... im good at .." wire:model.defer="studentDescription" />
             </div>
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
                     <label>
-                        Please, upload a photo of yourself</label>
+                    {{ __('create-note.create-11') }}</label>
                     <input class='w-full text-gray-400' label="Upload a photo of yourself" type='file' type="file"
                         id="Profile Pic" wire:model="studentPhoto" />
-
                 </div>
 
                 <div class="col-span-1 sm:col-span-3">
-                    <label>Please, upload your CV (optional) </label>
+                    <label>{{ __('create-note.create-12') }}</label>
                     <input class='w-full text-gray-400' label="Selecione uma foto do produto" type='file'
                         type="file" id="exampleInputName" wire:model="studentCV" />
-
                 </div>
             </div>
         </div>
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button wire:click="saveNote" label="Save" spinner="save" primary />
-                <x-action-message on="note-saved" />
+                <x-button icon='bookmark' wire:click="saveNote" label="{{ __('create-note.note-edit.2') }}" spinner="save" primary />
+
             </div>
         </x-slot>
     </x-card>

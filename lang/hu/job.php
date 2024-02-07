@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
     |--------------------------------------------------------------------------
@@ -12,30 +12,52 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'post-job.01' => 'Állások',
-    'post-job.1' => 'Álláshírdetés közzététele',
-    'post-job.2' => 'A céged neve',
-    'post-job.3' => 'Az állás részletei',
-    'post-job.4' => 'Az állás címe',
-    'post-job.5' => 'Az álláshirdetés leírása',
-    'post-job.6' => 'Jelentkezési link',
-    'post-job.7' => 'Fényképet is mellékelhetsz az állásodhoz.',
-    'post-job.8' => 'Készítés',
-    
- 
+  'post-job.01' => 'Állások',
+  'post-job.1' => 'Álláshírdetés közzététele. Magyarul vagy angolul írhatsz. A hirdetés 30 napig elérhető marad.',
+  'post-job.2' => 'A cég neve',
+  'post-job.3' => 'Az állás részletei',
+  'post-job.4' => 'Az állás címe',
+  'post-job.5' => 'Az álláshirdetés leírása',
+  'post-job.6' => 'Jelentkezési link',
+  'post-job.6.1' => 'Ha nincs jelentkezési link, akkor itt megadhat egy e-mailt, ahova az emberek küldhetik álláspályázatukat.',
+  'post-job.7' => 'Fényképet is mellékelhetsz az állásodhoz.',
+  'post-job.8' => 'Készítés',
+  'post-job.8.1' => 'Szerkesztés',
+
+
+  'post-edit.1' => 'Álláshirdetés szerkesztése',
+  /*
+    |--------------------------------------------------------------------------
+    | DELETE POST
+    |--------------------------------------------------------------------------
+    |
+    */
+
+  'delete-job.1' => 'Biztosan törölni szeretnéd a hirdetést? Törlés után nem lesz lehetőség visszaállítani a hirdetést.',
+  'delete-job.2' => 'Vissza',
+  'delete-job.3' => 'Törlés',
+
+
   /*
     |--------------------------------------------------------------------------
     | CREATE FORM
     |--------------------------------------------------------------------------
     |
     */
- 
-    'create-job.1' => 'CÉGEKNEK:',
-    'create-job.2' => 'Úgy tűnik, még nem vagy partner. Küldj nekem egy üzenetet',
-    'create-job.3' => 'linken keresztül',
-    'create-job.4' => 'az adminisztrációs hozzáférés kéréséhez a platformunkhoz, hogy elkezdhess hirdetéseket közzétenni.',
 
-     /*
+  'create-job.1' => 'CÉGEKNEK:',
+  'create-job.2' => 'Úgy tűnik, még nem vagy partner. Küldj nekem egy üzenetet',
+  'create-job.3' => 'linken keresztül',
+  'create-job.4' => 'az adminisztrációs hozzáférés kéréséhez a platformunkhoz, hogy elkezdhess hirdetéseket közzétenni.',
+
+  'create-modal.1' => 'Biztos vagy benne, hogy egy érmét szeretnél költeni erre a hirdetés létrehozásához?',
+  'create-modal.2' => 'Készítés',
+
+  'no-coins.1' => 'Elfogytak az érméid. Több hirdetést közzétenni csak új érmek vásárlásával tudsz.',
+  'no-coins.2' => 'Érmek vásárlása',
+  
+
+  /*
     |--------------------------------------------------------------------------
     | CONTACT FORM
     |--------------------------------------------------------------------------
@@ -43,13 +65,13 @@ return [
     */
 
 
-    'contact-job.1' => 'Cég vagy, és szeretnél velem partnerséget kötni? Küldj nekem érdeklődést az alábbiakban.',
-    'contact-job.2' => 'Cég neve:',
-    'contact-job.3' => 'Cég e-mail címe:',
-    'contact-job.4' => 'Kérelmed leírása:',
-    'contact-job.5' => 'Küldés',
-    'contact-job.6' => 'Mégse',
-    
-    
+  'contact-job.1' => 'Cég vagy, és szeretnél velem partnerséget kötni? Küldj nekem érdeklődést az alábbiakban.',
+  'contact-job.2' => 'Cég neve:',
+  'contact-job.3' => 'Cég e-mail címe:',
+  'contact-job.4' => 'Kérelmed leírása:',
+  'contact-job.5' => 'Küldés',
+  'contact-job.6' => 'Mégse',
+
+
 
 ];

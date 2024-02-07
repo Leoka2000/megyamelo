@@ -106,7 +106,7 @@ new class extends Component {
             <div class='flex flex-col items-center mb-8 max-w-56'>
                 <x-button class='w-full mb-8 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">
                     {{ __('show-notes.show-notes-2') }}</x-button>
-                <x-native-select label='Filter by area' class='shadow-md max-w-56 dark:bg-gray-950 shadow-black '
+                <x-native-select label='Filter by area' class='shadow-sm max-w-56 dark:bg-gray-950 shadow-black '
                     wire:model="selectedArea" wire:change="$refresh">
                     <option value="None">{{ __('show-notes.show-notes-3') }}</option>
                     <option value="Health Sciences">{{ __('show-notes.show-notes-6.1') }}</option>

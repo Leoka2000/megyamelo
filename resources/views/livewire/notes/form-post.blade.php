@@ -103,29 +103,29 @@ new class extends Component {
                     'apply_email' => $this->companyEmail,
                     'image' => $this->companyImage->store('company', 'public'),
                 ]);
-                
-         $this->dialog()->show([
-            'icon' => 'success',
-            'title' => 'Post created!',
-            'description' => 'Your post was successfully created. Now you can view, edit, or delete your post whenever you feel like it.',
-        ]);
+
+            $this->dialog()->show([
+                'icon' => 'success',
+                'title' => 'Post created!',
+                'description' => 'Your post was successfully created. Now you can view, edit, or delete your post whenever you feel like it.',
+            ]);
         }
     }
 }; ?>
 
 
 
-<div class='shadow-2xl shadow-black'>
+<div class='shadow-md  shadow-black'>
     <div class=''>
 
 
         @if ($showModal)
             <x-modal wire:model="showModal" class="" title="Simple Modal">
                 <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
-                    <p class='mb-4 sm:text-base'>Are you sure that you want to spend a coin creating this post?</p>
+                    <p class='mb-4 sm:text-base'> {{ __('job.create-modal.1') }}</p>
                     <x-button outlined icon='arrow-left'
                         wire:click="closeModal">{{ __('show-notes.show-notes-2') }}</x-button>
-                    <x-button wire:click='submit' primary icon='plus'>Post</x-button>
+                    <x-button wire:click='submit' primary icon='plus'>{{ __('job.create-modal.2') }}</x-button>
                 </div>
             </x-modal>
         @endif
@@ -150,12 +150,13 @@ new class extends Component {
         @if ($showPaymentModal)
             <x-modal wire:model="showPaymentModal" class="" title="PAYMENT MODAL">
                 <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
-                    <p class='mb-4 sm:text-base'>You have no coins left. In order to publish more advertisements, you
-                        need to buy more coins</p>
+                    <span class='flex justify-center w-full'>
+                        <x-badge.circle lg negative icon="x" />
+                    </span>
+                    <p class='mb-4 sm:text-base'> {{__('job.no-coins.1')}} </p>
                     <x-button outlined icon='arrow-left'
                         wire:click="closePaymentModal">{{ __('show-notes.show-notes-2') }}</x-button>
-                    <x-button href="{{ route('notes.payment.payment-index') }}" green icon='shopping-cart'>Buy
-                        coins</x-button>
+                    <x-button href="{{ route('notes.payment.payment-index') }}" green icon='shopping-cart'>{{__('job.no-coins.2')}} </x-button>
                 </div>
             </x-modal>
         @endif
@@ -178,7 +179,7 @@ new class extends Component {
             <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.6') }}"
                     placeholder="https://example.com/apply" wire:model.defer="companyLink" />
             </div>
-              <div class='col-span-1'> <x-wui-input label="{{ __('If you dont have a application link to provide, you can specify an email here.') }}"
+            <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.6.1') }}"
                     placeholder="azenvallalkozasom@gmail.com" wire:model.defer="companyEmail" /></div>
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
@@ -193,7 +194,7 @@ new class extends Component {
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button wire:click="openModal" label="{{ __('job.post-job.8') }}" spinner primary />
+                <x-button icon='plus' wire:click="openModal" label="{{ __('job.post-job.8') }}" primary />
             </div>
         </x-slot>
     </x-card>

@@ -1,8 +1,8 @@
 <div
     class="fixed z-20 flex items-center justify-between w-full h-20 pr-2 border-b border-gray-700 sm:top-0 sm:right-0 text-end bg-slate-900">
     <a href="{{ route('dashboard') }}" wire:navigate>
-        <div class='flex items-center justify-center w-20 mt-2 sm:w-36'>
-            <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo-top.png') }}" alt="logo"
+        <div class='flex items-center justify-center w-20 mt-8 sm:w-36'>
+            <img class='object-cover w-full h-full rounded-md opacity-80' src="{{ asset('logo-top.png') }}" alt="logo"
                 title="logo" />
         </div>
     </a>

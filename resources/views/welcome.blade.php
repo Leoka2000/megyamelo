@@ -17,7 +17,7 @@
 
 <body class="antialiased dark dark:bg-gray-900">
     <div
-        class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-indigo-600 selection:text-white">
         @if (Route::has('login'))
             <livewire:welcome.navigation />
         @endif
@@ -25,13 +25,11 @@
         <main class="flex flex-col items-center justify-center w-full mx-auto ">
             <section
                 class='relative flex items-center justify-center w-full border-b border-gray-800 py-60 sm:pt-52 sm:pb-64 dark:bg-gray-900'>
-                
-
                 <div class="flex flex-col justify-center text-center">
                     <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full'
                         wire:navigate>
                         <div class='flex items-center justify-center mt-2 md:h-64'>
-                            <img class='object-cover h-32 rounded-md w-60 md:w-full md:h-full'
+                            <img class='object-cover h-32 rounded-md opacity-80 w-60 md:w-full md:h-full'
                                 src="{{ asset('logo.png') }}" alt="logo" title="logo" />
                         </div>
                     </a>
@@ -154,9 +152,9 @@
             <section class='relative w-full pb-64 border-t border-gray-700 pt-52 '>
                 <div class='flex flex-col items-center w-full gap-4'>
                     <header class='max-w-4xl px-2 mb-12 text-2xl text-center lg:w-96 md:text-4xl dark:text-gray-300'>
-                        <h1>{{ __('welcome.faq-1') }} </h1>
+                        <h1>{{ __('welcome.faq-1') }}</h1>
                     </header>
-                    <main class="flex flex-col max-w-3xl gap-4 px-3">
+                    <main class="flex flex-col max-w-4xl gap-4 px-3">
                         <div>
                             <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
                                 <div class="flex items-center">
@@ -263,14 +261,14 @@
                 <div class="flex flex-col items-center justify-center pb-4 text-center md:w-96">
                     <a href="{{ route('dashboard') }}" wire:navigate>
                         <div class='flex items-center justify-center mt-2 w-44'>
-                            <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}"
+                            <img class='object-cover w-full h-full rounded-md opacity-90' src="{{ asset('logo.png') }}"
                                 alt="logo" title="logo" />
                         </div>
                     </a>
 
                     <div class='w-full text-sm ms:text-base dark:text-gray-300'>
                         {{ __('welcome.footer-1') }} <a
-                            class='text-violet-600 hover:border-b-violet-600 hover:border-b'
+                            class='text-indigo-600 hover:border-b-indigo-600 hover:border-b'
                             href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit'
                             target='_value'> {{ __('welcome.footer-2') }} </a>
 
@@ -279,14 +277,14 @@
                         <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}"
                             icon-right="plus" label="{{ __('welcome.footer-3') }}" />
                         <x-button outline primary icon='shopping-cart'
-                            href="{{ route('notes.payment.payment-index') }}"
+                            href="{{ route('notes.post-create') }}"
                             label="{{ __('welcome.footer-4') }}" />
                     </div>
                 </div>
                 <div class="text-sm text-center text-gray-400 dark:text-gray-400 sm:text-start">
                     <div class="flex items-center gap-4">
                         <a href="https://www.linkedin.com/in/leoreus" target='_value'
-                            class="inline-flex items-center group hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            class="inline-flex items-center group hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 class="w-5 h-5 -mt-px me-1 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400">

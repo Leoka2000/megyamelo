@@ -40,7 +40,7 @@ new class extends Component {
         
         @else
             <x-button sm class='absolute z-20 h-8 custom right-3' href="{{ route('notes.payment.payment-index') }}" icon="currency-dollar" green 
-       >Advertisements left: {{ $this->coins }} </x-button>
+       >{{__('company.advertisements_left')}} {{ $this->coins }} </x-button>
        @endif
 
        

@@ -32,4 +32,7 @@ return [
     'create-15' => 'Készítés',
     
 
+    'note-edit.1' => 'Profil Szertesztése',
+    'note-edit.2' => 'Szerkesztés',
+
 ];

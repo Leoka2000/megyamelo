@@ -26,10 +26,10 @@ new class extends Component {
         $post = Post::where('id', $postId)->first();
         $this->authorize('delete', $post);
         $post->delete();
+        $this->closeModal();
         $this->dialog()->show([
             'icon' => 'success',
-            'title' => 'Post delete!',
-            'description' => 'Your post was',
+            'title' => 'Post Successfully saved!',
         ]);
     }
 
@@ -110,10 +110,10 @@ new class extends Component {
                                 @endif
 
                                 @if ($job->apply_email)
-                                    <a class="inline-block w-full cursor-pointer dark:text-gray-300"
+                                    <a class="inline-block w-full text-sm cursor-pointer dark:text-gray-300"
                                         href="{{ 'mailto:' . $job->apply_email }}"> To apply, send an email to
                                         <p
-                                            class='inline-block text-indigo-500 hover:border-b hover:border-b-indigo-500'>
+                                            class='inline-block text-sm text-indigo-500 hover:border-b hover:border-b-indigo-500'>
                                             {{ $job->apply_email }}
                                         </p>
                                     </a>
@@ -154,12 +154,10 @@ new class extends Component {
                         <x-modal wire:model="showModal" class="" title="Simple Modal">
                             <div
                                 class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
-                                <p class='mb-4 sm:text-base'>Are you sure that you want to delete the post? After
-                                    deleting,
-                                    you will not be able to recover your coins.</p>
-                                <x-button primary icon='arrow-left' wire:click="closeModal">Back</x-button>
+                                <p class='mb-4 sm:text-base'>{{ __('job.delete-job.1') }}</p>
+                                <x-button primary icon='arrow-left' wire:click="closeModal">{{ __('job.delete-job.2') }}</x-button>
                                 <x-button flat negative outline icon='trash'
-                                    wire:click="delete('{{ $postToDelete->id }}')">Delete</x-button>
+                                    wire:click="delete('{{ $postToDelete->id }}')">{{ __('job.delete-job.3') }}</x-button>
                             </div>
                         </x-modal>
                     @endif

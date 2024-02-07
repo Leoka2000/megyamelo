@@ -52,7 +52,7 @@
                 <div class="flex flex-col items-center justify-center pb-4 text-center md:w-96">
                     <a href="{{ route('dashboard') }}" wire:navigate>
                         <div class='flex items-center justify-center mt-2 w-44'>
-                            <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}"
+                            <img class='object-cover w-full h-full rounded-md opacity-90' src="{{ asset('logo.png') }}"
                                 alt="logo" title="logo" />
                         </div>
                     </a>
@@ -74,8 +74,8 @@
                 </div>
                 <div class="text-sm text-center text-gray-400 dark:text-gray-400 sm:text-start">
                     <div class="flex items-center gap-4">
-                        <a href="https://www.linkedin.com/in/leoreus" target='_value'
-                            class="inline-flex items-center group hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                        <a href="https://www.linkedin.com/in/leoreus" target='_value' 
+                            class="inline-flex items-center group hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5"
                                 class="w-5 h-5 -mt-px me-1 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400">
