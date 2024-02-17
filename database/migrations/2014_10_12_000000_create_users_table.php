@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('coins')->default(0);
+            $table->integer('coins')->default(1);//tentar desbugar
             $table->string('role')->default('standard');
-            $table->string('email')->unique();
+            $table->string('email'); // leave here so google auth works
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            #$table->string('google_id')->nullable();
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

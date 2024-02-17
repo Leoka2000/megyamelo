@@ -36,7 +36,8 @@ new #[Layout('layouts.guest')] class extends Component
         Auth::login($user);
 
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
-          Mail::to('lreusoliveira@gmail.com')->send(new NewUser());
+
+         # Mail::to('lreusoliveira@gmail.com')->send(new NewUser());
     }
 }; ?>
 
@@ -50,6 +51,12 @@ new #[Layout('layouts.guest')] class extends Component
                 </a>
             </div>
     <form wire:submit="register">
+
+     <div class='w-full my-4'>
+        <x-button href="{{ route('google-auth') }}" outline class='w-full'> Register with Google <img class='w-6 h-6'
+                src="{{ asset('google.png') }}" />
+        </x-button>
+    </div>
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />

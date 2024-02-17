@@ -5,6 +5,7 @@ use App\Models\Note;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\Auth\ProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,11 @@ Route::view('dashboard', 'dashboard')
     
         return redirect()->back();
     })->name('locale');
+
+    Route::get('/auth/google/redirect', [ProviderController::class, 'redirect'] )->name('google-auth');
+Route::get('/auth/google/callback', [ProviderController::class, 'callbackGoogle'] );
+
+
 
 
     Route::get('/payment', [ProductController::class, 'index'])->name('notes.payment.payment-index');
