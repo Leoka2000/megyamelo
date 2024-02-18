@@ -27,7 +27,6 @@ new class extends Component {
     {
         // Store the selected area value in the session
         session(['selected_area' => $value]);
-    
     }
 
     public function closeModal()
@@ -80,9 +79,9 @@ new class extends Component {
     public function placeholderForImage()
     {
         return <<<'HTML'
-        <div role="status" class="flex items-center justify-center w-full h-full">
+
            <span class="loader"></span>
-        </div>
+
         HTML;
     }
 }; ?>
@@ -92,29 +91,46 @@ new class extends Component {
 
 <div class='flex justify-center'>
     <style>
+        .loader {
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin: auto;
+            position: relative;
+            background: #FFF;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
 
-.loader {
-  width: 48px;
-  height: 48px;
-  border: 5px dotted #FFF;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  z-index:20;
-  animation: rotation 2s linear infinite;
+       .loader::after {
+    content: '';
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+        radial-gradient(circle 50px, #DDD 100%, transparent 0),
+        linear-gradient(#DDD 16px, transparent 0),
+        linear-gradient(#DDD 24px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
+    background-position: -185px 0, center 10px, center 125px, center 155px;
+    box-sizing: border-box;
+    animation: animloader 0.5s linear infinite; /* Adjusted animation duration */
 }
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} 
-    .right-custom {
-        right: 120px 
+
+@keyframes animloader {
+    to {
+        background-position: 185px 0, center 10px, center 125px, center 155px;
     }
+}
+
+
+        .right-custom {
+            right: 120px
+        }
+
         @media (max-width: 1270px) {
 
             .responsive {
@@ -123,7 +139,7 @@ new class extends Component {
                 gap: 0.5rem
             }
 
-            
+
         }
 
         @media (max-width: 1070px) {
@@ -165,14 +181,14 @@ new class extends Component {
                 <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border border-gray-800 rounded-lg shadow-lg md:w-72 sm:w-96 hover:shadow-2xl hover:bg-gray-900 hover:shadow-black hover:border-gray-500 dark:bg-gray-950 hover:dark:bg-gray-800 shadow-black '
                     wire:key='{{ $note->id }}'>
                     <div class='flex flex-col justify-center w-full pb-3'>
-                        <div class='relative flex items-center justify-center'>
-                            <div class="p-4 h-80 w-80" x-data="{ loaded: false }">
+                        <div class='flex items-center justify-center '>
+                            <div class="relative p-4 h-80 w-80" x-data="{ loaded: false }">
                                 <img x-ref="lazyImage" src="{{ asset('storage/' . $note->photo) }}"alt="profile pic"
                                     title="bruuvynsons"
                                     class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl'
                                     loading="lazy" @load="loaded = true" />
-                                <div class='absolute right-custom top-40' x-show="!loaded" x-cloak>
-                                    {!! $this->placeholderForImage() !!}
+                                <div class='absolute top-0 right-0 w-full h-full' x-show="!loaded" x-cloak>
+                                {!! $this->placeholderForImage() !!}
                                 </div>
                             </div>
                         </div>
@@ -202,13 +218,14 @@ new class extends Component {
                                 <div class='flex flex-col w-full mb-4'>
                                     <p class="overflow-hidden text-sm font-bold text-left">
                                         {{ __('show-notes.show-notes-4') }} <span
-                                            class='text-sm font-normal dark:text-gray-400'>{{ $note->area }} </span>
+                                            class='text-sm font-normal dark:text-gray-400'>{{ $note->area }}
+                                        </span>
                                     </p>
                                     <p class="text-sm font-bold">{{ __('show-notes.show-notes-5') }} <span
                                             class="text-sm font-normal dark:text-gray-400 ">{{ $note->university }}</span>
                                     </p>
                                 </div>
-                                 <div class='flex justify-end w-full gap-4'>
+                                <div class='flex justify-end w-full gap-4'>
                                     <x-button.circle icon="eye" primary outline
                                         href="{{ route('notes.view', $note) }}"></x-button.circle>
                                     @can('delete', $note)
