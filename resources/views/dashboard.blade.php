@@ -21,6 +21,34 @@
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
             <main
                 class="flex flex-col items-center justify-center gap-4 mt-4 mb-4 sm:justify-start sm:flex-row dark:text-gray-300">
+                 <div
+                    class='flex flex-col justify-between px-6 py-10 border border-gray-800 shadow-md shadow-black dark:bg-gray-800 sm:w-72 rounded-xl lg:w-96'>
+                    <span>
+                        <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_4014_33527)">
+                                <circle cx="70" cy="70" r="69" fill="lightgray" stroke="#0C0C0C"
+                                    stroke-width="2" />
+                                <circle cx="70.0001" cy="60.7476" r="31.8537" stroke="#7F6AFF"
+                                    stroke-width="1.49398" />
+                                <rect x="61.9763" y="96.5801" width="16.0478" height="15.2729" fill="#0C0C0C" />
+                                <circle cx="70.0001" cy="60.7479" r="26.6474" fill="#7F6AFF" stroke="lightgray"
+                                    stroke-width="1.55545" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4014_33527">
+                                    <rect width="140" height="140" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg></span>
+
+                    <div class='my-3'>
+                        <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
+                        <br />
+                    </div>
+                    <x-button href="{{ route('notes.create') }}" class='w-full' primary
+                        icon="user">{{ __('welcome.landing-5') }} </x-button>
+                </div>
                 <div
                     class='flex flex-col justify-between w-full px-8 py-10 border border-gray-800 shadow-md shadow-black dark:bg-gray-800 rounded-xl sm:w-72 lg:w-96'>
                     <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
@@ -57,34 +85,7 @@
                     <x-button class='w-full' href="{{ route('notes.post-create') }}" primary
                         icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
                 </div>
-                <div
-                    class='flex flex-col justify-between px-6 py-10 border border-gray-800 shadow-md shadow-black dark:bg-gray-800 sm:w-72 rounded-xl lg:w-96'>
-                    <span>
-                        <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_4014_33527)">
-                                <circle cx="70" cy="70" r="69" fill="lightgray" stroke="#0C0C0C"
-                                    stroke-width="2" />
-                                <circle cx="70.0001" cy="60.7476" r="31.8537" stroke="#7F6AFF"
-                                    stroke-width="1.49398" />
-                                <rect x="61.9763" y="96.5801" width="16.0478" height="15.2729" fill="#0C0C0C" />
-                                <circle cx="70.0001" cy="60.7479" r="26.6474" fill="#7F6AFF" stroke="lightgray"
-                                    stroke-width="1.55545" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_4014_33527">
-                                    <rect width="140" height="140" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg></span>
-
-                    <div class='my-3'>
-                        <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
-                        <br />
-                    </div>
-                    <x-button href="{{ route('notes.create') }}" class='w-full' primary
-                        icon="user">{{ __('welcome.landing-5') }} </x-button>
-                </div>
+               
             </main>
             <div
                 class="overflow-hidden bg-white border border-gray-800 rounded-md shadow-md shadow-black dark:bg-gray-800 sm:rounded-lg">

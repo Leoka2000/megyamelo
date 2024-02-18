@@ -36,7 +36,7 @@ new class extends Component {
                 </div>
 
                 <!-- Navigation Links -->
-                     <!-- 
+                <!--
     'nav-home' => 'Home',
     'nav-subscribe' => 'Subscribe',
     'nav-job-seekers' => 'Job seekers',
@@ -60,7 +60,7 @@ new class extends Component {
                     </x-nav-link>
                     <x-nav-link :href="route('notes.jobs')" :active="request()->routeIs('notes.jobs')" wire:navigate>
                         <p class='text-xs lg:text-sm'>
-                             {{ __('nav.nav-job-list') }}
+                            {{ __('nav.nav-job-list') }}
                         </p>
                     </x-nav-link>
                     <x-nav-link href="{{ route('notes.post-create') }}" :active="request()->routeIs('notes.post-create')">
@@ -68,7 +68,7 @@ new class extends Component {
                             {{ __('nav.nav-create-post') }}
                         </p>
                     </x-nav-link>
-                  
+
                 </div>
 
             </div>
@@ -95,7 +95,7 @@ new class extends Component {
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                             {{ __('profilez.profile1') }}
+                            {{ __('profilez.profile1') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -110,7 +110,7 @@ new class extends Component {
 
             <!-- Hamburger -->
             <div class="flex items-center -me-2 sm:hidden">
-                <button @click="open = ! open" 
+                <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
@@ -153,9 +153,11 @@ new class extends Component {
                 <div class="text-base font-medium text-gray-800 dark:text-gray-200" x-data="{{ json_encode(['name' => auth()->user()->name]) }}"
                     x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
                 <div class="text-sm font-medium text-gray-500">{{ auth()->user()->email }}</div>
+                
             </div>
-
+            
             <div class="mt-3 space-y-1">
+            
                 <x-responsive-nav-link :href="route('profile')" wire:navigate>
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
