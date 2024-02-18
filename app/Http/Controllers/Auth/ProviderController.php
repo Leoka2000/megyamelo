@@ -47,7 +47,7 @@ class ProviderController extends Controller
             // Manually log in the user
             Auth::login($user);
 
-            return redirect()->route('dashboard'); // Assuming you have a named route for your dashboard
+            return redirect()->route('notes.create'); // Assuming you have a named route for your dashboard
 
         } catch (ClientException $e) {
             error_log($e);

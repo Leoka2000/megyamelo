@@ -14,6 +14,7 @@ return [
     */
 
     'create-01' => 'Profil létrehozása',
+    'create-001' => 'Ha még nincs fiókod, készítsd el itt',
     'create-02' => 'Kezdőlap',
     'create-1' => 'Vissza',
     'create-2' => 'Amikor kitöltöd ezt a űrlapot, tartsd szem előtt, hogy ez az esélyed arra, hogy megmutasd képességeidet leendő munkáltatóknak. Magyarul vagy angolul írhatsz.',

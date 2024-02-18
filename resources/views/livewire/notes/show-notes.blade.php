@@ -102,29 +102,30 @@ new class extends Component {
             border-radius: 10px;
         }
 
-       .loader::after {
-    content: '';
-    width: calc(100% - 30px);
-    height: calc(100% - 30px);
-    top: 15px;
-    left: 15px;
-    position: absolute;
-    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
-        radial-gradient(circle 50px, #DDD 100%, transparent 0),
-        linear-gradient(#DDD 16px, transparent 0),
-        linear-gradient(#DDD 24px, transparent 0);
-    background-repeat: no-repeat;
-    background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
-    background-position: -185px 0, center 10px, center 125px, center 155px;
-    box-sizing: border-box;
-    animation: animloader 0.5s linear infinite; /* Adjusted animation duration */
-}
+        .loader::after {
+            content: '';
+            width: calc(100% - 30px);
+            height: calc(100% - 30px);
+            top: 15px;
+            left: 15px;
+            position: absolute;
+            background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+                radial-gradient(circle 50px, #DDD 100%, transparent 0),
+                linear-gradient(#DDD 16px, transparent 0),
+                linear-gradient(#DDD 24px, transparent 0);
+            background-repeat: no-repeat;
+            background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
+            background-position: -185px 0, center 10px, center 125px, center 155px;
+            box-sizing: border-box;
+            animation: animloader 0.5s linear infinite;
+            /* Adjusted animation duration */
+        }
 
-@keyframes animloader {
-    to {
-        background-position: 185px 0, center 10px, center 125px, center 155px;
-    }
-}
+        @keyframes animloader {
+            to {
+                background-position: 185px 0, center 10px, center 125px, center 155px;
+            }
+        }
 
 
         .right-custom {
@@ -153,11 +154,25 @@ new class extends Component {
 
 
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
-        <header class='flex justify-center'>
-            <div class='flex flex-col items-center mb-8 max-w-56'>
-                <x-button class='w-full mb-8 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">
+        <header class='block max-w-72 '>
+            <div
+                class='flex mb-6 border border-gray-100 rounded-md max-w-64 md:max-w-96 xl:max-w-2xl dark:border-gray-700'>
+                <x-card title="{{ __('create-note.create-001') }}">
+                    <x-slot name="action">
+                        <x-icon name="information-circle" md class="w-6 h-6 font-thin text-orange-500" />
+
+                    </x-slot>
+                    <div class=''>
+                        <x-button class='w-full' primary icon='user' href="{{ route('notes.create') }}"
+                            icon-right="plus" label="{{ __('welcome.footer-3') }}" />
+                    </div>
+                </x-card>
+
+            </div>
+            <div class='flex flex-col justify-end w-full mb-8'>
+                <x-button class='w-full mb-2 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">
                     {{ __('show-notes.show-notes-2') }}</x-button>
-                <x-native-select label='Filter by area' class='shadow-sm max-w-56 dark:bg-gray-950 shadow-black '
+                <x-native-select label='Filter by area' class='w-full shadow-sm dark:bg-gray-950 shadow-black '
                     wire:model="selectedArea" wire:change="$refresh">
                     <option value="None">{{ __('show-notes.show-notes-3') }}</option>
                     <option value="Health Sciences">{{ __('show-notes.show-notes-6.1') }}</option>
@@ -174,7 +189,11 @@ new class extends Component {
                         {{ __('show-notes.show-notes-6.11') }}</option>
                 </x-native-select>
             </div>
+
+
+
         </header>
+        
 
         <div class="grid justify-center grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($notes as $note)
@@ -188,7 +207,7 @@ new class extends Component {
                                     class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl'
                                     loading="lazy" @load="loaded = true" />
                                 <div class='absolute top-0 right-0 w-full h-full' x-show="!loaded" x-cloak>
-                                {!! $this->placeholderForImage() !!}
+                                    {!! $this->placeholderForImage() !!}
                                 </div>
                             </div>
                         </div>

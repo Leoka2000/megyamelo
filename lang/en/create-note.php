@@ -13,7 +13,9 @@ return [
     |
     */
 
+   
     'create-01' => 'Create profile',
+    'create-001' => 'If you do not have an account yet, create here',
     'create-02' => 'Home',
     'create-1' => 'Back',
     'create-2' => "When you fill out this form, keep in mind that it is your chance to show off your skills to potential employers. You can write in Hungarian or English",
