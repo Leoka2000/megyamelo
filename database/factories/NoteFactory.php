@@ -1,36 +1,35 @@
 <?php
 
 namespace Database\Factories;
-use Illuminate\Database\Eloquent\Factories\Factory;
+
+use App\Models\Note;
 use App\Models\User;
-/**
- * @extends Factory
- */
+use Illuminate\Database\Eloquent\Factories\Factory;
+
 class NoteFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Note::class;
+
     public function definition(): array
     {
         return [
-            'id' => $this->faker->id,
+            'id' => $this->faker->uuid,
             'user_id' => User::factory(),
-        'name' => $this->faker->name,
-        'email' => $this->faker->unique()->safeEmail,
-        'university' => $this->faker->unique()->word,
-        'photo' => $this->faker->imageUrl(800, 600),
-        'degree' => $this->faker->unique()->word,
-        'area' => $this->faker->unique()->word,
-        'description' => $this->faker->paragraph(6),
-        'cv' => $this->faker->unique()->fileUrl(),
-        'accept' => $this->faker->boolean(),
-        'linkedin' => $this->faker->unique()->url,
-        'send_date' => $this->faker->date(),
-        'is_published' => $this->faker->boolean(),
-        'heart_count' => $this->faker->numberBetween(0, 100),
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'university' => $this->faker->unique()->word,
+            'photo' => $this->faker->imageUrl(800, 600),
+            'degree' => $this->faker->unique()->word,
+            'area' => $this->faker->unique()->word,
+            'description' => $this->faker->paragraph(6),
+            'cv' => 'default_value', 
+            'accept' => $this->faker->boolean(),
+            'linkedin' => $this->faker->unique()->url,
+            'other_links' => $this->faker->text,
+            'is_published' => $this->faker->boolean(),
+            'heart_count' => $this->faker->numberBetween(0, 100),
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }
