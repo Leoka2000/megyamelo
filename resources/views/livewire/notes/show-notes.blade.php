@@ -96,6 +96,10 @@ new class extends Component {
 
 <div class='flex justify-center'>
     <style>
+
+    .right-custom {
+        right: 120px 
+    }
         @media (max-width: 1270px) {
 
             .responsive {
@@ -159,13 +163,13 @@ new class extends Component {
                 <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border border-gray-800 rounded-lg shadow-lg md:w-72 sm:w-96 hover:shadow-2xl hover:bg-gray-900 hover:shadow-black hover:border-gray-500 dark:bg-gray-950 hover:dark:bg-gray-800 shadow-black '
                     wire:key='{{ $note->id }}'>
                     <div class='flex flex-col justify-center w-full pb-3'>
-                        <div class='flex items-center justify-center'>
-                            <div class="relative p-4 h-80 w-80" x-data="{ loaded: false }">
-                                <img x-ref="lazyImage" src={{ asset('imageteste.jpg') }} alt="profile pic"
+                        <div class='relative flex items-center justify-center'>
+                            <div class="p-4 h-80 w-80" x-data="{ loaded: false }">
+                                <img x-ref="lazyImage" src="{{ asset('storage/' . $note->photo) }}"alt="profile pic"
                                     title="bruuvynsons"
                                     class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl'
                                     loading="lazy" @load="loaded = true" />
-                                <div x-show="!loaded" x-cloak>
+                                <div class='absolute right-custom top-40' x-show="!loaded" x-cloak>
                                     {!! $this->placeholderForImage() !!}
                                 </div>
                             </div>
