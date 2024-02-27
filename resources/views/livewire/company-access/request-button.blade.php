@@ -62,9 +62,9 @@ new class extends Component {
 
 
             <div
-                class='flex flex-col items-center justify-center gap-2 p-5 mb-2 bg-gray-900 rounded-md md:p-12 dark:text-gray-300 '>
+                class='flex flex-col items-center justify-center gap-2 p-5 mb-2 bg-gray-100 rounded-md dark:bg-gray-900 md:p-12 dark:text-gray-300 '>
 
-                <p class='mb-5 text-xl font-bold text-center w-72 dark:text-gray-300'>
+                <p class='mb-5 text-lg font-bold text-left md:text-xl w-72 dark:text-gray-300'>
                   {{__('job.contact-job.1')}}
                 </p>
 

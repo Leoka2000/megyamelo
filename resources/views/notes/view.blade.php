@@ -1,28 +1,21 @@
-<x-guest-layout>
-    <div class='flex flex-col items-center justify-center px-4 pt-5'>
-        <header class='flex items-center justify-between w-full'>
-            <div class='mt-6'>
-                <x-button icon="arrow-left" class="mb-8" href="{{ route('notes.index') }}">{{ __('show-notes.show-notes-2') }}</x-button>
-            </div>
-            <div class='flex justify-center'>
-                <a>
-                    <div class='flex items-center justify-center w-40 h-auto mt-2 opacity-80'>
-                        <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo.png') }}" alt="profile pic"
-                            title="profile pic" />
-                    </div>
-                </a>
-            </div>
-        </header>
+<x-app-layout>
+ <x-slot name="header">
+        <h2 class="text-base font-semibold leading-tight text-gray-800 sm:text-xl dark:text-gray-200">
+      {{ $note->name }}
+        </h2>
+    </x-slot>
+    <div class='flex flex-col items-center justify-center px-4 pt-10'>
+       
         <main class='flex flex-col justify-center gap-6 pt-12 pb-32 md:flex-row'>
             <div
-                class='flex flex-col items-start w-full gap-4 dark:text-gray-300 md:max-w-96 rounded-2xl dark:bg-gray-950'>
+                class='flex flex-col items-start w-full gap-4 bg-white shadow-md dark:shadow-lg dark:text-gray-300 md:max-w-96 rounded-2xl dark:bg-gray-950'>
                 <div class='w-full px-6 pb-6 sm:w-3/4 md:w-full'>
                     <div class='flex flex-col gap-2 mb-4'>
                         <div class='flex items-center justify-center'>
                             <div class='w-full h-full sm:w-80 sm:h-80'>
                                 <div class='flex items-center justify-center w-full h-full p-2 py-8'>
                                     <img src="{{ asset('storage/' . $note->photo) }}" alt="profile pic"
-                                        title="bruuvynsons" class='object-cover w-full h-full img rounded-xl' />
+                                        title="profile pic" class='object-cover w-full h-full img rounded-xl' />
                                 </div>
                             </div>
                         </div>
@@ -44,7 +37,7 @@
 
                 </div>
             </div>
-            <div class='flex flex-col w-full dark:text-gray-300 rounded-2xl dark:bg-gray-950 md:w-8/12'>
+            <div class='flex flex-col w-full bg-white shadow-md dark:text-gray-300 dark:shadow-lg rounded-2xl dark:bg-gray-950 md:w-8/12'>
                 <div class='flex flex-col items-start gap-4 p-6 '>
                     <div>
                         <a class='flex flex-row items-center justify-center gap-3 text-base 2xl:text-3xl lg:text-xl'
@@ -71,7 +64,7 @@
             </div>
         </main>
     </div>
-</x-guest-layout>
+</x-app-layout>
 
 
 {{-- <h3 class="mr-2 text-sm">Sent from {{ $user->name }}</h3> --}}

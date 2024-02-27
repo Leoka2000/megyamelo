@@ -91,7 +91,7 @@ new class extends Component {
             @foreach ($jobs as $job)
                 <div class='flex flex-col gap-4 shadow-'>
                     <x-card title='{{ $job->title }}'
-                        class='relative flex flex-col justify-between w-full dark:text-gray-300 dark:bg-gray-800 hover:bg-gray-600 '
+                        class='relative flex flex-col justify-between w-full dark:text-gray-300 dark:bg-gray-800 '
                         wire:key='{{ $job->id }}'>
                         <div class='flex justify-start'>
                             <div class='w-full sm:w-80'>
@@ -151,12 +151,12 @@ new class extends Component {
 
                 <div>
                     @if ($showModal)
-                        <x-modal wire:model="showModal" class="" title="Simple Modal">
+                        <x-modal wire:model="showModal"  title="Simple Modal">
                             <div
-                                class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                                class='flex flex-col h-auto gap-2 p-6 bg-gray-100 sm:p-12 dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
                                 <p class='mb-4 sm:text-base'>{{ __('job.delete-job.1') }}</p>
-                                <x-button primary icon='arrow-left' wire:click="closeModal">{{ __('job.delete-job.2') }}</x-button>
-                                <x-button flat negative outline icon='trash'
+                                <x-button outline icon='arrow-left' wire:click="closeModal">{{ __('job.delete-job.2') }}</x-button>
+                                <x-button light negative icon='trash'
                                     wire:click="delete('{{ $postToDelete->id }}')">{{ __('job.delete-job.3') }}</x-button>
                             </div>
                         </x-modal>

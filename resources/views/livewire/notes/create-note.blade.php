@@ -106,60 +106,56 @@ new class extends Component {
     }
 }; ?>
 
-<div class='mb-4 shadow-md shadow-black'>
+<div class='mb-4 shadow-md dark:shadow-black'>
     <x-card title=" {{ __('create-note.create-2') }} ">
         <x-wui-errors class="px-2 mb-4 shadow-xl shadow-gray-black" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <x-wui-input label="{{ __('create-note.create-3') }}" placeholder="Kovács László"
+            <x-wui-input icon='user' label="{{ __('create-note.create-3') }}" placeholder="Kovács László"
                 wire:model.defer="studentName" />
-            <x-wui-input label="{{ __('create-note.create-4') }}" placeholder="leo.oli@gmail.com"
+            <x-wui-input icon='mail' label="{{ __('create-note.create-4') }}" placeholder="leo.oli@gmail.com"
                 wire:model.defer="studentEmail" />
 
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
-                    <x-wui-input label="{{ __('create-note.create-5') }}" placeholder="University of Debrecen"
+                    <x-wui-input icon='academic-cap' label="{{ __('create-note.create-5') }}" placeholder="University of Debrecen"
                         wire:model.defer="studentUniversity" />
                 </div>
 
                 <div class="col-span-1 sm:col-span-3">
-                    <x-wui-input label="{{ __('create-note.create-6') }}" placeholder="Biochemical Engineering BSc"
+                    <x-wui-input icon='academic-cap' label="{{ __('create-note.create-6') }}" placeholder="Biochemical Engineering BSc"
                         wire:model.defer="studentDegree" />
                 </div>
             </div>
 
-            <x-wui-select class='z-10' label="{{ __('create-note.create-7') }}" placeholder="Engineering"
+            <x-wui-select icon='identification' class='z-10' label="{{ __('create-note.create-7') }}" placeholder="Engineering"
                 wire:model.defer="studentArea" :options="$this->universities()" />
 
-            <x-wui-input label="{{ __('create-note.create-8') }}" placeholder="https://www.linkedin.com/in/leoreus/"
+            <x-wui-input icon='link' label="{{ __('create-note.create-8') }}" placeholder="https://www.linkedin.com/in/leoreus/"
                 wire:model.defer="studentLinkedin" />
 
 
-            <x-wui-input label="{{ __('create-note.create-9') }}" placeholder="https://myportfolio.com"
+            <x-wui-input icon='link' label="{{ __('create-note.create-9') }}" placeholder="https://myportfolio.com"
                 wire:model.defer="studentOther_links" />
 
             <div class="col-span-1 sm:col-span-2">
-                <x-wui-textarea label="{{ __('create-note.create-10') }}"
-                    placeholder="I have experience in .... im good at .." wire:model.defer="studentDescription" />
+                <x-wui-textarea icon="pencil"  label="{{ __('create-note.create-10') }}"
+                    placeholder="" wire:model.defer="studentDescription" />
             </div>
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
                 <div class="col-span-1 sm:col-span-4">
-                    <label>
-                        {{ __('create-note.create-11') }}</label>
-                    <input class='w-full text-gray-400' label="{{ __('create-note.create-11') }}" type='file'
+              
+                    <x-wui-input icon='camera' class='w-full text-gray-400' label="{{ __('create-note.create-11') }}" type='file'
                         type="file" id="Profile Pic" wire:model="studentPhoto" />
-
                 </div>
-
                 <div class="col-span-1 sm:col-span-3">
-                    <label>{{ __('create-note.create-12') }}</label>
-                    <input class='w-full text-gray-400' label="Selecione uma foto do produto" type='file'
+                 
+                    <x-wui-input icon='folder-open' class='w-full text-gray-400' label="{{ __('create-note.create-12') }}" type='file'
                         type="file" id="exampleInputName" wire:model="studentCV" />
-
                 </div>
             </div>
-            <div class='w-full'>
-                <div class='flex items-center justify-start w-full gap-1 sm:w-96'>
+            <div class='w-full mt-5'>
+                <div class='flex flex-col items-start justify-start w-full sm:gap-1 sm:items-center sm:flex-row sm:w-96'>
                     <x-toggle primary wire:model.defer="studentAccept" />
                     {{ __('create-note.create-13') }} <a target='_blank'
                         href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit'
@@ -171,7 +167,7 @@ new class extends Component {
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button icon='plus' wire:click="submit" label="{{ __('create-note.create-15') }}" spinner="save"
+                <x-button icon='plus'  wire:click="submit" label="{{ __('create-note.create-15') }}" 
                     primary />
             </div>
         </x-slot>

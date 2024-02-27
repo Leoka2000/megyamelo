@@ -17,12 +17,12 @@
         </div>
     @endif
 
-    <div class="py-14">
+    <div class="py-20">
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
             <main
                 class="flex flex-col items-center justify-center gap-4 mt-4 mb-4 sm:justify-start sm:flex-row dark:text-gray-300">
-                 <div
-                    class='flex flex-col justify-between px-6 py-10 border border-gray-800 shadow-md shadow-black dark:bg-gray-800 sm:w-72 rounded-xl lg:w-96'>
+                <div
+                    class='flex flex-col justify-between w-full px-6 py-10 bg-white border shadow-md h-96 dark:border-gray-800 dark:shadow-black dark:bg-gray-800 rounded-xl lg:w-96'>
                     <span>
                         <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -44,13 +44,13 @@
 
                     <div class='my-3'>
                         <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
-                        <br />
+                     
                     </div>
                     <x-button href="{{ route('notes.create') }}" class='w-full' primary
                         icon="user">{{ __('welcome.landing-5') }} </x-button>
                 </div>
                 <div
-                    class='flex flex-col justify-between w-full px-8 py-10 border border-gray-800 shadow-md shadow-black dark:bg-gray-800 rounded-xl sm:w-72 lg:w-96'>
+                    class='flex flex-col justify-between w-full px-6 py-10 bg-white border shadow-md h-96 dark:border-gray-800 dark:shadow-black dark:bg-gray-800 rounded-xl lg:w-96'>
                     <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_4014_33508)">
@@ -85,11 +85,11 @@
                     <x-button class='w-full' href="{{ route('notes.post-create') }}" primary
                         icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
                 </div>
-               
+
             </main>
             <div
-                class="overflow-hidden bg-white border border-gray-800 rounded-md shadow-md shadow-black dark:bg-gray-800 sm:rounded-lg">
-                <div class="p-6 bg-white rounded-lg dark:bg-gray-800">
+                class="overflow-hidden bg-white border rounded-md shadow-md dark:border-gray-800 dark:shadow-black dark:bg-gray-800 sm:rounded-lg">
+                <div class="p-4 bg-white rounded-lg sm:p-6 dark:bg-gray-800">
                     <div class="flex items-center">
                         <div>
                             <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
@@ -99,7 +99,8 @@
                     <div class="mt-6">
                         <div class="inline-block text-sm leading-9 text-gray-900 dark:text-gray-400">
                             {{ __('dashboardz.dashboardz-02') }} <br />
-                            <strong class='text-gray-300'> {{ __('dashboardz.dashboardz-03') }}</strong>
+                            <strong class='dark:text-gray-300 text-gray-950'>
+                                {{ __('dashboardz.dashboardz-03') }}</strong>
                             {{ __('dashboardz.dashboardz-04') }} <a href="{{ route('notes.create') }}"
                                 class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>
                                 {{ __('dashboardz.dashboardz-05') }}</a>
@@ -108,7 +109,8 @@
                                 class='text-indigo-500 hover:border-b hover:border-b-indigo-500'>
                                 {{ __('dashboardz.dashboardz-07') }}</a>
                             <br />
-                            <strong class='text-gray-300'> {{ __('dashboardz.dashboardz-1') }} </strong>
+                            <strong class='dark:text-gray-300 text-gray-950'> {{ __('dashboardz.dashboardz-1') }}
+                            </strong>
                             {{ __('dashboardz.dashboardz-2') }} <a href="{{ route('notes.post-create') }}"
                                 class='inline-block text-indigo-500 hover:border-b hover:border-b-indigo-500'>{{ __('dashboardz.dashboardz-3') }}</a>
                             {{ __('dashboardz.dashboardz-4') }} {{ __('dashboardz.dashboardz-5') }}

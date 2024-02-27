@@ -20,7 +20,7 @@ return [
     'post-job.5' => 'Description of your advertisement',
     'post-job.6' => 'Link to apply',
     'post-job.6.1' => 'If you dont have an application link to provide, you can specify an email here for people to apply to your job.',
-    'post-job.7' => 'You can include a photo in your post',
+    'post-job.7' => 'You can include a photo in your post. File must not be bigger than 1.5MB',
     'post-job.8' => 'Post',
     'post-job.8.1' => 'Edit',
 

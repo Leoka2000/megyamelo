@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'advertisements_left' => 'Advertisements left',
+    'advertisements_left' => 'Advertisements left:',
   
 
 ];

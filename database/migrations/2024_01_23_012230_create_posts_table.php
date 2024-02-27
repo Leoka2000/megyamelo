@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('author');
             $table->string('title');
             $table->text('description');
-            $table->text('apply_link');
+            $table->text('apply_link')->nullable();
+            $table->text('apply_email')->nullable();
+          
            
         });
     }

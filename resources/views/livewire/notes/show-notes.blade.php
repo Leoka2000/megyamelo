@@ -156,7 +156,7 @@ new class extends Component {
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
         <header class='block max-w-72 '>
             <div
-                class='flex mb-6 border border-gray-100 rounded-md max-w-64 md:max-w-96 xl:max-w-2xl dark:border-gray-700'>
+                class='flex max-w-full mb-16 border border-gray-100 rounded-md md:max-w-96 xl:max-w-2xl dark:border-gray-700'>
                 <x-card title="{{ __('create-note.create-001') }}">
                     <x-slot name="action">
                         <x-icon name="information-circle" md class="w-6 h-6 font-thin text-orange-500" />
@@ -167,12 +167,11 @@ new class extends Component {
                             icon-right="plus" label="{{ __('welcome.footer-3') }}" />
                     </div>
                 </x-card>
-
             </div>
             <div class='flex flex-col justify-end w-full mb-8'>
                 <x-button class='w-full mb-2 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">
                     {{ __('show-notes.show-notes-2') }}</x-button>
-                <x-native-select label='Filter by area' class='w-full shadow-sm dark:bg-gray-950 shadow-black '
+                <x-native-select label='Filter by area' class='w-full shadow-'
                     wire:model="selectedArea" wire:change="$refresh">
                     <option value="None">{{ __('show-notes.show-notes-3') }}</option>
                     <option value="Health Sciences">{{ __('show-notes.show-notes-6.1') }}</option>
@@ -190,20 +189,18 @@ new class extends Component {
                 </x-native-select>
             </div>
 
-
-
         </header>
         
 
         <div class="grid justify-center grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($notes as $note)
-                <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border border-gray-800 rounded-lg shadow-lg md:w-72 sm:w-96 hover:shadow-2xl hover:bg-gray-900 hover:shadow-black hover:border-gray-500 dark:bg-gray-950 hover:dark:bg-gray-800 shadow-black '
+                <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border rounded-lg shadow-lg dark:border-gray-800 md:w-72 sm:w-96 hover:shadow-2xl dark:hover:bg-gray-700 dark:hover:shadow-black dark:hover:border-gray-600 dark:bg-gray-800 '
                     wire:key='{{ $note->id }}'>
                     <div class='flex flex-col justify-center w-full pb-3'>
                         <div class='flex items-center justify-center '>
                             <div class="relative p-4 h-80 w-80" x-data="{ loaded: false }">
                                 <img x-ref="lazyImage" src="{{ asset('storage/' . $note->photo) }}"alt="profile pic"
-                                    title="bruuvynsons"
+                                    title="profile image"
                                     class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl'
                                     loading="lazy" @load="loaded = true" />
                                 <div class='absolute top-0 right-0 w-full h-full' x-show="!loaded" x-cloak>

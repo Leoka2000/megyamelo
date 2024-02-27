@@ -20,7 +20,7 @@ return [
   'post-job.5' => 'Az álláshirdetés leírása',
   'post-job.6' => 'Jelentkezési link',
   'post-job.6.1' => 'Ha nincs jelentkezési link, akkor itt megadhat egy e-mailt, ahova az emberek küldhetik álláspályázatukat.',
-  'post-job.7' => 'Fényképet is mellékelhetsz az állásodhoz.',
+  'post-job.7' => 'Fényképet is mellékelhetsz az állásodhoz. A fájl nem lehet nagyobb, mint 1,5 MB',
   'post-job.8' => 'Készítés',
   'post-job.8.1' => 'Szerkesztés',
 

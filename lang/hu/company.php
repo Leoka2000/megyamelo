@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'advertisements_left' => 'Hirdetés maradt',
+    'advertisements_left' => 'Hirdetés maradt:',
   
 
 ];

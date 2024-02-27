@@ -4,7 +4,7 @@
            {{ __('job.post-job.01') }}
         </h2>
     </x-slot>
-    <div class="py-12">
+    <div class="py-14">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-52">
             <div class="p-6 text-gray-900 ">
                  <x-button wire:navigate icon="arrow-left" class="mb-8" href="{{ route('dashboard') }}">{{ __('show-notes.show-notes-2') }}</x-button>

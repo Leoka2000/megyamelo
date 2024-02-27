@@ -43,14 +43,14 @@ new class extends Component {
 }; ?>
 
 <div>
-    <x-button.circle icon='inbox' smc outline wire:click="openModal" />
+    <x-button.circle icon='inbox' sm outline wire:click="openModal" />
 
     @if ($showModal)
         <x-modal wire:model="showModal" class="" title="Simple Modal">
 
 
             <div
-                class='flex flex-col items-center justify-center gap-2 p-5 mb-2 bg-gray-900 rounded-md md:p-12 dark:text-gray-300 '>
+                class='flex flex-col items-center justify-center gap-2 p-5 mb-2 bg-white rounded-md dark:bg-gray-900 md:p-12 dark:text-gray-300 '>
 
                 <p class='w-64 text-xl font-bold text-center dark:text-gray-300'>
                     Contact me.

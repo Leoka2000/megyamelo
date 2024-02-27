@@ -280,7 +280,7 @@
                             target='_value'> {{ __('welcome.footer-2.1') }} </a>
                     </div>
                     
-                    <div class='flex flex-col w-full gap-3'>
+                    <div class='flex flex-col w-full gap-2'>
                         <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}"
                             icon-right="plus" label="{{ __('welcome.footer-3') }}" />
                         <x-button outline primary icon='shopping-cart'
