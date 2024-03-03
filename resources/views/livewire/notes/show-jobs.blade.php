@@ -29,7 +29,7 @@ new class extends Component {
         $this->closeModal();
         $this->dialog()->show([
             'icon' => 'success',
-            'title' => 'Post Successfully saved!',
+            'title' => 'Post successfully deleted!',
         ]);
     }
 
@@ -83,37 +83,39 @@ new class extends Component {
     <div class='flex flex-col gap-6'>
         @if ($jobs->isEmpty())
             <div class="text-center dark:text-gray-300">
-                <p class="text-xl font-bold ">No jobs posted yet</p>
-                <x-button class='mt-4' href="{{ route('notes.post-create') }}" primary spinner
-                    icon="shopping-cart">Create a job advertisement</x-button>
+                <p class="text-xl font-bold "> {{__('job.show-job.1')}} </p>
+                <x-button rounded sm class='w-full h-12 mt-4 sm:w-56' href="{{ route('notes.post-create') }}" primary spinner
+                    right-icon="shopping-cart">{{__('job.show-job.2')}}</x-button>
             </div>
         @else
             @foreach ($jobs as $job)
-                <div class='flex flex-col gap-4 shadow-'>
+                <div class='flex flex-col gap-4'>
                     <x-card title='{{ $job->title }}'
                         class='relative flex flex-col justify-between w-full dark:text-gray-300 dark:bg-gray-800 '
                         wire:key='{{ $job->id }}'>
-                        <div class='flex justify-start'>
-                            <div class='w-full sm:w-80'>
-                                <div class='mb-8 w-50 h-50'>
-                                    <img class='object-cover w-full h-full rounded-md max-h-80 sm:max-h-56'
-                                        src="{{ asset('storage/' . $job->image) }}" />
-                                </div>
-                            </div>
+                        <x-slot name="action">
+                            <x-avatar size="w-20 h-20 " class='border-none' rounded src="{{ asset('storage/' . $job->image) }}" />
+                        </x-slot>
+                        <div class='flex justify-start mb-3'>
+
                         </div>
+
+
+
                         <x-slot name="footer">
                             <div class='flex flex-col items-center justify-between w-full gap-4 sm:flex-row'>
                                 @if ($job->apply_link)
                                     <a class="w-full" href="{{ $job->apply_link }}" target='_blank'>
-                                        <x-button label="Apply" class='w-full sm:w-3/4 lg:w-1/4' primary />
+                                        <x-button label="Apply" right-icon="paper-airplane" class='w-full sm:w-3/4'
+                                            primary />
                                     </a>
                                 @endif
 
                                 @if ($job->apply_email)
-                                    <a class="inline-block w-full text-sm cursor-pointer dark:text-gray-300"
+                                    <a class="inline-block w-full text-xs cursor-pointer dark:text-gray-300"
                                         href="{{ 'mailto:' . $job->apply_email }}"> To apply, send an email to
                                         <p
-                                            class='inline-block text-sm text-indigo-500 hover:border-b hover:border-b-indigo-500'>
+                                            class='inline-block text-xs text-indigo-500 hover:border-b hover:border-b-indigo-500'>
                                             {{ $job->apply_email }}
                                         </p>
                                     </a>
@@ -127,7 +129,7 @@ new class extends Component {
                                     @else
                                         <p></p>
                                     @endcan
-                                    
+
                                     @can('delete', $job)
                                         <x-button.circle icon="trash" flat negative outline
                                             wire:click="openModal('{{ $job->id }}')"></x-button.circle>
@@ -139,23 +141,75 @@ new class extends Component {
                         </x-slot>
                         <div class='flex flex-col w-full'>
                             <div class='flex items-center w-full gap-2'>
-                                <p class='mb-5 break-words md:text-base '> {{ $job->author }}</p>
-                                <p class='mb-5 text-gray-500 break-words '> posted on
+                                <p class='mb-5 text-sm break-words '> {{ $job->author }}</p>
+                                <p class='mb-5 text-sm text-gray-500 break-words '> posted on
                                     {{ $job->created_at->format('Y-m-d') }}
                                 </p>
                             </div>
-                            <p class='w-full text-sm break-words sm:text-base'> {{ $job->description }} </p>
+                            <p class='w-full text-sm break-words sm:text-sm'> {{ $job->description }} </p>
                         </div>
+
+                        <div class='flex flex-col items-center justify-center gap-2 mt-5 mb-2 sm:flex-row lg:gap-4'>
+                            @if ($job->payment === 'No payment')
+                                <div
+                                    class='flex flex-col items-center w-full px-2 py-3 text-xs border border-gray-200 rounded-md dark:border-gray-600 sm:w-40'>
+                                    <div class='mb-1'>
+                                        <x-badge class='w-6 h-6' icon="x-circle" />
+                                    </div>
+                                    <h1 class='font-thin text-gray-400 dark:text-gray-500'> {{__('job.show-job.3')}}<h1>
+                                            <br />
+
+                                </div>
+                            @elseif ($job->payment === 'Payment included')
+                                <div
+                                    class='flex flex-col items-center w-full px-2 py-3 text-xs border border-gray-200 rounded-md dark:border-gray-600 sm:w-40'>
+                                    <div class='mb-1'>
+                                        <x-badge class='w-6 h-6' icon="check" />
+                                    </div>
+                                    <h1 class='font-thin text-gray-400 dark:text-gray-500'> {{__('job.show-job.3')}} <h1>
+                                            <br />
+                                </div>
+                            @else
+                                <div
+                                    class='flex flex-col items-center w-full px-2 py-3 text-xs border border-gray-200 rounded-md dark:border-gray-600 sm:w-40'>
+                                    <div class='mb-1'>
+                                        <x-badge class='w-6 h-6' icon="check" />
+                                    </div>
+                                    <h1 class='font-thin text-gray-400 dark:text-gray-500'> {{__('job.show-job.3')}} <h1>
+                                            <p class='font-bold '> {{ $job->payment }} </p>
+                                </div>
+                            @endif
+
+                            <div
+                                class='flex flex-col items-center w-full px-2 py-3 text-xs border border-gray-200 rounded-md dark:border-gray-600 sm:w-40'>
+                                <div class='mb-1'>
+                                    <x-badge class='w-6 h-6' icon="clock" />
+                                </div>
+                                <h1 class='font-thin text-gray-400 dark:text-gray-500'> {{__('job.show-job.4')}} <h1>
+                                        <p class='font-bold '> {{ $job->hours }} Hours / week </p>
+                            </div>
+                            <div
+                                class='flex flex-col items-center w-full px-2 py-3 text-xs border border-gray-200 rounded-md dark:border-gray-600 sm:w-40'>
+                                <div class='mb-1'>
+                                    <x-badge class='w-6 h-6' icon="home" />
+                                </div>
+                                <h1 class='font-thin text-gray-400 dark:text-gray-500'> {{__('job.show-job.5')}} <h1>
+                                        <p class='font-bold '> {{ $job->modality }} </p>
+                            </div>
+
+                        </div>
+
                     </x-card>
                 </div>
 
                 <div>
                     @if ($showModal)
-                        <x-modal wire:model="showModal"  title="Simple Modal">
+                        <x-modal wire:model="showModal" title="Simple Modal">
                             <div
                                 class='flex flex-col h-auto gap-2 p-6 bg-gray-100 sm:p-12 dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
                                 <p class='mb-4 sm:text-base'>{{ __('job.delete-job.1') }}</p>
-                                <x-button outline icon='arrow-left' wire:click="closeModal">{{ __('job.delete-job.2') }}</x-button>
+                                <x-button outline icon='arrow-left'
+                                    wire:click="closeModal">{{ __('job.delete-job.2') }}</x-button>
                                 <x-button light negative icon='trash'
                                     wire:click="delete('{{ $postToDelete->id }}')">{{ __('job.delete-job.3') }}</x-button>
                             </div>

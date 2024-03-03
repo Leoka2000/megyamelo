@@ -17,6 +17,7 @@ return [
 
     'show-notes-1' => 'Job seekers',
     'show-notes-2' => 'Back',
+    'show-notes-2.1' => 'Filter',
     'show-notes-3' => 'All fields',
     'show-notes-4' => 'Field',
     'show-notes-5' => 'University',

@@ -17,7 +17,7 @@ return [
     'dashboardz-03' => 'DIÁKOK SZÁMÁRA:',
     'dashboardz-04' => 'a',
     'dashboardz-05' => 'Profil létrehozása szakaszban',
-    'dashboardz-06' => 'lesz lehetőséged bemutatni a leendő munkáltatóknak a képességeidet és mesélni egy kicsit a múltadról. Emellett megtekintheted legfrissebben kiírt álláshirdetéseinket a',
+    'dashboardz-06' => 'lesz lehetőséged bemutatni a leendő munkáltatóknak a képességeidet és mesélni egy kicsit a tapasztalataidról. Emellett megtekintheted legfrissebben kiírt álláshirdetéseinket a',
     'dashboardz-07' => 'Állásajánlatok szakaszban.',
 
 

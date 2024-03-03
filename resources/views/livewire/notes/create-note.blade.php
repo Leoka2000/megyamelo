@@ -143,14 +143,14 @@ new class extends Component {
                     placeholder="" wire:model.defer="studentDescription" />
             </div>
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
-                <div class="col-span-1 sm:col-span-4">
+                <div class="col-span-1 mb-6 sm:mb-0 sm:col-span-4">
               
-                    <x-wui-input icon='camera' class='w-full text-gray-400' label="{{ __('create-note.create-11') }}" type='file'
+                    <x-wui-input icon='camera' right-icon='plus' class='w-full text-gray-400' label="{{ __('create-note.create-11') }}" type='file'
                         type="file" id="Profile Pic" wire:model="studentPhoto" />
                 </div>
                 <div class="col-span-1 sm:col-span-3">
                  
-                    <x-wui-input icon='folder-open' class='w-full text-gray-400' label="{{ __('create-note.create-12') }}" type='file'
+                    <x-wui-input icon='folder-open' right-icon='plus' class='w-full text-gray-400' label="{{ __('create-note.create-12') }}" type='file'
                         type="file" id="exampleInputName" wire:model="studentCV" />
                 </div>
             </div>
@@ -167,7 +167,7 @@ new class extends Component {
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button icon='plus'  wire:click="submit" label="{{ __('create-note.create-15') }}" 
+                <x-button rounded right-icon='plus' class='w-full h-12' wire:click="submit" label="{{ __('create-note.create-15') }}" 
                     primary />
             </div>
         </x-slot>

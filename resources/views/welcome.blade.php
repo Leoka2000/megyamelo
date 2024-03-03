@@ -35,7 +35,7 @@
                         </div>
                     </a>
                     <p class='text-2xl italic text-gray-300 md:text-3xl'>{{ __('welcome.hero_slogan') }}</p>
-                    <x-button icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary rounded lg
+                    <x-button rounded icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary lg
                         icon-right="plus">{{ __('welcome.landing-5') }}</x-button>
 
                 </div>
@@ -112,8 +112,8 @@
                                 <h1 class='text-lg'>{{ __('welcome.landing-2') }}
                                 </h1>
                             </div>
-                            <x-button class='w-full' href="{{ route('notes.post-create') }}" primary
-                                icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
+                            <x-button rounded class='w-full h-10' href="{{ route('notes.post-create') }}" primary
+                                right-icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
                         </div>
                         <div
                             class='flex flex-col justify-between px-6 py-10 border border-gray-800 dark:bg-gray-800 sm:w-72 rounded-xl lg:w-96'>
@@ -140,8 +140,8 @@
                             <div class='my-3'>
                                 <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
                             </div>
-                            <x-button href="{{ route('notes.create') }}" class='w-full' primary
-                                icon="user">{{ __('welcome.landing-5') }} </x-button>
+                            <x-button rounded href="{{ route('notes.create') }}" class='w-full h-10' primary
+                                right-icon="user">{{ __('welcome.landing-5') }} </x-button>
                         </div>
                     </main>
                 </div>
@@ -281,9 +281,9 @@
                     </div>
                     
                     <div class='flex flex-col w-full gap-2'>
-                        <x-button class='mt-8' primary icon='clipboard' href="{{ route('notes.create') }}"
-                            icon-right="plus" label="{{ __('welcome.footer-3') }}" />
-                        <x-button outline primary icon='shopping-cart'
+                        <x-button class='mt-8' primary right-icon='clipboard' href="{{ route('notes.create') }}"
+                            label="{{ __('welcome.footer-3') }}" />
+                        <x-button outline primary right-icon='shopping-cart'
                             href="{{ route('notes.post-create') }}"
                             label="{{ __('welcome.footer-4') }}" />
                     </div>

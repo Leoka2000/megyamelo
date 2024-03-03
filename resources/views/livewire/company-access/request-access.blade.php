@@ -56,7 +56,7 @@ new class extends Component {
                 class='flex flex-col items-start justify-center p-5 mb-2 bg-gray-100 rounded-md dark:bg-gray-900 md:p-12 dark:text-gray-300 '>
 
                 <p class='mb-2 text-xl font-bold text-left w-72 dark:text-gray-300'>
-                    {{ __('job.contact-job.1') }}
+                    {{ __('job.contact-job.1')}}
                 </p>
 
                 <form accept-charset="UTF-8" class='flex flex-col w-full' wire:submit.prevent="submit">

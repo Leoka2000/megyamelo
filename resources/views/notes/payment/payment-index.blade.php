@@ -5,26 +5,28 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-28">
+
 
         @foreach ($products as $product)
             <div class="max-w-2xl px-4 mx-auto space-y-4 sm:px-6 dark:text-gray-300 lg:px-16">
                 <x-button icon="arrow-left" class="mb-8"
                     href="{{ route('dashboard') }}">{{ __('paymentz.payment-02') }}</x-button>
 
-                <div class='flex flex-col gap-2 border border-gray-700 rounded-lg shadow-md shadow-black dark:text-gray-300'>
-                    <x-card >
+                <div
+                    class='flex flex-col gap-2 border border-gray-200 rounded-lg shadow-md dark:border-gray-700 dark:text-gray-300'>
+                    <x-card>
                         <x-slot name="title" class='w-full px-0'>
                             <div class='flex items-center justify-between w-full'>
                                 <p class='text-2xl italic font-bold'>
-                                    9000ft + VAT
+                                    9999,99ft + {{ __('paymentz.payment-03') }}
                                 </p>
 
                             </div>
                         </x-slot>
 
                         <div class='flex justify-start py-5'>
-                            <ul class='flex flex-col w-full gap-2 mb-4 text-sm w-80 sm:text-base'>
+                            <ul class='flex flex-col w-full gap-2 mb-4 text-sm sm:text-base'>
                                 <li class='flex items-center w-full gap-1'>
                                     <x-icon name="check" class="w-5 h-5" />{{ __('paymentz.payment-1') }}
                                 </li>
@@ -37,9 +39,6 @@
                                 <li class='flex items-center gap-1'>
                                     <x-icon name="check" class="w-5 h-5" />{{ __('paymentz.payment-4') }}
                                 </li>
-                                <li class='flex items-center gap-1'>
-                                    <x-icon name="check" class="w-5 h-5" />{{ __('paymentz.payment-5') }}
-                                </li>
                             </ul>
                         </div>
 
@@ -47,10 +46,10 @@
                         <x-slot name="footer" class="flex items-center justify-between w-full">
                             <form action="{{ route('checkout') }}" class='flex w-full'method="POST">
                                 @csrf
-                                <x-button green type='submit' spinner class='w-full' md 
+                                <x-button green type='submit' spinner class='w-full' md rounded
                                     icon='shopping-cart'>{{ __('paymentz.payment-01') }}</x-button>
                             </form>
-                           
+
                         </x-slot>
                     </x-card>
                 </div>

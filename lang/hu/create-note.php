@@ -21,19 +21,19 @@ return [
     'create-3' => 'Teljes név',
     'create-4' => 'Email',
     'create-5' => 'Egyetem',
-    'create-6' => 'Szakk',
-    'create-7' => 'Szakkterület',
+    'create-6' => 'Szak',
+    'create-7' => 'Szakterület',
     'create-8' => 'Linkedin fiókod hivatkozása (opcionális)',
     'create-9' => 'Portfoliód hivatkozása (opcionális)',
     'create-10' => 'Írj egy rövid ismertetőt magadról. Felsorolhatsz olyan dolgokat, mint például a karriercéljaid és készségeid',
     'create-11' => 'Kérjük, tölts fel egy fényképet magadról. A fájl nem lehet nagyobb, mint 1,5 MB',
-    'create-12' => 'Önéletrajz  (opcionális). A fájl nem lehet nagyobb, mint 1,5 MB',
+    'create-12' => 'Önéletrajz  (opcionális)',
     'create-13' => 'Elfogadom az',
     'create-14' => 'Általános Adatvédelmi Rendeletet',
     'create-15' => 'Készítés',
     
 
-    'note-edit.1' => 'Profil Szertesztése',
+    'note-edit.1' => 'Szertesztés',
     'note-edit.2' => 'Szerkesztés',
 
 ];

@@ -55,7 +55,7 @@ new class extends Component {
 
 <div class='inline-block dark:text-gray-300 '>
     <x-button wire:click='openModal' icon='mail' primary spinner
-        class='w-full text-indigo-500 cursor-pointer '>{{ __('show-notes.show-notes-7.4') }}</x-button>
+        class='w-full text-indigo-500 cursor-pointer '>{{ __('job.contact-job.01') }}</x-button>
 
     @if ($showModal)
         <x-modal wire:model="showModal" title="Simple Modal">

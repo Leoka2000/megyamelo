@@ -26,9 +26,9 @@ return [
     'create-7' => 'Field of expertise',
     'create-8' => 'Link to your LinkedIn (optional)',
     'create-9' => 'Link to your portfolio (optional)',
-    'create-10' => 'Write a short description of yourself. You can list things such as your career goals and skills.',
+    'create-10' => 'Write a short description of yourself. You can list things such as your career goals and skills',
     'create-11' => 'Please, upload a photo of yourself. File must not be bigger than 1.5MB',
-    'create-12' => 'Please, upload your CV  (optional). File must not be bigger than 1.5MB',
+    'create-12' => 'Please, upload your CV  (optional)',
     'create-13' => 'I accept the',
     'create-14' => 'Privacy Policy Guidelines',
     'create-15' => 'Create',
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'note-edit.1' => 'Edit your profile',
+    'note-edit.1' => 'Edit',
     'note-edit.2' => 'Edit',
 
 ];

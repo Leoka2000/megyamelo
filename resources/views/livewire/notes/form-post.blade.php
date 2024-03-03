@@ -23,6 +23,11 @@ new class extends Component {
     public $companyImage;
     public $companyLink;
     public $companyEmail;
+    public $companyModality;
+    public $companyPayment;
+    public $companyContactEmail;
+    public $companyAccept;
+    public $companyHours;
 
     public function mount()
     {
@@ -65,6 +70,12 @@ new class extends Component {
             ]);
         }
 
+        if ($this->companyImage) {
+            $validated = $this->validate([
+                'companyImage' => 'image|mimes:png,jpg,pdf|max:102400',
+            ]);
+        }
+
         if ($this->companyEmail) {
             $validated = $this->validate([
                 'companyEmail' => ['required', 'email'],
@@ -75,20 +86,23 @@ new class extends Component {
         $validated = $this->validate([
             'companyAuthor' => ['required', 'string', 'min:3'],
             'companyTitle' => ['required', 'string', 'min:3'],
-            'companyImage' => 'file|max:102400',
-            'companyDescription' => ['required', 'string', 'min:5'],
+            'companyModality' => ['required', 'string', 'min:3'],
+
+            'companyDescription' => ['required', 'string'],
+            'companyPayment' => ['required', 'string'],
+            'companyContactEmail' => ['required', 'email'],
+            'companyAccept' => ['required', 'boolean'],
+            'companyHours' => ['required', 'numeric'],
         ]);
-        // Get the current user
+        // If user created a post, take out one coin
         $user = auth()->user();
         if ($user->coins <= 0) {
             // User has insufficient coins, display modal
             $this->showPaymentModal = true;
         } else {
-            // User has enough coins, proceed with post creation
+            // Decrease the user's coins by one
             $this->authorize('create', Post::class);
             $this->showModal = false;
-
-            // Decrease the user's coins by one
             $user->coins -= 1;
             $user->save();
 
@@ -102,6 +116,12 @@ new class extends Component {
                     'apply_link' => $this->companyLink,
                     'apply_email' => $this->companyEmail,
                     'image' => $this->companyImage->store('company', 'public'),
+
+                    'modality' => $this->companyModality,
+                    'payment' => $this->companyPayment,
+                    'contact_email' => $this->companyContactEmail,
+                    'accept_terms' => $this->companyAccept,
+                    'hours' => $this->companyHours,
                 ]);
 
             $this->dialog()->show([
@@ -111,7 +131,18 @@ new class extends Component {
             ]);
         }
     }
+
+    public function modalities()
+    {
+        return ['Remote', 'On-site', 'Hybrid'];
+    }
+
+    public function payment()
+    {
+        return ['No payment', 'Payment included', 'Less than 1,850Ft / Hour', '1900Ft - 2100Ft / Hour', '2100Ft - 2300Ft / Hour', '2300Ft - 2500Ft / Hour', '2500Ft - 2700Ft / Hour', 'More than 2700Ft / Hour'];
+    }
 }; ?>
+
 
 
 
@@ -169,33 +200,57 @@ new class extends Component {
         <div class="flex flex-col gap-6">
             <x-wui-input icon='user' label="{{ __('job.post-job.2') }}" placeholder="Company ABC Kft"
                 wire:model.defer="companyAuthor" />
+            <x-wui-input label="{{ __('job.post-job.new-post-job.1') }}" icon='mail' placeholder="példa@gmail.com"
+                wire:model.defer="companyContactEmail" />
+
+            <x-wui-input right-icon="plus" class='h-52' icon='camera' class='w-full text-gray-400'
+                label="{{ __('job.post-job.7') }}" type='file' type="file" id="Profile Pic"
+                wire:model="companyImage" />
+
 
             <p class='pb-2 font-medium border-b border-gray-300 dark:border-none'>{{ __('job.post-job.3') }}</p>
             <x-wui-input icon='tag' label="{{ __('job.post-job.4') }}" placeholder="Software Engineer Part Time"
                 wire:model.defer="companyTitle" />
+            <x-wui-select icon='identification' class='z-30' placeholder="Remote"
+                label="{{ __('job.post-job.new-post-job.2') }}" wire:model.defer="companyModality" :options="$this->modalities()" />
             <div class="col-span-1 sm:col-span-2">
-                <x-wui-textarea label="{{ __('job.post-job.5') }}"
+                <x-wui-textarea class='h-52' label="{{ __('job.post-job.5') }}"
                     placeholder="We are hiring for a accounts payable intern at the Budapest office this summer, your roles will be ... you are expected to..."
                     wire:model.defer="companyDescription" />
             </div>
+
+
+
+            <x-wui-select icon='currency-dollar' class='z-30' placeholder="Payment Included"
+                label="{{ __('job.post-job.new-post-job.3') }}" wire:model.defer="companyPayment" :options="$this->payment()" />
+
             <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.6') }}" icon='link'
                     placeholder="https://example.com/apply" wire:model.defer="companyLink" />
             </div>
             <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.6.1') }}" icon='mail'
                     placeholder="azenvallalkozasom@gmail.com" wire:model.defer="companyEmail" /></div>
 
-            <div class='col-span-1'>
-
-                <x-wui-input icon='camera' class='w-full text-gray-400' label="    {{ __('job.post-job.7') }}"
-                    type='file' type="file" id="Profile Pic" wire:model.lazy="companyImage" />
+            <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.new-post-job.4') }}" icon='clock'
+                    placeholder="25" wire:model.defer="companyHours" /></div>
 
 
+
+            <div class='w-full mt-5'>
+                <div
+                    class='flex flex-col items-start justify-start w-full text-sm sm:gap-1 sm:items-center sm:flex-row '>
+                    <x-toggle primary wire:model.defer="companyAccept" />
+                    {{ __('create-note.create-13') }} <a target='_blank'
+                        href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit'
+                        class='text-indigo-500 hover:border-b border-b-indigo-500'>
+                        {{ __('welcome.footer-2.1') }}</a>
+                </div>
             </div>
         </div>
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
-                <x-button right-icon='plus' lazy wire:click="openModal" label="{{ __('job.post-job.8') }}" primary />
+                <x-button rounded right-icon='plus' class='w-full h-12 sm:w-36' lazy wire:click="openModal"
+                    label="{{ __('job.post-job.8') }}" primary />
             </div>
         </x-slot>
     </x-card>

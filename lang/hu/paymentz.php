@@ -12,6 +12,7 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
+    'payment-03' => 'ÁFA',
     'payment-02' => 'Vissza',
     'payment-01' => 'Fizetés',
     'payment-1' => 'Két hirdetés',

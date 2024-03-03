@@ -154,16 +154,16 @@ new class extends Component {
 
 
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
-        <header class='block max-w-72 '>
+        <header class='block max-w-96'>
             <div
-                class='flex max-w-full mb-16 border border-gray-100 rounded-md md:max-w-96 xl:max-w-2xl dark:border-gray-700'>
+                class='flex max-w-full mb-16 md:max-w-96 xl:max-w-3xl '>
                 <x-card title="{{ __('create-note.create-001') }}">
                     <x-slot name="action">
-                        <x-icon name="information-circle" md class="w-6 h-6 font-thin text-orange-500" />
+                        <x-icon sm name="information-circle" class="w-6 h-6 font-thin text-orange-500" />
 
                     </x-slot>
                     <div class=''>
-                        <x-button class='w-full' primary icon='user' href="{{ route('notes.create') }}"
+                        <x-button rounded sm class='w-full' primary icon='user' href="{{ route('notes.create') }}"
                             icon-right="plus" label="{{ __('welcome.footer-3') }}" />
                     </div>
                 </x-card>
@@ -171,7 +171,7 @@ new class extends Component {
             <div class='flex flex-col justify-end w-full mb-8'>
                 <x-button class='w-full mb-2 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">
                     {{ __('show-notes.show-notes-2') }}</x-button>
-                <x-native-select label='Filter by area' class='w-full shadow-'
+                <x-native-select label="{{__('show-notes.show-notes-2.1')}}" class='w-full shadow-'
                     wire:model="selectedArea" wire:change="$refresh">
                     <option value="None">{{ __('show-notes.show-notes-3') }}</option>
                     <option value="Health Sciences">{{ __('show-notes.show-notes-6.1') }}</option>
@@ -199,7 +199,7 @@ new class extends Component {
                     <div class='flex flex-col justify-center w-full pb-3'>
                         <div class='flex items-center justify-center '>
                             <div class="relative p-4 h-80 w-80" x-data="{ loaded: false }">
-                                <img x-ref="lazyImage" src="{{ asset('storage/' . $note->photo) }}"alt="profile pic"
+                                <img x-ref="lazyImage" src="{{ asset('storage/' . $note->photo) }}" alt="profile pic"
                                     title="profile image"
                                     class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl'
                                     loading="lazy" @load="loaded = true" />

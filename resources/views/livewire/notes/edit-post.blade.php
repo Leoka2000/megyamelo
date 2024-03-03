@@ -17,6 +17,12 @@ new #[Layout('layouts.app')] class extends Component {
     public $companyLink;
     public $companyEmail;
 
+    public $companyModality;
+    public $companyPayment;
+    public $companyContactEmail;
+    public $companyAccept;
+    public $companyHours;
+
     public function mount(Post $post)
     {
         $this->authorize('update', $post);
@@ -26,6 +32,12 @@ new #[Layout('layouts.app')] class extends Component {
         $this->companyDescription = $post->description;
         $this->companyLink = $post->apply_link;
         $this->companyEmail = $post->apply_email;
+
+        $this->companyContactEmail = $post->contact_email;
+        $this->companyModality = $post->modality;
+        $this->companyPayment = $post->payment;
+
+        $this->companyHours = $post->hours;
     }
 
     public function savePost()
@@ -34,6 +46,12 @@ new #[Layout('layouts.app')] class extends Component {
             'companyAuthor' => ['string', 'min:2'],
             'companyTitle' => ['string', 'min:2'],
             'companyDescription' => ['string', 'min:5'],
+
+            'companyModality' => ['required', 'string'],
+            'companyPayment' => ['required', 'string'],
+            'companyContactEmail' => ['required', 'email'],
+
+            'companyHours' => ['required', 'numeric'],
         ]);
 
         // Validate
@@ -71,12 +89,27 @@ new #[Layout('layouts.app')] class extends Component {
             'description' => $this->companyDescription,
             'apply_link' => $this->companyLink,
             'apply_email' => $this->companyEmail,
+
+            'modality' => $this->companyModality,
+            'payment' => $this->companyPayment,
+            'contact_email' => $this->companyContactEmail,
+            'hours' => $this->companyHours,
         ]);
 
         $this->dialog()->show([
             'icon' => 'success',
             'title' => 'Post saved!',
         ]);
+    }
+
+    public function modalities()
+    {
+        return ['Remote', 'On-site', 'Hybrid'];
+    }
+
+    public function payment()
+    {
+        return ['No payment', 'Payment included', 'Less than 1,850Ft / Hour', '1900Ft - 2100Ft / Hour', '2100Ft - 2300Ft / Hour', '2300Ft - 2500Ft / Hour', '2500Ft - 2700Ft / Hour', 'More than 2700Ft / Hour'];
     }
 }; ?>
 
@@ -96,6 +129,14 @@ new #[Layout('layouts.app')] class extends Component {
             <x-wui-input icon='user' label="{{ __('job.post-job.2') }}" placeholder="Company ABC Kft"
                 wire:model.defer="companyAuthor" />
 
+            <x-wui-input label="{{ __('job.post-job.new-post-job.1') }}" icon='mail' placeholder="példa@gmail.com"
+                wire:model.defer="companyContactEmail" />
+
+
+            <x-wui-input class='h-52' right-icon="plus"  icon='camera' class='w-full text-gray-400' label="{{ __('job.post-job.7') }}"
+                type='file' type="file" id="Profile Pic" wire:model="companyImage" />
+
+
             <p class='pb-2 font-medium border-b border-gray-300 dark:border-none'>{{ __('job.post-job.3') }}</p>
             <x-wui-input icon='tag' label="{{ __('job.post-job.4') }}" placeholder="Software Engineer Part Time"
                 wire:model.defer="companyTitle" />
@@ -104,23 +145,34 @@ new #[Layout('layouts.app')] class extends Component {
                     placeholder="We are hiring for a accounts payable intern at the Budapest office this summer, your roles will be ... you are expected to..."
                     wire:model.defer="companyDescription" />
             </div>
+            <div class='col-span-1'>
+                <x-wui-select icon='identification' class='z-20' placeholder="Remote"
+                    label="{{ __('job.post-job.new-post-job.2') }}" wire:model.defer="companyModality"
+                    :options="$this->modalities()" />
+            </div>
+
+            <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.new-post-job.3') }}" icon='clock'
+                    placeholder="25" wire:model.defer="companyHours" /></div>
+
+            <x-wui-select icon='currency-dollar' class='z-20' placeholder="Payment Included"
+                label="{{ __('job.post-job.new-post-job.4') }}" wire:model.defer="companyPayment" :options="$this->payment()" />
+
             <div class='col-span-1'> <x-wui-input label="{{ __('job.post-job.6') }}" icon='link'
                     placeholder="https://example.com/apply" wire:model.defer="companyLink" />
             </div>
             <div class='col-span-1'> <x-wui-input label=" {{ __('job.post-job.6.1') }}" icon='mail'
                     placeholder="azenvallalkozasom@gmail.com" wire:model.defer="companyEmail" />
             </div>
-            <div class='col-span-1'>
-                <x-wui-input icon='camera' class='w-full text-gray-400' label="{{ __('job.post-job.7') }}"
-                    type='file' type="file" id="Profile Pic" wire:model="companyImage" />
-            </div>
+
+
+
 
         </div>
 
         <x-slot name="footer">
             <div class="flex items-center justify-end gap-x-3">
 
-                <x-button icon='bookmark' wire:click="savePost" label="{{ __('job.post-job.8.1') }}" spinner="save"
+                <x-button icon='bookmark' rounded wire:click="savePost" class='w-full h-12 sm:w-48' label="{{ __('job.post-job.8.1') }}" spinner="save"
                     primary />
 
             </div>

@@ -6,7 +6,6 @@ use App\Mail\ContactFormMail;
 use WireUi\Traits\Actions;
 
 new class extends Component {
-
     use Actions;
     public $showModal = false;
     public $name;
@@ -34,7 +33,7 @@ new class extends Component {
 
         $this->showModal = false;
 
-      $this->dialog()->show([
+        $this->dialog()->show([
             'icon' => 'success',
             'title' => 'Message sent!',
             'description' => 'Your message was successfully sent',
@@ -43,7 +42,10 @@ new class extends Component {
 }; ?>
 
 <div>
-    <x-button.circle icon='inbox' sm outline wire:click="openModal" />
+    <div class='flex flex-col items-center justify-center gap-0'>
+        <x-button.circle icon='inbox' sm outline wire:click="openModal" />
+        <p class="text-xs text-center text-gray-500 max-w-24 dark:text-gray-400"> {{__('job.contact-job.02')}} </p>
+    </div>
 
     @if ($showModal)
         <x-modal wire:model="showModal" class="" title="Simple Modal">

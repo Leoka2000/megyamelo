@@ -20,18 +20,18 @@
                 </div>
     @auth
 
-        <x-button primary icon='arrow-right' href="{{ url('dashboard') }}" 
-           sm class="font-semibold text-gray-300 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+        <x-button rounded primary right-icon='arrow-right ' href="{{ url('dashboard') }}" 
+           sm class="font-semibold text-gray-300 md:w-52 md:h-10 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
             wire:navigate>Dashboard</x-button>
     @else
         <div class='flex'>
-            <x-button primary icon='arrow-right' href="{{ route('notes.create') }}"
-              sm  class="font-semibold text-gray-300 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+            <x-button rounded primary right-icon='arrow-right' href="{{ route('notes.create') }}"
+              sm  class="font-semibold text-gray-300 md:w-52 md:h-10 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                 wire:navigate> {{__('nav.nav-login')}} </x-button>
 
             @if (Route::has('register'))
-                <x-button outline icon='clipboard' primary href="{{ route('register') }}" 
-                    sm class="font-semibold text-gray-300 ms-4 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                <x-button rounded outline right-icon='clipboard' primary href="{{ route('register') }}" 
+                    sm class="font-semibold text-gray-300 md:h-10 md:w-52 ms-4 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                     wire:navigate>{{__('nav.nav-register')}} </x-button>
             @endif
         </div>

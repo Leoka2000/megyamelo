@@ -19,6 +19,7 @@ return [
 
     'show-notes-1' => 'Álláskeresők',
     'show-notes-2' => 'Vissza',
+    'show-notes-2.1' => 'Szűrés',
     'show-notes-3' => 'Minden szakkterületek',
     'show-notes-4' => 'Terület:',
     'show-notes-5' => 'Egyetem:',
@@ -46,7 +47,7 @@ return [
     */
 
     'show-notes-7.1' => 'Önéletrajz',
-    'show-notes-7.2' => 'Szakkom:',
+    'show-notes-7.2' => 'Szakom:',
     'show-notes-7.3' => 'Rólam:',
     'show-notes-7.4' => 'Lépj velem kapcsolatba',
   

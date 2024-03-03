@@ -12,6 +12,7 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
+    'payment-03' => 'VAT',
     'payment-02' => 'Back',
     'payment-01' => 'Payment',
     'payment-1' => 'Two advertisements',
