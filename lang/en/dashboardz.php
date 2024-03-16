@@ -26,7 +26,7 @@ return [
     'dashboardz-2' => 'on the',
     'dashboardz-3' => 'Create post',
     'dashboardz-4' => 'section your company will be able to create a job advertisement for people to see.',
-    'dashboardz-5' => ' Send me a message through',
+    'dashboardz-5' => 'Send us a message through',
     'dashboardz-6' => 'this link,',
     'dashboardz-7' => 'to request for admin access to our platform to start posting advertisements',
 

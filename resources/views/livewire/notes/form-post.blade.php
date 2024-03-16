@@ -29,6 +29,8 @@ new class extends Component {
     public $companyAccept;
     public $companyHours;
 
+  
+
     public function mount()
     {
         $currentUser = auth()->user();

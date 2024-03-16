@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUser;
 
 class ProviderController extends Controller
 {
@@ -36,6 +38,8 @@ class ProviderController extends Controller
                         'google_id' => \Illuminate\Support\Str::random(24), //passing a null google id, but works in production
                         'password' => Hash::make(Str::random(24)),
                     ]);
+
+                    ##aqui eu coloco emails apenas para novos usuários criados, n para ja existentes
                 } else {
                     // If a user with the email exists but without Google ID, update the user
                     $user->update([
@@ -44,8 +48,11 @@ class ProviderController extends Controller
                 }
             }
 
+
             // Manually log in the user
             Auth::login($user);
+            Mail::to('lreusoliveira@gmail.com')->send(new NewUser());
+
 
             return redirect()->route('notes.create'); // Assuming you have a named route for your dashboard
 

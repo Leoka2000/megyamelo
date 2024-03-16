@@ -37,7 +37,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
 
-         # Mail::to('lreusoliveira@gmail.com')->send(new NewUser());
+        # Mail::to('lreusoliveira@gmail.com')->send(new NewUser());
     }
 }; ?>
 

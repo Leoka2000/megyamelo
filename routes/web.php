@@ -32,6 +32,10 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth'])
     ->name('notes.index');
 
+    Route::view('emily-natsumi', 'notes.natsumi')
+    ->middleware(['auth'])
+    ->name('notes.natsumi');
+
     Route::view('show-jobs', 'notes.jobs')
     ->middleware(['auth'])
     ->name('notes.jobs');

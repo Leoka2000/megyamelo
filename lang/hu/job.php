@@ -53,7 +53,7 @@ return [
     */
 
   'create-job.1' => 'CÉGEKNEK:',
-  'create-job.2' => 'Úgy tűnik, még nem vagy partner. Küldj nekem egy üzenetet',
+  'create-job.2' => 'Úgy tűnik, még nem vagy partner. Küldj nekünk egy üzenetet',
   'create-job.3' => 'linken keresztül',
   'create-job.4' => 'az adminisztrációs hozzáférés kéréséhez a platformunkhoz, hogy elkezdhess hirdetéseket közzétenni.',
 

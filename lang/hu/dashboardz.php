@@ -26,7 +26,7 @@ return [
     'dashboardz-2' => 'Az',
     'dashboardz-3' => 'Álláshirdetés létrehozása',
     'dashboardz-4' => 'szakaszban a vállalata hirdetést készíthet az emberek számára.',
-    'dashboardz-5' => 'Küldj nekem üzenetet',
+    'dashboardz-5' => 'Küldj nekünk üzenetet',
     'dashboardz-6' => 'ezen a linken,',
     'dashboardz-7' => 'hogy kérj adminisztrátori hozzáférést a platformunkhoz, és elkezdhess hirdetéseket közzétenni.',
 

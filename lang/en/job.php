@@ -53,7 +53,7 @@ return [
     */
 
     'create-job.1' => 'For companies:',
-    'create-job.2' => 'Apparently, you are not a partner yet. Send me a message',
+    'create-job.2' => 'Apparently, you are not a partner yet. Send us a message',
     'create-job.3' => 'this link',
     'create-job.4' => 'to request for admin access to our platform to start posting advertisements',
 
