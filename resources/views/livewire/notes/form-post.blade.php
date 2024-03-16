@@ -16,7 +16,7 @@ new class extends Component {
     public $showModal = false;
     public $showPaymentModal = false;
     public $showPermanentModal = false;
-
+ 
     public $companyAuthor;
     public $companyTitle;
     public $companyDescription;
