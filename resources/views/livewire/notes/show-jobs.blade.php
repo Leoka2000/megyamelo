@@ -146,7 +146,7 @@ new class extends Component {
                                     {{ $job->created_at->format('Y-m-d') }}
                                 </p>
                             </div>
-                            <p class='w-full text-sm break-words sm:text-sm'> {{ $job->description }} </p>
+                            <p class='w-full text-sm break-words sm:text-sm'>{!! nl2br(e($job->description)) !!} </p>
                         </div>
 
                         <div class='flex flex-col items-center justify-center gap-2 mt-5 mb-2 sm:flex-row lg:gap-4'>

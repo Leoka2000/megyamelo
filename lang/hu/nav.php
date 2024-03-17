@@ -24,4 +24,6 @@ return [
     'nav-login' => 'Bejelentkezés',
     'nav-register' => 'Regisztráció',
     'nav-logout' => 'Kijelentkezés',
+
+    'nav-enter' => 'Belépés',
 ];

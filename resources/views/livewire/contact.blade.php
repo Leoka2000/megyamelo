@@ -62,6 +62,7 @@ new class extends Component {
                     <!-- Correct order of form inputs -->
                     <label for="name">Your name:</label>
                     <x-wui-input type="text" id="name" wire:model.defer="name" />
+                    
                     <label for="email">Your email:</label>
                     <x-wui-input type="text" id="email" wire:model.defer="email" />
 

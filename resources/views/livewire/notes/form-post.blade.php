@@ -154,7 +154,7 @@ new class extends Component {
 
         @if ($showModal)
             <x-modal wire:model="showModal" title="Simple Modal">
-                <div class='flex flex-col h-auto gap-2 p-4 bg-gray-100 sm:p-12 dark:bg-gray-900 w-96 rounded-xl '>
+                <div class='flex flex-col h-auto gap-2 p-4 bg-gray-100 dark:text-gray-300 sm:p-12 dark:bg-gray-900 w-96 rounded-xl '>
                     <p class='mb-4 sm:text-base'> {{ __('job.create-modal.1') }}</p>
                     <x-button outlined icon='arrow-left'
                         wire:click="closeModal">{{ __('show-notes.show-notes-2') }}</x-button>

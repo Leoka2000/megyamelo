@@ -22,7 +22,7 @@
 
         <x-button rounded primary right-icon='arrow-right ' href="{{ url('dashboard') }}" 
            sm class="font-semibold text-gray-300 md:w-52 md:h-10 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-            wire:navigate>Dashboard</x-button>
+            wire:navigate>{{__('nav.nav-enter')}}</x-button>
     @else
         <div class='flex'>
             <x-button rounded primary right-icon='arrow-right' href="{{ route('notes.create') }}"

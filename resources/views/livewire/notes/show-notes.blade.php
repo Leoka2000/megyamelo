@@ -154,6 +154,7 @@ new class extends Component {
 
 
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
+    <livewire:notes.news />
         <header class='block max-w-96'>
             <div
                 class='flex max-w-full mb-16 md:max-w-96 xl:max-w-3xl '>
@@ -237,8 +238,8 @@ new class extends Component {
                                             class='text-sm font-normal dark:text-gray-400'>{{ $note->area }}
                                         </span>
                                     </p>
-                                    <p class="text-sm font-bold">{{ __('show-notes.show-notes-5') }} <span
-                                            class="text-sm font-normal dark:text-gray-400 ">{{ $note->university }}</span>
+                                    <p class="text-sm font-bold"> {{ __('show-notes.show-notes-5') }} <span
+                                            class="text-sm font-normal dark:text-gray-400 ">{{ $note->degree }}</span>
                                     </p>
                                 </div>
                                 <div class='flex justify-end w-full gap-4'>
@@ -247,9 +248,7 @@ new class extends Component {
                                     @can('delete', $note)
                                         <x-button.circle icon="trash" red outline
                                             wire:click="openModal('{{ $note->id }}')"></x-button.circle>
-                                    @else
-                                        <x-button.circle icon="trash"
-                                            wire:click="delete('{{ $note->id }}')"></x-button.circle>
+                                   
                                     @endcan
                                 </div>
                             </div>

@@ -25,7 +25,7 @@
 
         <main class="flex flex-col items-center justify-center w-full mx-auto ">
             <section
-                class='relative flex items-center justify-center w-full border-b border-gray-800 py-60 sm:pt-52 sm:pb-64 dark:bg-gray-900'>
+                class='relative flex items-center justify-center w-full px-2 border-b border-gray-800 py-60 sm:pt-32 sm:pb-64 dark:bg-gray-900'>
                 <div class="flex flex-col justify-center text-center">
                     <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full'
                         wire:navigate>
@@ -35,8 +35,23 @@
                         </div>
                     </a>
                     <p class='text-2xl italic text-gray-300 md:text-3xl'>{{ __('welcome.hero_slogan') }}</p>
-                    <x-button rounded icon='arrow-right' class='mt-8' href="{{ route('notes.create') }}" primary lg
+                    <x-button rounded icon='arrow-right' class='mt-8 h-14' href="{{ route('notes.create') }}" primary lg
                         icon-right="plus">{{ __('welcome.landing-5') }}</x-button>
+
+                    <div class='mt-20'>
+                        <x-card>
+                            <a class='flex items-center justify-center gap-1 mb-4' href='https://hajdupress.hu/cikk/new-english-language-job-searching-platform-for-university-students' target='_blank'>
+                                <h1 class="text-xl text-indigo-500 cursor-pointer md:text-4xl " > WE ARE ON THE NEWS!!</h1><x-button.circle icon="eye" primary> </x-button.circle>
+                            </a>
+                            <div class='max-w-3xl'>
+                                <a class='cursor-pointer'
+                                    href='https://hajdupress.hu/cikk/new-english-language-job-searching-platform-for-university-students'
+                                    target="_blank">
+                                    <img src="{{ asset('newsimage.jpeg') }}">
+                                </a>
+                            </div>
+                        </x-card>
+                    </div>
 
                 </div>
                 <span class='absolute overflow-hidden -z-0 w-52 sm:-top-24 sm:-right-0 -right-0 -top-40'
@@ -68,6 +83,15 @@
                 </span>
 
             </section>
+
+            {{-- SECTION BREAK --}}
+            {{-- SECTION BREAK --}}
+            {{-- SECTION BREAK --}}
+            {{-- SECTION BREAK --}}
+
+
+
+
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
@@ -262,8 +286,8 @@
                 <div class="flex flex-col items-center justify-center pb-4 text-center md:w-96">
                     <a href="{{ route('dashboard') }}" wire:navigate>
                         <div class='flex items-center justify-center mt-2 w-44'>
-                            <img class='object-cover w-full h-full rounded-md opacity-90' src="{{ asset('logo.png') }}"
-                                alt="logo" title="logo" />
+                            <img class='object-cover w-full h-full rounded-md opacity-90'
+                                src="{{ asset('logo.png') }}" alt="logo" title="logo" />
                         </div>
                     </a>
 
@@ -273,18 +297,17 @@
                             href='https://docs.google.com/document/d/1Z3cOg7KyUTWwPHxmVul73IqPZxmYqqHq31vYuj-WmRM/edit'
                             target='_value'> {{ __('welcome.footer-2') }} </a>
                     </div>
-                     <div class='w-full text-sm ms:text-base dark:text-gray-300'>
+                    <div class='w-full text-sm ms:text-base dark:text-gray-300'>
                         {{ __('welcome.footer-1') }} <a
                             class='text-indigo-600 hover:border-b-indigo-600 hover:border-b'
                             href='https://docs.google.com/document/d/1kIyryix2maBfMEm3BJUJltVEL0fZh6Cm4pZxTPxzVeM/edit'
                             target='_value'> {{ __('welcome.footer-2.1') }} </a>
                     </div>
-                    
+
                     <div class='flex flex-col w-full gap-2'>
                         <x-button class='mt-8' primary right-icon='clipboard' href="{{ route('notes.create') }}"
                             label="{{ __('welcome.footer-3') }}" />
-                        <x-button outline primary right-icon='shopping-cart'
-                            href="{{ route('notes.post-create') }}"
+                        <x-button outline primary right-icon='shopping-cart' href="{{ route('notes.post-create') }}"
                             label="{{ __('welcome.footer-4') }}" />
                     </div>
                 </div>

@@ -22,7 +22,7 @@ return [
     'show-notes-2.1' => 'Szűrés',
     'show-notes-3' => 'Minden szakkterületek',
     'show-notes-4' => 'Terület:',
-    'show-notes-5' => 'Egyetem:',
+    'show-notes-5' => 'Szak:',
     
    
  

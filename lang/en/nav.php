@@ -22,6 +22,8 @@ return [
     'nav-register' => 'Register',
     'nav-logout' => 'Log out',
 
+    'nav-enter' => 'Enter',
+
 
   
 
