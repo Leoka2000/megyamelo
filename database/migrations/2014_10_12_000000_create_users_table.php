@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->default(''); // leave here so google auth works
             $table->timestamp('email_verified_at')->nullable();
             $table->string('google_id')->nullable();
+            $table->string('referral_code')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();

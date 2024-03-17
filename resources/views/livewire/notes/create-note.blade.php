@@ -63,11 +63,15 @@ new class extends Component {
             'email' => ['required', 'email'],
         ]);
 
-        $referral = $this->generateReferralCode();
+        $this->referral = $this->generateReferralCode(); // Assign $referral here
 
-        Mail::to('megymelo4@gmail.com')->send(new Referral($validatedData['name'], $validatedData['email'], $referral));
+        Mail::to('megymelo4@gmail.com')->send(new Referral($validatedData['name'], $validatedData['email'], $this->referral));
 
-        Mail::to($validatedData['email'])->send(new Referral($validatedData['name'], $validatedData['email'], $referral));
+        Mail::to($validatedData['email'])->send(new Referral($validatedData['name'], $validatedData['email'], $this->referral));
+
+        auth()->user()->update(['referral_code' => $this->referral]); // Update referral code for the authenticated user
+
+       
 
         $this->dispatch('Message successfully sent!');
     }
@@ -246,8 +250,9 @@ new class extends Component {
                                     class='text-indigo-600 border-b border-b-indigo-600 pointer'>To know more about her,
                                     click
                                     here</a>
-                                <br />  <br />
-                                Alternatively, if you invite five friends, you and a friend of your choice will get a free review on your CV, LinkedIn, and cover letter
+                                <br /> <br />
+                                Alternatively, if you invite five friends, you and a friend of your choice will get a
+                                free review on your CV, LinkedIn, and cover letter
                             </p>
 
                             <form accept-charset="UTF-8" class='flex flex-col w-full mt-10'
@@ -269,7 +274,7 @@ new class extends Component {
                             </form>
                             <x-slot name="footer">
                                 <div class="relative flex flex-col justify-center gap-2 mx-4">
-                                    <x-action-message class="text-center text-green-500 text-md"
+                                    <x-action-message class="text-center text-green-500 dark:text-green-400 text-md"
                                         on="Message successfully sent!" />
                                     <x-button teal rounded class='h-12 sm:w-full' wire:click='submitEmail'
                                         spinner="submitEmail" right-icon='mail' label="Submit referral request" />

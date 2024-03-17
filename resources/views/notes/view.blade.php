@@ -1,12 +1,16 @@
 <x-app-layout>
- <x-slot name="header">
+    <x-slot name="header">
         <h2 class="text-base font-semibold leading-tight text-gray-800 sm:text-xl dark:text-gray-200">
-      {{ $note->name }}
+            {{ $note->name }}
         </h2>
     </x-slot>
     <div class='flex flex-col items-center justify-center px-4 pt-10'>
-       
+        <div class="flex justify-start w-full">
+             <x-button icon="arrow-left" class="mt-12" href="{{ route('dashboard') }}">
+                {{ __('create-note.create-1') }}</x-button>
+        </div>
         <main class='flex flex-col justify-center gap-6 pt-12 pb-32 md:flex-row'>
+       
             <div
                 class='flex flex-col items-start w-full gap-4 bg-white shadow-md dark:shadow-lg dark:text-gray-300 md:max-w-96 rounded-2xl dark:bg-gray-950'>
                 <div class='w-full px-6 pb-6 sm:w-3/4 md:w-full'>
@@ -37,7 +41,8 @@
 
                 </div>
             </div>
-            <div class='flex flex-col w-full bg-white shadow-md dark:text-gray-300 dark:shadow-lg rounded-2xl dark:bg-gray-950 md:w-8/12'>
+            <div
+                class='flex flex-col w-full bg-white shadow-md dark:text-gray-300 dark:shadow-lg rounded-2xl dark:bg-gray-950 md:w-8/12'>
                 <div class='flex flex-col items-start gap-4 p-6 '>
                     <div>
                         <a class='flex flex-row items-center justify-center gap-3 text-base 2xl:text-3xl lg:text-xl'

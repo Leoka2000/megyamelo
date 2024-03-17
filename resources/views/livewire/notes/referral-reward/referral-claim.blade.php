@@ -32,11 +32,15 @@ new class extends Component {
             'typeReward' => ['required', 'string'],
         ]);
 
+         
+
         Mail::to('megymelo4@gmail.com')->send(new ReferralReward($validatedData['name'], $validatedData['email'], $validatedData['referral'], $validatedData['typeReward']));
 
         Mail::to($validatedData['email'])->send(new ReferralReward($validatedData['name'], $validatedData['email'], $validatedData['referral'], $validatedData['typeReward']));
 
         $this->dispatch('Message successfully sent!');
+
+        
     }
 
     public function typeReward()

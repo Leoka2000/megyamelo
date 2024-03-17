@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'referral_code', // EXTREMELLY IMPORTANT!!!
+        'google_id',  // EXTREMELLY IMPORTANT!!!
     ];
 
     /**
