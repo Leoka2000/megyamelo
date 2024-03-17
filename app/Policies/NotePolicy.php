@@ -41,7 +41,7 @@ class NotePolicy
             if ($numberNotes >= 1) {
                 // Display an error message to the user
                 
-                Log::info('You cannot create more than oone BIIITCH!');
+                Log::info('');
                 throw new \Illuminate\Auth\Access\AuthorizationException('You can not create more than one profile.');
                 return false;
                 

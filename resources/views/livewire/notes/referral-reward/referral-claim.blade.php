@@ -4,6 +4,8 @@ use Livewire\Volt\Component;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReferralReward;
+use App\Models\User; // Import the User model
+use App\Models\Note;
 
 new class extends Component {
     use Actions;
@@ -12,15 +14,37 @@ new class extends Component {
     public $email;
     public $referral;
     public $typeReward;
+    public $allowModal = false;
+    public $user;
+
+    public function mount()
+    {
+        $this->user = auth()->user(); // Get currently logged in user
+    }
 
     public function openModal()
     {
-        $this->showModal = true;
+        $referralCount = Note::where('referral', $this->user->referral_code)->count();
+
+        if ($referralCount >= 3) {
+            $this->showModal = true;
+        } else {
+            $this->openAllowModal();
+        }
     }
 
     public function closeModal()
     {
         $this->showModal = false;
+    }
+    public function openAllowModal()
+    {
+        $this->allowModal = true;
+    }
+
+    public function closeAllowModal()
+    {
+        $this->allowModal = false;
     }
 
     public function submit()
@@ -32,15 +56,11 @@ new class extends Component {
             'typeReward' => ['required', 'string'],
         ]);
 
-         
-
-        Mail::to('megymelo4@gmail.com')->send(new ReferralReward($validatedData['name'], $validatedData['email'], $validatedData['referral'], $validatedData['typeReward']));
+        #Mail::to('megymelo4@gmail.com')->send(new ReferralReward($validatedData['name'], $validatedData['email'], $validatedData['referral'], $validatedData['typeReward']));
 
         Mail::to($validatedData['email'])->send(new ReferralReward($validatedData['name'], $validatedData['email'], $validatedData['referral'], $validatedData['typeReward']));
 
         $this->dispatch('Message successfully sent!');
-
-        
     }
 
     public function typeReward()
@@ -114,6 +134,17 @@ new class extends Component {
                 </form>
 
             </div>
+        </x-modal>
+    @endif
+
+    @if ($allowModal)
+        <x-modal blur wire:model.defer="allowModal">
+            <x-card>
+                <main class='flex flex-col items-center justify-center p-6 sm:py-24'>
+                <x-badge.circle negative icon="x" />
+                    <p>You can't claim your prize because you have not referred three friends yet </p> 
+                </main>
+            </x-card>
         </x-modal>
     @endif
 </div>

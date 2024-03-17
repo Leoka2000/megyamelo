@@ -51,7 +51,7 @@ class ProviderController extends Controller
 
             // Manually log in the user
             Auth::login($user);
-            Mail::to('lreusoliveira@gmail.com')->send(new NewUser());
+           
 
 
             return redirect()->route('notes.create'); // Assuming you have a named route for your dashboard

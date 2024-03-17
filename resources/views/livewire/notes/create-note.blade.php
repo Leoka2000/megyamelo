@@ -282,8 +282,6 @@ new class extends Component {
                             </x-slot>
                         </div>
                     </x-card>
-
-
                 </div>
                 <div>
                     <livewire:notes.referral-reward.referral-claim />

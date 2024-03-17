@@ -30,6 +30,7 @@ class NoteFactory extends Factory
             'heart_count' => $this->faker->numberBetween(0, 100),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'referral' => 'L4WouueSNhAzw3o',
         ];
     }
 }

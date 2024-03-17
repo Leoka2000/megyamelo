@@ -16,7 +16,8 @@
             </x-modal>
         </div>
     @endif
-<livewire:notes.news />
+{{-- <livewire:notes.news /> --}}
+<livewire:test />
     <div class="py-20">
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
             <main
