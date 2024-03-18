@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\Auth\ProviderController;
+use App\Http\Controllers\CookiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,49 +21,50 @@ use App\Http\Controllers\Auth\ProviderController;
 
 Route::view('/', 'welcome');
 
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-    
-    Route::view('create-profile', 'notes.create')
+
+Route::view('create-profile', 'notes.create')
     ->middleware(['auth'])
     ->name('notes.create');
 
-    Route::view('students-list', 'notes.index')
+Route::view('students-list', 'notes.index')
     ->middleware(['auth'])
     ->name('notes.index');
 
-    Route::view('emily-natsumi', 'notes.natsumi')
+Route::view('emily-natsumi', 'notes.natsumi')
     ->middleware(['auth'])
     ->name('notes.natsumi');
 
-    Route::view('show-jobs', 'notes.jobs')
+Route::view('show-jobs', 'notes.jobs')
     ->middleware(['auth'])
     ->name('notes.jobs');
 
-    Route::get('/language/{locale}', function ($locale) {
-        if (array_key_exists($locale, config('app.supported_locales'))) {
-            session()->put('locale', $locale);
-        }
-    
-        return redirect()->back();
-    })->name('locale');
+Route::get('/language/{locale}', function ($locale) {
+    if (array_key_exists($locale, config('app.supported_locales'))) {
+        session()->put('locale', $locale);
+    }
 
-    Route::get('/auth/google/redirect', [ProviderController::class, 'redirect'] )->name('google-auth');
-Route::get('/auth/google/callback', [ProviderController::class, 'callbackGoogle'] );
+    return redirect()->back();
+})->name('locale');
 
-
+Route::get('/auth/google/redirect', [ProviderController::class, 'redirect'])->name('google-auth');
+Route::get('/auth/google/callback', [ProviderController::class, 'callbackGoogle']);
 
 
-    Route::get('/payment', [ProductController::class, 'index'])->name('notes.payment.payment-index');
-                                                      //checkout method here(checkoutfunction)
-    Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
-    Route::get('/success', [ProductController::class, 'success'])->name('notes.payment.checkout-success');
+
+
+Route::get('/payment', [ProductController::class, 'index'])->name('notes.payment.payment-index');
+//checkout method here(checkoutfunction)
+Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+Route::get('/success', [ProductController::class, 'success'])->name('notes.payment.checkout-success');
 Route::get('/cancel', [ProductController::class, 'cancel'])->name('notes.payment.checkout-cancel');
 Route::post('/webhook', [ProductController::class, 'webhook'])->name('checkout.webhook');
 
 
-    Route::view('create-post', 'notes.post-create')
+Route::view('create-post', 'notes.post-create')
     ->middleware(['auth'])
     ->name('notes.post-create');
 
@@ -70,20 +72,25 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-    Volt::route('profile/{note}/edit', 'notes.edit-note')
+Volt::route('profile/{note}/edit', 'notes.edit-note')
     ->middleware(['auth'])
     ->name('notes.edit');
 
 
-    Volt::route('post/{post}/edit', 'notes.edit-post')
+Volt::route('post/{post}/edit', 'notes.edit-post')
     ->middleware(['auth'])
     ->name('notes.edit-post');
 
-    Route::get('note/{note}', function (Note $note) {
-    
-        $user = $note->user;
-    
-        return view('notes.view', ['note' => $note, 'user' => $user]);
-    })->name('notes.view');
+Route::get('note/{note}', function (Note $note) {
 
-require __DIR__.'/auth.php';
+    $user = $note->user;
+
+    return view('notes.view', ['note' => $note, 'user' => $user]);
+})->name('notes.view');
+
+require __DIR__ . '/auth.php';
+
+
+Route::get('/set-cookie', [CookiesController::class, 'setCookie']);
+Route::get('/get-cookie', [CookiesController::class, 'getCookie']);
+Route::get('/del-cookie', [CookiesController::class, 'delCookie']);

@@ -31,13 +31,14 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @cookieconsentscripts
     <wireui:scripts />
    
 
 </head>
 
 <body x-data="themeSwitcher()"  :class="{ 'dark': switchOn } relative">
-
+@cookieconsentview
     <x-notifications z-index="z-50" />
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <livewire:layout.navigation />

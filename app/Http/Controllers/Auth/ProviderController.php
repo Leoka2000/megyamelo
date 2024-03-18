@@ -54,7 +54,7 @@ class ProviderController extends Controller
            
 
 
-            return redirect()->route('notes.create'); // Assuming you have a named route for your dashboard
+            return redirect()->route('dashboard'); // Assuming you have a named route for your dashboard
 
         } catch (ClientException $e) {
             error_log($e);

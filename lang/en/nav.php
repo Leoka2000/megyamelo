@@ -16,7 +16,7 @@ return [
     'nav-subscribe' => 'Subscribe',
     'nav-job-seekers' => 'Job seekers',
     'nav-job-list' => 'Job list',
-    'nav-create-post' => 'Create post',
+    'nav-create-post' => 'For companies',
 
     'nav-login' => 'Log in',
     'nav-register' => 'Register',

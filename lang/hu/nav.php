@@ -19,7 +19,7 @@ return [
     'nav-subscribe' => 'Feliratkozás',
     'nav-job-seekers' => 'Álláskeresők',
     'nav-job-list' => 'Állások',
-    'nav-create-post' => 'Álláshirdetés készítése',
+    'nav-create-post' => 'Cégeknek',
 
     'nav-login' => 'Bejelentkezés',
     'nav-register' => 'Regisztráció',

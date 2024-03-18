@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Whitecube\LaravelCookieConsent\Consent;
+use Whitecube\LaravelCookieConsent\Facades\Cookies;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Cookies::essentials()
+        ->session()
+        ->csrf();
+
+        Cookies::optional()
+        ->name('darkmode_enabled')
+        ->description("This cookie reminds you to see your preferences with its management")
+        ->duration(120)
+        ->accepted(fn(Consent $consent, MyDarkmode $darkmode)=>$consent->cookie(value: $darkmode->getDefaultValue()));
     }
 }

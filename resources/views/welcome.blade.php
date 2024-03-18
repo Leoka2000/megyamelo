@@ -14,9 +14,11 @@
     <wireui:scripts />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @cookieconsentscripts --}}
 </head>
 
 <body class="antialiased dark dark:bg-gray-900">
+{{-- @cookieconsentview --}}
     <div
         class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-indigo-600 selection:text-white">
         @if (Route::has('login'))
