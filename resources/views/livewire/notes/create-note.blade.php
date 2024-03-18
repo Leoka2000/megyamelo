@@ -65,7 +65,6 @@ new class extends Component {
 
         $this->referral = $this->generateReferralCode(); // Assign $referral here
 
-        Mail::to('megymelo4@gmail.com')->send(new Referral($validatedData['name'], $validatedData['email'], $this->referral));
 
         Mail::to($validatedData['email'])->send(new Referral($validatedData['name'], $validatedData['email'], $this->referral));
 

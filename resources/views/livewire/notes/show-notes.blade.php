@@ -154,7 +154,7 @@ new class extends Component {
 
 
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
-    <livewire:notes.news />
+    
         <header class='block max-w-96'>
             <div
                 class='flex max-w-full mb-16 md:max-w-96 xl:max-w-3xl '>
@@ -259,7 +259,7 @@ new class extends Component {
                 </div>
                 @if ($showModal)
                     <x-modal wire:model="showModal" class="" title="Simple Modal">
-                        <div class='flex flex-col h-auto gap-2 p-12 bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                        <div class='flex flex-col h-auto gap-2 p-12 bg-gray-300 dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
                             <p class='mb-4 sm:text-base'>Are you sure you want to delete the profile?</p>
                             <x-button primary icon='arrow-left' wire:click="closeModal">Back</x-button>
                             <x-button flat negative outline icon='trash'

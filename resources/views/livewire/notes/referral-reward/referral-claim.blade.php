@@ -24,13 +24,7 @@ new class extends Component {
 
     public function openModal()
     {
-        $referralCount = Note::where('referral', $this->user->referral_code)->count();
-
-        if ($referralCount >= 3) {
-            $this->showModal = true;
-        } else {
-            $this->openAllowModal();
-        }
+           $this->showModal = true;
     }
 
     public function closeModal()
@@ -137,14 +131,5 @@ new class extends Component {
         </x-modal>
     @endif
 
-    @if ($allowModal)
-        <x-modal blur wire:model.defer="allowModal">
-            <x-card>
-                <main class='flex flex-col items-center justify-center p-6 sm:py-24'>
-                <x-badge.circle negative icon="x" />
-                    <p>You can't claim your prize because you have not referred three friends yet </p> 
-                </main>
-            </x-card>
-        </x-modal>
-    @endif
+    
 </div>
