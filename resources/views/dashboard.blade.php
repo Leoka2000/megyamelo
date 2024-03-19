@@ -84,7 +84,7 @@
                         <h1 class='text-lg'>{{ __('welcome.landing-2') }}
                         </h1>
                     </div>
-                    <div class='flex flex-col gap-3'>
+                    <div class='flex flex-col gap-2'>
                         <x-button rounded class='w-full h-12' href="{{ route('notes.post-create') }}" primary
                             icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
 

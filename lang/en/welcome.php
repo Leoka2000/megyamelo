@@ -23,7 +23,7 @@ return [
     */
   
     'landing-1' => 'Check out some of the things we do to make people closer to the hungarian job market',
-    'landing-2' => 'Are you a company or an individual and need someone to hire for an internship or job?',
+    'landing-2' => 'Are you a company and need someone to hire for an internship or job?',
     'landing-3' => 'Make a job post',
     'landing-3.1' => 'Hire talended individuals',
     'landing-4' => 'Are you a student or graduate looking to apply for a job?',
