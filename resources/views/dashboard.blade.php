@@ -8,7 +8,8 @@
     @if (session('success'))
         <div class="alert alert-success">
             <x-modal wire:model="showModal" class="" title="Simple Modal">
-                <div class='flex flex-col h-auto gap-2 p-12 bg-white dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                <div
+                    class='flex flex-col h-auto gap-2 p-12 bg-white dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
                     <x-badge positive class='h-10 mb-2' lg icon="check" />
                     <p class='mb-1 font-bold sm:text-base'>Message sent!</p>
                     <p class='sm:text-base'>We will reply soon with instructions on partnering with us</p>
@@ -16,8 +17,8 @@
             </x-modal>
         </div>
     @endif
-{{-- <livewire:notes.news /> --}}
-<livewire:test />
+    {{-- <livewire:notes.news /> --}}
+    <livewire:test />
     <div class="py-20">
         <div class="px-4 mx-auto max-w-7xl lg:px-8">
             <main
@@ -45,13 +46,13 @@
 
                     <div class='my-3'>
                         <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
-                     
+
                     </div>
-                    <x-button href="{{ route('notes.create') }}" class='w-full h-12' primary
-                        rounded icon="user">{{ __('welcome.landing-5') }} </x-button>
+                    <x-button href="{{ route('notes.create') }}" class='w-full h-12' primary rounded
+                        icon="user">{{ __('welcome.landing-5') }} </x-button>
                 </div>
                 <div
-                    class='flex flex-col justify-between w-full px-6 py-10 bg-white border shadow-md h-96 dark:border-gray-800 dark:shadow-black dark:bg-gray-800 rounded-xl lg:w-96'>
+                    class='flex flex-col justify-between w-full h-auto px-6 py-10 bg-white border shadow-md sm:h-96 dark:border-gray-800 dark:shadow-black dark:bg-gray-800 rounded-xl lg:w-96'>
                     <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_4014_33508)">
@@ -83,8 +84,13 @@
                         <h1 class='text-lg'>{{ __('welcome.landing-2') }}
                         </h1>
                     </div>
-                    <x-button rounded class='w-full h-12' href="{{ route('notes.post-create') }}" primary
-                        icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
+                    <div class='flex flex-col gap-3'>
+                        <x-button rounded class='w-full h-12' href="{{ route('notes.post-create') }}" primary
+                            icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
+
+                        <x-button rounded class='w-full h-12' href="{{ route('notes.index') }}" primary icon="search">
+                            {{ __('welcome.landing-3.1') }} </x-button>
+                    </div>
                 </div>
 
             </main>

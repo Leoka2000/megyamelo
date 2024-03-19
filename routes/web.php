@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\Auth\ProviderController;
-use App\Http\Controllers\CookiesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +91,3 @@ Route::get('note/{note}', function (Note $note) {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/set-cookie', [CookiesController::class, 'setCookie']);
-Route::get('/get-cookie', [CookiesController::class, 'getCookie']);
-Route::get('/del-cookie', [CookiesController::class, 'delCookie']);

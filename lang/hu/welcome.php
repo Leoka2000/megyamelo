@@ -25,6 +25,7 @@ return [
     'landing-1' => 'Tekintse meg, mit teszünk azért, hogy az emberek közelebb kerüljenek a magyar munkaerőpiachoz!',
     'landing-2' => 'Ön egy cég, és valakit keres gyakorlatra vagy álláslehetőségre?',
     'landing-3' => 'Álláshirdetés készítése',
+    'landing-3.1' => 'Tehetséges egyének felvétele',
     'landing-4' => 'Állást vagy szakmai gyakorlatot keresel?',
     'landing-5' => 'Feliratkozás',
 
