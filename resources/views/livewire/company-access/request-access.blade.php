@@ -44,6 +44,8 @@ new class extends Component {
     }
 }; ?>
 
+{{--  --}}
+
 <div class='inline-block dark:text-gray-300'>
     <a wire:click='openModal' class='inline-block text-sm text-indigo-500 border-b cursor-pointer border-b-indigo-500'>
         {{ __('dashboardz.dashboardz-6') }}</a>

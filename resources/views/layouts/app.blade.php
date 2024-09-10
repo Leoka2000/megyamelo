@@ -105,9 +105,9 @@
                         target='_value'> {{ __('welcome.footer-2.1') }} </a>
                 </div>
                 <div class='flex flex-col w-full gap-2'>
-                    <x-button rounded class='h-12 mt-8' primary right-icon='user' href="{{ route('notes.create') }}"
+                    <x-button class='h-12 mt-8' primary right-icon='user' href="{{ route('notes.create') }}"
                         icon-right="plus" label="{{ __('welcome.footer-3') }}" />
-                    <x-button rounded class='h-12' primary right-icon='shopping-cart' href="{{ route('notes.post-create') }}"
+                    <x-button  class='h-12' primary outline right-icon='shopping-cart' href="{{ route('notes.post-create') }}"
                         label="{{ __('welcome.footer-4') }}" />
                 </div>
             </div>

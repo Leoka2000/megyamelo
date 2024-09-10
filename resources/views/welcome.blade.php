@@ -17,33 +17,33 @@
     @cookieconsentscripts
 </head>
 
-<body class="antialiased dark dark:bg-gray-900">
-@cookieconsentview
+<body class="antialiased dark">
+    @cookieconsentview
     <div
         class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-indigo-600 selection:text-white">
         @if (Route::has('login'))
-            <livewire:welcome.navigation />
+        <livewire:welcome.navigation />
         @endif
 
         <main class="flex flex-col items-center justify-center w-full mx-auto ">
             <section
                 class='relative flex items-center justify-center w-full px-2 border-b border-gray-800 py-60 sm:pt-32 sm:pb-64 dark:bg-gray-900'>
-                <div class="flex flex-col justify-center text-center">
+                <div class="mx-auto flex-col justify-center text-center">
                     <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full'
                         wire:navigate>
-                        <div class='flex items-center justify-center mt-2 md:h-64'>
-                            <img class='object-cover h-32 rounded-md opacity-80 w-60 md:w-full md:h-full'
+                        <div class='flex items-center justify-center mt-2'>
+                            <img class='object-cover w-72 rounded-md opacity-80'
                                 src="{{ asset('logo.png') }}" alt="logo" title="logo" />
                         </div>
                     </a>
-                    <p class='text-2xl italic text-gray-300 md:text-3xl'>{{ __('welcome.hero_slogan') }}</p>
-                    <x-button rounded icon='arrow-right' class='mt-8 h-14' href="{{ route('notes.create') }}" primary lg
+                    <p class='text-xl italic text-gray-300 md:text-3xl'>{{ __('welcome.hero_slogan') }}</p>
+                    <x-button icon='arrow-right' class='mt-8 w-96 h-14' href="{{ route('notes.create') }}" primary lg rounded
                         icon-right="plus">{{ __('welcome.landing-5') }}</x-button>
 
                     <div class='mt-20'>
                         <x-card>
                             <a class='flex items-center justify-center gap-1 mb-4' href='https://hajdupress.hu/cikk/new-english-language-job-searching-platform-for-university-students' target='_blank'>
-                                <h1 class="text-xl text-indigo-500 cursor-pointer md:text-4xl " > WE ARE ON THE NEWS!!</h1><x-button.circle icon="eye" primary> </x-button.circle>
+                                <h1 class="text-xl text-indigo-500 cursor-pointer md:text-3xl "> WE ARE ON THE NEWS!!</h1><x-button.circle icon="eye" primary> </x-button.circle>
                             </a>
                             <div class='max-w-3xl'>
                                 <a class='cursor-pointer'
@@ -84,7 +84,10 @@
 
                 </span>
 
+
+
             </section>
+            <livewire:notes.welcome-show lazy />
 
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
@@ -105,7 +108,7 @@
                     </header>
                     <main class="flex flex-col gap-4 sm:flex-row landing-main">
                         <div
-                            class='flex flex-col justify-between px-8 py-10 border border-gray-800 dark:bg-gray-800 rounded-xl sm:w-72 lg:w-96'>
+                            class='flex flex-col justify-between px-8 py-10 border border-gray-800 dark:bg-gray-800 rounded-md sm:w-72 lg:w-96'>
                             <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4014_33508)">
@@ -138,11 +141,11 @@
                                 <h1 class='text-lg'>{{ __('welcome.landing-2') }}
                                 </h1>
                             </div>
-                            <x-button rounded class='w-full h-10' href="{{ route('notes.post-create') }}" primary
+                            <x-button class='w-full mt-4 h-10' href="{{ route('notes.post-create') }}" primary
                                 right-icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
                         </div>
                         <div
-                            class='flex flex-col justify-between px-6 py-10 border border-gray-800 dark:bg-gray-800 sm:w-72 rounded-xl lg:w-96'>
+                            class='flex flex-col justify-between px-6 py-10 border border-gray-800 dark:bg-gray-800 sm:w-72 rounded-md lg:w-96'>
                             <span>
                                 <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +169,7 @@
                             <div class='my-3'>
                                 <h1 class='text-lg'>{{ __('welcome.landing-4') }} </h1>
                             </div>
-                            <x-button rounded href="{{ route('notes.create') }}" class='w-full h-10' primary
+                            <x-button href="{{ route('notes.create') }}" class='w-full mt-4 h-10' primary
                                 right-icon="user">{{ __('welcome.landing-5') }} </x-button>
                         </div>
                     </main>
@@ -194,13 +197,15 @@
                                             </svg>
                                         </span>
                                         <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
-                                            {{ __('welcome.faq-2') }} </p>
+                                            {{ __('welcome.faq-2') }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="mt-6">
 
                                     <p class="text-sm leading-9 text-gray-900 dark:text-gray-300">
-                                        {{ __('welcome.faq-3') }} </p>
+                                        {{ __('welcome.faq-3') }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +245,8 @@
                                             </svg>
                                         </span>
                                         <p class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-300">
-                                            {{ __('welcome.faq-6') }}</p>
+                                            {{ __('welcome.faq-6') }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="mt-6">

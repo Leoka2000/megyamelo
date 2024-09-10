@@ -86,7 +86,7 @@ Route::get('note/{note}', function (Note $note) {
     $user = $note->user;
 
     return view('notes.view', ['note' => $note, 'user' => $user]);
-})->name('notes.view');
+})->middleware(['auth'])->name('notes.view');
 
 require __DIR__ . '/auth.php';
 

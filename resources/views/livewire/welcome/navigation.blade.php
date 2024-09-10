@@ -2,7 +2,7 @@
     class="fixed z-20 flex items-center justify-between w-full h-20 pr-2 border-b border-gray-700 sm:top-0 sm:right-0 text-end bg-slate-900">
     <a href="{{ route('dashboard') }}" wire:navigate>
         <div class='flex w-20 mt-6 sm:mt-8 sm:w-36'>
-            <img class='object-cover w-full h-full rounded-md opacity-80' src="{{ asset('logo-top.png') }}" alt="logo"
+            <img class='object-cover w-full h-full -md opacity-80' src="{{ asset('logo-top.png') }}" alt="logo"
                 title="logo" />
         </div>
     </a>
@@ -20,18 +20,18 @@
                 </div>
     @auth
 
-        <x-button rounded primary right-icon='arrow-right ' href="{{ url('dashboard') }}" 
-           sm class="font-semibold text-gray-300 md:w-52 md:h-10 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+        <x-button  primary right-icon='arrow-right ' href="{{ url('dashboard') }}" 
+           sm class="font-semibold text-gray-300 md:w-52 md:h-10 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:-sm focus:outline-red-500"
             wire:navigate>{{__('nav.nav-enter')}}</x-button>
     @else
         <div class='flex'>
-            <x-button rounded primary right-icon='arrow-right' href="{{ route('notes.create') }}"
-              sm  class="font-semibold text-gray-300 md:w-52 md:h-10 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+            <x-button  primary right-icon='arrow-right' href="{{ route('notes.create') }}"
+              sm  class="font-semibold text-gray-300 md:w-52 md:h-10 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:-sm focus:outline-red-500"
                 wire:navigate> {{__('nav.nav-login')}} </x-button>
 
             @if (Route::has('register'))
-                <x-button rounded outline right-icon='clipboard' primary href="{{ route('register') }}" 
-                    sm class="font-semibold text-gray-300 md:h-10 md:w-52 ms-4 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                <x-button  outline right-icon='clipboard' primary href="{{ route('register') }}" 
+                    sm class="font-semibold text-gray-300 md:h-10 md:w-52 ms-4 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:-sm focus:outline-red-500"
                     wire:navigate>{{__('nav.nav-register')}} </x-button>
             @endif
         </div>

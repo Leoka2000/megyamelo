@@ -24,7 +24,7 @@ new #[Layout('layouts.guest')] class extends Component {
     }
 }; ?>
 
-<div class='pt-3 pb-12 bg-gray-800 border border-gray-700 rounded-lg shadow-lg shadow-black px-14'>
+<div class='pt-3 pb-12 bg-gray-800 border border-gray-700 rounded-lg shadow-lg px-14'>
 
     <div class='flex justify-center'>
         <a>

@@ -1,11 +1,12 @@
 <?php
 
 use Livewire\Volt\Component;
+use Livewire\WithPagination;
 use App\Models\Note;
 use WireUi\Traits\Actions;
 
 new class extends Component {
-    use Actions;
+    use Actions, WithPagination;
 
     public $selectedArea = 'None';
     public $showModal = false;
@@ -44,6 +45,18 @@ new class extends Component {
         $this->notification()->error($title = 'Post deleted', $description = 'Your post was deleted');
     }
 
+   
+
+    private function getFilteredNotes()
+    {
+        return $this->selectedArea == 'None'
+        ? Note::orderBy('created_at', 'desc')->paginate(6)  // 6 notes per page
+        : Note::where('area', $this->selectedArea)
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
+
+    }
+
     public function with(): array
     {
         $storedArea = session('selected_area', 'None');
@@ -52,15 +65,6 @@ new class extends Component {
         return [
             'notes' => $notes,
         ];
-    }
-
-    private function getFilteredNotes()
-    {
-        return $this->selectedArea == 'None'
-            ? Note::orderBy('created_at', 'desc')->get()
-            : Note::where('area', $this->selectedArea)
-                ->orderBy('created_at', 'desc')
-                ->get();
     }
 
     public function placeholder()
@@ -90,6 +94,7 @@ new class extends Component {
 
 
 <div class='flex justify-center'>
+
     <style>
         .loader {
             width: 100%;
@@ -117,7 +122,7 @@ new class extends Component {
             background-size: 75px 175px, 100% 100px, 80% 16px, 80% 16px;
             background-position: -185px 0, center 10px, center 125px, center 155px;
             box-sizing: border-box;
-            animation: animloader 0.5s linear infinite;
+            animation: animloader 1s linear infinite;
             /* Adjusted animation duration */
         }
 
@@ -154,24 +159,24 @@ new class extends Component {
 
 
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
-    
+ 
         <header class='block max-w-96'>
             <div
-                class='flex max-w-full mb-16 md:max-w-96 xl:max-w-3xl '>
+                class='flex max-w-full mb-5 md:max-w-96 xl:max-w-3xl '>
                 <x-card title="{{ __('create-note.create-001') }}">
                     <x-slot name="action">
                         <x-icon sm name="information-circle" class="w-6 h-6 font-thin text-orange-500" />
 
                     </x-slot>
                     <div class=''>
-                        <x-button rounded sm class='w-full' primary icon='user' href="{{ route('notes.create') }}"
+                        <x-button md class='w-full mt-5' primary icon='user' href="{{ route('notes.create') }}"
                             icon-right="plus" label="{{ __('welcome.footer-3') }}" />
                     </div>
                 </x-card>
             </div>
-            <div class='flex flex-col justify-end w-full mb-8'>
-                <x-button class='w-full mb-2 ' wire:navigate icon="arrow-left" href="{{ route('dashboard') }}">
-                    {{ __('show-notes.show-notes-2') }}</x-button>
+           
+            <div class='flex flex-col justify-end w-full mb-4'>
+
                 <x-native-select label="{{__('show-notes.show-notes-2.1')}}" class='w-full shadow-'
                     wire:model="selectedArea" wire:change="$refresh">
                     <option value="None">{{ __('show-notes.show-notes-3') }}</option>
@@ -186,89 +191,90 @@ new class extends Component {
                     <option value="Design">Design</option>
                     <option value="Informatics">{{ __('show-notes.show-notes-6.10') }}</option>
                     <option value="Agriculture, Food Sciences and Environmental Management">
-                        {{ __('show-notes.show-notes-6.11') }}</option>
+                        {{ __('show-notes.show-notes-6.11') }}
+                    </option>
                 </x-native-select>
             </div>
 
+            
         </header>
-        
+        <div class="my-8">
+                {{ $notes->links() }} <!-- Tailwind CSS pagination controls -->
+            </div>
 
         <div class="grid justify-center grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($notes as $note)
-                <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border rounded-lg shadow-lg dark:border-gray-800 md:w-72 sm:w-96 hover:shadow-2xl dark:hover:bg-gray-700 dark:hover:shadow-black dark:hover:border-gray-600 dark:bg-gray-800 '
-                    wire:key='{{ $note->id }}'>
-                    <div class='flex flex-col justify-center w-full pb-3'>
-                        <div class='flex items-center justify-center '>
-                            <div class="relative p-4 h-80 w-80" x-data="{ loaded: false }">
-                                <img x-ref="lazyImage" src="{{ asset('storage/' . $note->photo) }}" alt="profile pic"
-                                    title="profile image"
-                                    class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl'
-                                    loading="lazy" @load="loaded = true" />
-                                <div class='absolute top-0 right-0 w-full h-full' x-show="!loaded" x-cloak>
-                                    {!! $this->placeholderForImage() !!}
-                                </div>
-                            </div>
-                        </div>
-                        @can('update', $note)
-                            <div class='flex items-center justify-between p-3 pt-1'>
-                                <p class="overflow-hidden text-2xl font-bold text-left">
-                                    {{ Str::limit($note->name, 30) }}</p>
-                                <x-button.circle href="{{ route('notes.edit', $note) }}" green outline
-                                    icon="pencil-alt"></x-button.circle>
-                            </div>
-                        @else
-                            <div class='flex items-center justify-between p-3 pt-1'>
-                                <p class="overflow-hidden text-2xl font-bold text-left">
-                                    {{ Str::limit($note->name, 30) }}</p>
-                                <x-button.circle href="{{ route('notes.edit', $note) }}"
-                                    icon="pencil-alt"></x-button.circle>
-                            </div>
-                        @endcan
-                    </div>
-                    <div class='flex flex-col justify-between w-full px-3'>
-                        <div class="w-full">
-                            <div class='flex flex-col w-full pb-3'>
-                                <p class="text-sm text-left break-words max-w-64 dark:text-gray-400">
-                                    {{ Str::limit($note->description, 120) }}</p>
-                            </div>
-                            <div class="flex flex-col items-end justify-between">
-                                <div class='flex flex-col w-full mb-4'>
-                                    <p class="overflow-hidden text-sm font-bold text-left">
-                                        {{ __('show-notes.show-notes-4') }} <span
-                                            class='text-sm font-normal dark:text-gray-400'>{{ $note->area }}
-                                        </span>
-                                    </p>
-                                    <p class="text-sm font-bold"> {{ __('show-notes.show-notes-5') }} <span
-                                            class="text-sm font-normal dark:text-gray-400 ">{{ $note->degree }}</span>
-                                    </p>
-                                </div>
-                                <div class='flex justify-end w-full gap-4'>
-                                    <x-button.circle icon="eye" primary outline
-                                        href="{{ route('notes.view', $note) }}"></x-button.circle>
-                                    @can('delete', $note)
-                                        <x-button.circle icon="trash" red outline
-                                            wire:click="openModal('{{ $note->id }}')"></x-button.circle>
-                                   
-                                    @endcan
-                                </div>
+            <div class='relative flex flex-col justify-start pb-3 transition-all bg-white border rounded-lg shadow-lg dark:border-gray-800 md:w-72 sm:w-96 hover:shadow-2xl dark:hover:bg-gray-700 dark:hover:shadow-black dark:hover:border-gray-600 dark:bg-gray-800 '
+                wire:key='{{ $note->id }}'>
+                <div class='flex flex-col justify-center w-full pb-3'>
+                    <div class='flex items-center justify-center '>
+                        <div class="relative p-4 h-80 w-80" x-data="{ loaded: false }">
+                            <img x-ref="lazyImage" src="{{ asset('storage/' . $note->photo) }}" alt="profile pic"
+                                title="profile image"
+                                class='object-cover w-full h-full rounded-t-lg brightness-75 rounded-b-xl'
+                                loading="lazy" @load="loaded = true" />
+                            <div class='absolute top-0 right-0 w-full h-full' x-show="!loaded" x-cloak>
+                                {!! $this->placeholderForImage() !!}
                             </div>
                         </div>
                     </div>
+                    @can('update', $note)
+                    <div class='flex items-center justify-between p-3 pt-1'>
+                        <p class="overflow-hidden text-2xl font-bold text-left">
+                            {{ Str::limit($note->name, 30) }}
+                        </p>
+                        <x-button.circle href="{{ route('notes.edit', $note) }}" green outline
+                            icon="pencil-alt"></x-button.circle>
+                    </div>
 
-
+                    @endcan
                 </div>
-                @if ($showModal)
-                    <x-modal wire:model="showModal" class="" title="Simple Modal">
-                        <div class='flex flex-col h-auto gap-2 p-12 bg-gray-300 dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
-                            <p class='mb-4 sm:text-base'>Are you sure you want to delete the profile?</p>
-                            <x-button primary icon='arrow-left' wire:click="closeModal">Back</x-button>
-                            <x-button flat negative outline icon='trash'
-                                wire:click="delete('{{ $noteToDelete->id }}')">Delete</x-button>
+                <div class='flex flex-col justify-between w-full px-3'>
+                    <div class="w-full">
+                        <div class='flex flex-col w-full pb-3'>
+                            <p class="text-sm text-left break-words max-w-64 dark:text-gray-400">
+                                {{ Str::limit($note->description, 120) }}
+                            </p>
                         </div>
-                    </x-modal>
-                @endif
+                        <div class="flex flex-col items-end justify-between">
+                            <div class='flex flex-col w-full mb-4'>
+                                <p class="overflow-hidden text-sm font-bold text-left">
+                                    {{ __('show-notes.show-notes-4') }} <span
+                                        class='text-sm font-normal dark:text-gray-400'>{{ $note->area }}
+                                    </span>
+                                </p>
+                                <p class="text-sm font-bold"> {{ __('show-notes.show-notes-5') }} <span
+                                        class="text-sm font-normal dark:text-gray-400 ">{{ $note->degree }}</span>
+                                </p>
+                            </div>
+                            <div class='flex justify-end w-full gap-4'>
+                                <x-button.circle icon="eye" primary outline
+                                    href="{{ route('notes.view', $note) }}"></x-button.circle>
+                                @can('delete', $note)
+                                <x-button.circle icon="trash" red outline
+                                    wire:click="openModal('{{ $note->id }}')"></x-button.circle>
+
+                                @endcan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+            @if ($showModal)
+            <x-modal wire:model="showModal" class="" title="Simple Modal">
+                <div class='flex flex-col h-auto gap-2 p-12 bg-gray-300 dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
+                    <p class='mb-4 sm:text-base'>Are you sure you want to delete the profile?</p>
+                    <x-button primary icon='arrow-left' wire:click="closeModal">Back</x-button>
+                    <x-button flat negative outline icon='trash'
+                        wire:click="delete('{{ $noteToDelete->id }}')">Delete</x-button>
+                </div>
+            </x-modal>
+            @endif
             @endforeach
 
 
         </div>
+      
     </div>

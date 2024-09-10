@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+nav > div > div > p > span {
+  display: none;
+}
 @media (max-width: 1060px) {
       
     .responsive {
@@ -15,3 +17,7 @@
         grid-template-columns: repeat(1, minmax(0, 1fr));
       }
     }
+
+
+  
+  
