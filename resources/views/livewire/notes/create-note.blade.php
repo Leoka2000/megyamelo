@@ -36,10 +36,10 @@ new class extends Component {
     public $email;
     public $referral;
 
-    public function mount()
-    {
-        $this->openModal();
-    }
+    // public function mount()
+    // {
+    //     $this->openModal();
+    // }
 
     public function openModal()
     {
@@ -70,7 +70,7 @@ new class extends Component {
 
         auth()->user()->update(['referral_code' => $this->referral]); // Update referral code for the authenticated user
 
-       
+
 
         $this->dispatch('Message successfully sent!');
     }
@@ -156,9 +156,9 @@ new class extends Component {
     }
 }; ?>
 
-<div class='mb-4 shadow-md dark:shadow-black'>
-    <x-card title=" {{ __('create-note.create-2') }} ">
-        <x-wui-errors class="px-2 mb-4 shadow-xl shadow-gray-black" />
+<div class='mb-4' class="dark:bg-gray-900">
+    <x-card title=" {{ __('create-note.create-2') }} " class="dark:bg-gray-900">
+        <x-wui-errors class="px-2 mb-4 shadow-md" />
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <x-wui-input icon='user' label="{{ __('create-note.create-3') }}" placeholder="Kovács László"
@@ -167,12 +167,12 @@ new class extends Component {
                 wire:model.defer="studentEmail" />
 
             <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5">
-                <div class="col-span-1 sm:col-span-4">
+                <div class="col-span-1 mb-3  sm:col-span-4">
                     <x-wui-input icon='academic-cap' label="{{ __('create-note.create-5') }}"
                         placeholder="University of Debrecen" wire:model.defer="studentUniversity" />
                 </div>
 
-                <div class="col-span-1 sm:col-span-3">
+                <div class="col-span-1 mb-3 sm:col-span-3">
                     <x-wui-input icon='academic-cap' label="{{ __('create-note.create-6') }}"
                         placeholder="Biochemical Engineering BSc" wire:model.defer="studentDegree" />
                 </div>
@@ -223,69 +223,69 @@ new class extends Component {
             </div>
         </div>
 
-        <x-slot name="footer">
-            <div class="flex items-center justify-end gap-x-3">
+        <x-slot name="footer" class=" w-full ">
+            <div class="">
                 <x-button rounded right-icon='plus' class='w-full h-12' wire:click="submit"
                     label="{{ __('create-note.create-15') }}" primary />
             </div>
         </x-slot>
     </x-card>
     @if ($showModal)
-        <x-modal class='relative' wire:model="showModal">
-            <div class='flex flex-col gap-3'>
-                <div class='relative flex flex-col'>
-                    <x-card title="Introducing our referral system!">
-                        <div class="p-3 md:p-6">
-                            <x-button.circle class='absolute -right-1 -top-1' flat xl icon='x-circle' label="Cancel"
-                                x-on:click="close" />
-                            <p class="text-sm text-gray-600 dark:text-gray-500 sm:text-lg">
-                                Invite three friends to create a profile on Megy a Meló and get a mentorship with
-                                <a>Emily
-                                    Natsumi
-                                    Kusano</a>, an HR specialist who has 7+ years of experience with Human Resources who
-                                will
-                                help
-                                you get jobs abroad! <a href="{{ route('notes.natsumi') }}"
-                                    class='text-indigo-600 border-b border-b-indigo-600 pointer'>To know more about her,
-                                    click
-                                    here</a>
-                                <br /> <br />
-                                Alternatively, if you invite five friends, you and a friend of your choice will get a
-                                free review on your CV, LinkedIn, and cover letter
-                            </p>
+    <x-modal class='relative' wire:model="showModal">
+        <div class='flex flex-col gap-3'>
+            <div class='relative flex flex-col'>
+                <x-card title="Introducing our referral system!">
+                    <div class="p-3 md:p-6">
+                        <x-button.circle class='absolute -right-1 -top-1' flat xl icon='x-circle' label="Cancel"
+                            x-on:click="close" />
+                        <p class="text-sm text-gray-600 dark:text-gray-500 sm:text-lg">
+                            Invite three friends to create a profile on Megy a Meló and get a mentorship with
+                            <a>Emily
+                                Natsumi
+                                Kusano</a>, an HR specialist who has 7+ years of experience with Human Resources who
+                            will
+                            help
+                            you get jobs abroad! <a href="{{ route('notes.natsumi') }}"
+                                class='text-indigo-600 border-b border-b-indigo-600 pointer'>To know more about her,
+                                click
+                                here</a>
+                            <br /> <br />
+                            Alternatively, if you invite five friends, you and a friend of your choice will get a
+                            free review on your CV, LinkedIn, and cover letter
+                        </p>
 
-                            <form accept-charset="UTF-8" class='flex flex-col w-full mt-10'
-                                wire:submit.prevent="submitEmail">
-                                <x-wui-errors class="mb-4" />
-                                <!-- Correct order of form inputs -->
-                                <div class='flex flex-col items-center gap-4 sm:flex-row'>
-                                    <div class='flex-row w-full'>
-                                        <label class="mb-1" for="name"> Name </label>
-                                        <x-wui-input placeholder='Virág László' class="mb-2" type="text"
-                                            icon='user' id="name" wire:model.defer="name" />
-                                    </div>
-                                    <div class='flex-row w-full'>
-                                        <label class="mb-1" for="companyEmail"> Your contact email</label>
-                                        <x-wui-input placeholder='youremail@gmail.com' icon="mail" class="mb-2"
-                                            type="text" id="email" wire:model.defer="email" />
-                                    </div>
+                        <form accept-charset="UTF-8" class='flex flex-col w-full mt-10'
+                            wire:submit.prevent="submitEmail">
+                            <x-wui-errors class="mb-4" />
+                            <!-- Correct order of form inputs -->
+                            <div class='flex flex-col items-center gap-4 sm:flex-row'>
+                                <div class='flex-row w-full'>
+                                    <label class="mb-1" for="name"> Name </label>
+                                    <x-wui-input placeholder='Virág László' class="mb-2" type="text"
+                                        icon='user' id="name" wire:model.defer="name" />
                                 </div>
-                            </form>
-                            <x-slot name="footer">
-                                <div class="relative flex flex-col justify-center gap-2 mx-4">
-                                    <x-action-message class="text-center text-green-500 dark:text-green-400 text-md"
-                                        on="Message successfully sent!" />
-                                    <x-button teal rounded class='h-12 sm:w-full' wire:click='submitEmail'
-                                        spinner="submitEmail" right-icon='mail' label="Submit referral request" />
+                                <div class='flex-row w-full'>
+                                    <label class="mb-1" for="companyEmail"> Your contact email</label>
+                                    <x-wui-input placeholder='youremail@gmail.com' icon="mail" class="mb-2"
+                                        type="text" id="email" wire:model.defer="email" />
                                 </div>
-                            </x-slot>
-                        </div>
-                    </x-card>
-                </div>
-                <div>
-                    <livewire:notes.referral-reward.referral-claim />
-                </div>
+                            </div>
+                        </form>
+                        <x-slot name="footer">
+                            <div class="relative flex flex-col justify-center gap-2 mx-4">
+                                <x-action-message class="text-center text-green-500 dark:text-green-400 text-md"
+                                    on="Message successfully sent!" />
+                                <x-button teal rounded class='h-12 sm:w-full' wire:click='submitEmail'
+                                    spinner="submitEmail" right-icon='mail' label="Submit referral request" />
+                            </div>
+                        </x-slot>
+                    </div>
+                </x-card>
             </div>
-        </x-modal>
+            <div>
+                <livewire:notes.referral-reward.referral-claim />
+            </div>
+        </div>
+    </x-modal>
     @endif
 </div>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -7,6 +8,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Megy a Meló</title>
+  
+    <link rel="icon" type="image/png" href="../../public/logo-top.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <wireui:scripts />
+   
     <script>
         window.themeSwitcher = function() {
             return {
@@ -22,31 +36,18 @@
             }
         }
     </script>
-    <link rel="icon" type="image/png" href="../../public/logo-top.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
-    <wireui:scripts />
-   
-
 </head>
 
-<body x-data="themeSwitcher()"  :class="{ 'dark': switchOn } relative">
+<body class="antialiased" x-data="themeSwitcher()"  :class="{ 'dark': switchOn } relative">
 
     <x-notifications z-index="z-50" />
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen  bg-gray-100 dark:bg-gray-950">
         <livewire:layout.navigation />
         <x-dialog />
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow dark:bg-gray-800">
+            <header class="bg-white shadow dark:bg-gray-900">
                 <div class="px-2 py-6 mx-auto max-w-7xl sm:px-3 lg:px-4">
                     {{ $header }}
                 </div>
@@ -57,33 +58,14 @@
         <main class='relative'>
             {{ $slot }}
             <livewire:coins />
-            <div class='absolute top-2 dark:text-gray-300 right-2'>
-                <livewire:change-language />
-            </div>
+           
             <div class='absolute top-2 sm:left-2 left-3'>
                 <livewire:contact />
             </div>
-            <div class='absolute right-0 top-9'>
-                <div class='flex items-center justify-center gap-1' x-data="window.themeSwitcher()" x-init="switchTheme()"
-                    @keydown.window.tab="switchOn = false" class="flex items-center justify-center">
-                    <input id="thisId" type="checkbox" name="switch" class="hidden" :checked="switchOn">
-
-                    <button x-ref="switchButton" type="button" @click="switchOn = ! switchOn; switchTheme()"
-                        :class="switchOn ? 'bg-indigo-600' : 'bg-neutral-200'"
-                        class="relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10">
-                        <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'"
-                            class="w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
-                    </button>
-                    <label @click="$refs.switchButton.click(); $refs.switchButton.focus()" :id="$id('switch')"
-                        :class="{ 'text-blue-600': switchOn, 'text-gray-500': !switchOn }" class="text-sm select-none">
-
-                    </label>
-                    <x-icon name="moon" class="w-5 h-5 text-gray-400" />
-                </div>
-            </div>
+          
         </main>
 
-        <footer class='z-10 flex flex-col items-center justify-center w-full px-2 py-12 bg-gray-400 border-t border-t-gray-300 dark:border-none dark:bg-slate-800'>
+        <footer class='z-10 flex flex-col items-center justify-center w-full px-2 py-12 bg-gray-400 border-t border-t-gray-300 dark:border-none dark:bg-gray-900'>
 
             <div class="flex flex-col items-center justify-center pb-4 text-center md:w-96">
                 <a href="{{ route('dashboard') }}" wire:navigate>
@@ -130,3 +112,5 @@
 </body>
 
 </html>
+
+

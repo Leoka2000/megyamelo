@@ -15,22 +15,45 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @cookieconsentscripts
+
+    <script>
+        window.themeSwitcher = function() {
+            return {
+                switchOn: JSON.parse(localStorage.getItem('isDark')) || false,
+                switchTheme() {
+                    if (this.switchOn) {
+                        document.documentElement.classList.add('dark')
+                    } else {
+                        document.documentElement.classList.remove('dark')
+                    }
+                    localStorage.setItem('isDark', this.switchOn)
+                }
+            }
+        }
+    </script>
 </head>
 
 <body class="antialiased dark">
     @cookieconsentview
     <div
-        class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-900 selection:bg-indigo-600 selection:text-white">
+        class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker dark:bg-dots-lighter dark:bg-gray-950 selection:bg-indigo-600 selection:text-white">
         @if (Route::has('login'))
         <livewire:welcome.navigation />
         @endif
 
         <main class="flex flex-col items-center justify-center w-full mx-auto ">
+
             <section
-                class='relative flex items-center justify-center w-full px-2 border-b border-gray-800 py-60 sm:pt-32 sm:pb-64 dark:bg-gray-900'>
+                class='relative flex items-center justify-center w-full px-2 border-b border-gray-800 py-60 sm:py-72 isolate overflow-hidden'>
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center">
+                <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
+                <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
                 <div class="mx-auto flex-col justify-center text-center">
-                    <a href="{{ route('dashboard') }}" class='flex items-center justify-center w-full h-full'
-                        wire:navigate>
+                    <a>
                         <div class='flex items-center justify-center mt-2'>
                             <img class='object-cover w-72 rounded-md opacity-80'
                                 src="{{ asset('logo.png') }}" alt="logo" title="logo" />
@@ -39,22 +62,6 @@
                     <p class='text-xl italic text-gray-300 md:text-3xl'>{{ __('welcome.hero_slogan') }}</p>
                     <x-button icon='arrow-right' class='mt-8 w-96 h-14' href="{{ route('notes.create') }}" primary lg rounded
                         icon-right="plus">{{ __('welcome.landing-5') }}</x-button>
-
-                    <div class='mt-20'>
-                        <x-card>
-                            <a class='flex items-center justify-center gap-1 mb-4' href='https://hajdupress.hu/cikk/new-english-language-job-searching-platform-for-university-students' target='_blank'>
-                                <h1 class="text-xl text-indigo-500 cursor-pointer md:text-3xl "> WE ARE ON THE NEWS!!</h1><x-button.circle icon="eye" primary> </x-button.circle>
-                            </a>
-                            <div class='max-w-3xl'>
-                                <a class='cursor-pointer'
-                                    href='https://hajdupress.hu/cikk/new-english-language-job-searching-platform-for-university-students'
-                                    target="_blank">
-                                    <img src="{{ asset('newsimage.jpeg') }}">
-                                </a>
-                            </div>
-                        </x-card>
-                    </div>
-
                 </div>
                 <span class='absolute overflow-hidden -z-0 w-52 sm:-top-24 sm:-right-0 -right-0 -top-40'
                     id="silhouette">
@@ -87,7 +94,36 @@
 
 
             </section>
-            <livewire:notes.welcome-show lazy />
+            <div class='my-10 overflow-hidden isolate relative'>
+                <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
+                <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
+                <x-card class="p-0">
+                    <a class='flex items-center justify-center gap-1 mb-4' href='https://hajdupress.hu/cikk/new-english-language-job-searching-platform-for-university-students' target='_blank'>
+                        <h1 class="text-xl text-indigo-500 cursor-pointer md:text-3xl "> WE ARE ON THE NEWS!!</h1><x-button.circle icon="eye" primary> </x-button.circle>
+                    </a>
+                    <div class='max-w-3xl'>
+                        <a class='cursor-pointer'
+                            href='https://hajdupress.hu/cikk/new-english-language-job-searching-platform-for-university-students'
+                            target="_blank">
+                            <img src="{{ asset('newsimage.jpeg') }}">
+                        </a>
+                    </div>
+                </x-card>
+            </div>
+            <section class='relative flex items-center justify-center w-full px-2 border-b border-gray-800  isolate overflow-hidden'>
+
+                <livewire:notes.welcome-show lazy />
+                <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
+                <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
+            </section>
 
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
@@ -101,14 +137,14 @@
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
-            <section class='z-10 w-full py-20 dark:bg-gray-900 dark:text-gray-300'>
+            <section class='z-10 w-full py-20 border-t  border-gray-800 dark:bg-gray-950 dark:text-gray-300'>
                 <div class="flex flex-col items-center justify-center px-3 mb-5">
                     <header class='max-w-4xl pb-12 mb-5 text-xl text-center md:text-4xl'>
                         <h1>{{ __('welcome.landing-1') }}</h1>
                     </header>
                     <main class="flex flex-col gap-4 sm:flex-row landing-main">
                         <div
-                            class='flex flex-col justify-between px-8 py-10 border border-gray-800 dark:bg-gray-800 rounded-md sm:w-72 lg:w-96'>
+                            class='flex flex-col justify-between px-8 py-10 border border-gray-800 dark:bg-gray-900 rounded-md sm:w-72 lg:w-96'>
                             <span><svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g clip-path="url(#clip0_4014_33508)">
@@ -145,7 +181,7 @@
                                 right-icon="shopping-cart">{{ __('welcome.landing-3') }} </x-button>
                         </div>
                         <div
-                            class='flex flex-col justify-between px-6 py-10 border border-gray-800 dark:bg-gray-800 sm:w-72 rounded-md lg:w-96'>
+                            class='flex flex-col justify-between px-6 py-10 border border-gray-800 dark:bg-gray-900 sm:w-72 rounded-md lg:w-96'>
                             <span>
                                 <svg width="140" height="140" viewBox="0 0 140 140" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -179,14 +215,20 @@
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
             {{-- SECTION BREAK --}}
-            <section class='relative w-full pb-64 border-t border-gray-700 pt-52 '>
+            <section class='relative w-full pb-64 border-t isolate overflow-hidden border-gray-800 pt-52 '>
+                <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
+                <div class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu" aria-hidden="true">
+                    <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+                </div>
                 <div class='flex flex-col items-center w-full gap-4'>
                     <header class='max-w-4xl px-2 mb-12 text-2xl text-center lg:w-96 md:text-4xl dark:text-gray-300'>
                         <h1>{{ __('welcome.faq-1') }}</h1>
                     </header>
                     <main class="flex flex-col max-w-4xl gap-4 px-3">
                         <div>
-                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
+                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-900">
                                 <div class="flex items-center">
                                     <div class='flex items-center justify-start gap-4'>
                                         <span class='p-2 rounded-md text-slate-300 bg-slate-700'><svg
@@ -210,7 +252,7 @@
                             </div>
                         </div>
                         <div>
-                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
+                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-900">
                                 <div class="flex items-center">
                                     <div class='flex items-center justify-start gap-4'>
                                         <span class='p-2 rounded-md text-slate-300 bg-slate-700'><svg
@@ -234,7 +276,7 @@
                             </div>
                         </div>
                         <div>
-                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-800">
+                            <div class="p-6 border border-gray-800 rounded-lg shadow-lg dark:bg-gray-900">
                                 <div class="flex items-center">
                                     <div class='flex items-center justify-start gap-4'>
                                         <span class='p-2 rounded-md text-slate-300 bg-slate-700'><svg
@@ -289,7 +331,7 @@
                 </span>
             </section>
 
-            <footer class='z-10 flex flex-col items-center justify-center w-full px-2 py-12 bg-slate-800'>
+            <footer class='z-10 flex flex-col items-center justify-center w-full px-2 py-12 bg-gray-950'>
 
                 <div class="flex flex-col items-center justify-center pb-4 text-center md:w-96">
                     <a href="{{ route('dashboard') }}" wire:navigate>

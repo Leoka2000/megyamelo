@@ -20,23 +20,25 @@ new class extends Component {
     }
 }; ?>
 
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-900 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center cursor-pointer shrink-0">
+                <div class="flex items-center  mt-2 cursor-pointer shrink-0">
                     <a wire:click='goToIndex'>
-                        <div class='flex items-center justify-center w-20 h-20 mt-9 opacity-90'>
-                            <img class='object-cover w-full h-full rounded-md' src="{{ asset('logo-top.png') }}"
-                                alt="logo" title="logo" />
-                        </div>
+                        <svg class="w-6 h-6 text-gray-700 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h3a3 3 0 0 0 0-6h-.025a5.56 5.56 0 0 0 .025-.5A5.5 5.5 0 0 0 7.207 9.021C7.137 9.017 7.071 9 7 9a4 4 0 1 0 0 8h2.167M12 19v-9m0 0-2 2m2-2 2 2" />
+                        </svg>
+
+
+
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-            
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         <p class='text-xs lg:text-sm'>
@@ -73,21 +75,14 @@ new class extends Component {
                 <x-live-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
-                            <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
-                                x-on:profile-updated.window="name = $event.detail.name"></div>
-
-                            <div class="ms-1">
-                                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
+                            class="inline-flex items-center px-2 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                 </svg>
                             </div>
                         </button>
                     </x-slot>
-
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile')" wire:navigate>
                             {{ __('profilez.profile1') }}
@@ -101,6 +96,40 @@ new class extends Component {
                         </button>
                     </x-slot>
                 </x-live-dropdown>
+
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <x-icon name="cog" class="w-5 h-5 ml-2 dark:text-gray-400 text-gray-500" />
+                    </x-slot>
+                    <x-dropdown.header label="Language">
+                        <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'hu') }}"> <x-flag-country-hu class="w-6 h-6" /> Hungarian</x-dropdown.item>
+                        <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'en') }}"> <x-flag-country-us class="w-6 h-6" /> English</x-dropdown.item>
+                    </x-dropdown.header>
+
+                    <x-dropdown.header class="" label="Toggle theme">
+                        <div class="flex mt-1 justify-start">
+                            <div class='flex items-center justify-center gap-1' x-data="window.themeSwitcher()" x-init="switchTheme()"
+                                @keydown.window.tab="switchOn = false" class="flex items-center justify-center">
+                                <input id="thisId" type="checkbox" name="switch" class="hidden" :checked="switchOn">
+
+
+                                <label @click="$refs.switchButton.click(); $refs.switchButton.focus()" :id="$id('switch')"
+                                    :class="{ 'text-blue-600': switchOn, 'text-gray-500': !switchOn }" class="text-sm select-none">
+
+                                </label>
+                                <button x-ref="switchButton" type="button" @click="switchOn = ! switchOn; switchTheme()"
+                                    :class="switchOn ? 'bg-indigo-600' : 'bg-neutral-200'"
+                                    class="relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10">
+                                    <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'"
+                                        class="w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
+                                </button>
+                                <x-icon name="moon" class="w-5 h-5 text-gray-400" />
+
+                            </div>
+                        </div>
+                    </x-dropdown.header>
+
+                </x-dropdown>
             </div>
 
             <!-- Hamburger -->
@@ -115,6 +144,35 @@ new class extends Component {
                             stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
+
+                <x-dropdown class="" icon="bars-3" align="right" width="48">
+                    <x-dropdown.header label="Language">
+                        <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'hu') }}"> <x-flag-country-hu class="w-6 h-6" /> Hungarian</x-dropdown.item>
+                        <x-dropdown.item class='flex gap-2' spinner href="{{ route('locale', 'en') }}"> <x-flag-country-us class="w-6 h-6" /> English</x-dropdown.item>
+                    </x-dropdown.header>
+
+                    <x-dropdown.header class="mt-3" label="Toggle theme">
+                        <div class="flex mt-1 justify-start">
+                            <div class='flex items-center justify-center gap-1' x-data="window.themeSwitcher()" x-init="switchTheme()"
+                                @keydown.window.tab="switchOn = false" class="flex items-center justify-center">
+                                <input id="thisId" type="checkbox" name="switch" class="hidden" :checked="switchOn">
+
+                                <button x-ref="switchButton" type="button" @click="switchOn = ! switchOn; switchTheme()"
+                                    :class="switchOn ? 'bg-indigo-600' : 'bg-neutral-200'"
+                                    class="relative inline-flex h-6 py-0.5 ml-4 focus:outline-none rounded-full w-10">
+                                    <span :class="switchOn ? 'translate-x-[18px]' : 'translate-x-0.5'"
+                                        class="w-5 h-5 duration-200 ease-in-out bg-white rounded-full shadow-md"></span>
+                                </button>
+                                <label @click="$refs.switchButton.click(); $refs.switchButton.focus()" :id="$id('switch')"
+                                    :class="{ 'text-blue-600': switchOn, 'text-gray-500': !switchOn }" class="text-sm select-none">
+
+                                </label>
+                                <x-icon name="moon" class="w-5 h-5 text-gray-400" />
+
+                            </div>
+                        </div>
+                    </x-dropdown.header>
+                </x-dropdown>
             </div>
         </div>
     </div>
@@ -140,6 +198,7 @@ new class extends Component {
 
 
 
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -148,11 +207,11 @@ new class extends Component {
                 <div class="text-base font-medium text-gray-800 dark:text-gray-200" x-data="{{ json_encode(['name' => auth()->user()->name]) }}"
                     x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
                 <div class="text-sm font-medium text-gray-500">{{ auth()->user()->email }}</div>
-                
+
             </div>
-            
+
             <div class="mt-3 space-y-1">
-            
+
                 <x-responsive-nav-link :href="route('profile')" wire:navigate>
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
@@ -166,4 +225,6 @@ new class extends Component {
             </div>
         </div>
     </div>
+
+
 </nav>
