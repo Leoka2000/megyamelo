@@ -45,15 +45,16 @@ new class extends Component {
         $this->notification()->error($title = 'Post deleted', $description = 'Your post was deleted');
     }
 
-
+   
 
     private function getFilteredNotes()
     {
         return $this->selectedArea == 'None'
-            ? Note::orderBy('created_at', 'desc')->paginate(3)->onEachSide(5)  // 3 notes per page
-            : Note::where('area', $this->selectedArea)
+        ? Note::orderBy('created_at', 'desc')->paginate(6)  // 6 notes per page
+        : Note::where('area', $this->selectedArea)
             ->orderBy('created_at', 'desc')
-            ->paginate(6)->onEachSide(5);
+            ->paginate(6);
+
     }
 
     public function with(): array
@@ -158,7 +159,7 @@ new class extends Component {
 
 
     <div class="flex flex-col max-w-6xl space-y-2 dark:text-gray-300 ">
-
+ 
         <header class='block max-w-96'>
             <div
                 class='flex max-w-full mb-5 md:max-w-96 xl:max-w-3xl '>
@@ -173,7 +174,7 @@ new class extends Component {
                     </div>
                 </x-card>
             </div>
-
+           
             <div class='flex flex-col justify-end w-full mb-4'>
 
                 <x-native-select label="{{__('show-notes.show-notes-2.1')}}" class='w-full shadow-'
@@ -195,11 +196,11 @@ new class extends Component {
                 </x-native-select>
             </div>
 
-
+            
         </header>
         <div class="my-8">
-            {{ $notes->links(data: ['scrollTo' => false]) }} <!-- Tailwind CSS pagination controls -->
-        </div>
+                {{ $notes->links(data: ['scrollTo' => false]) }} <!-- Tailwind CSS pagination controls -->
+            </div>
 
         <div class="grid justify-center grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($notes as $note)
@@ -260,7 +261,7 @@ new class extends Component {
                 </div>
             </div>
 
-
+          
             @if ($showModal)
             <x-modal wire:model="showModal" class="" title="Simple Modal">
                 <div class='flex flex-col h-auto gap-2 p-12 bg-gray-300 dark:bg-gray-900 dark:text-gray-300 w-96 rounded-xl '>
@@ -275,5 +276,5 @@ new class extends Component {
 
 
         </div>
-
+      
     </div>
