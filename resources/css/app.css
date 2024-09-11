@@ -5,6 +5,11 @@
 nav > div > div > p > span {
   display: none;
 }
+#nav-container > nav > div > div {
+  display: none;
+  background-color: black!important;
+}
+
 @media (max-width: 1060px) {
       
     .responsive {

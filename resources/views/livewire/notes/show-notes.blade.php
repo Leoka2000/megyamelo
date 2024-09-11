@@ -198,9 +198,6 @@ new class extends Component {
 
             
         </header>
-        <div class="my-8">
-                {{ $notes->links(data: ['scrollTo' => false]) }} <!-- Tailwind CSS pagination controls -->
-            </div>
 
         <div class="grid justify-center grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($notes as $note)
@@ -260,7 +257,7 @@ new class extends Component {
                     </div>
                 </div>
             </div>
-
+          
           
             @if ($showModal)
             <x-modal wire:model="showModal" class="" title="Simple Modal">
@@ -273,8 +270,9 @@ new class extends Component {
             </x-modal>
             @endif
             @endforeach
-
-
+        
         </div>
-      
+        <div class="my-8">
+                {{ $notes->links(data: ['scrollTo' => false])}} <!-- Tailwind CSS pagination controls -->
+            </div>
     </div>

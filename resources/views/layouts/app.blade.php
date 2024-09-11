@@ -36,9 +36,11 @@
             }
         }
     </script>
+        @livewireStyles
 </head>
 
 <body class="antialiased" x-data="themeSwitcher()"  :class="{ 'dark': switchOn } relative">
+@livewireScripts
 
     <x-notifications z-index="z-50" />
     <div class="min-h-screen  bg-gray-100 dark:bg-gray-950">

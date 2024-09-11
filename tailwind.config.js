@@ -1,6 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -20,6 +21,12 @@ export default {
 
     ],
     theme: {
+        pagination: theme => ({
+
+           color: theme('colors.orange.300'),
+
+         
+        }),
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
@@ -27,5 +34,7 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [forms,
+        require('tailwindcss-plugins/pagination'),
+    ],
 };

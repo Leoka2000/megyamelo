@@ -23,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        Paginator::useBootstrap();
+    
+      
 
         Cookies::essentials()
         ->session()
