@@ -27,9 +27,6 @@ return new class extends Migration
             $table->string('modality')->nullable();
             $table->integer('hours')->nullable();
             $table->string('full_or_part_time')->nullable();
-         
-          
-           
         });
     }
 
