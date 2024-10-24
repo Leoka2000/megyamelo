@@ -34,7 +34,5 @@ export default {
         },
     },
 
-    plugins: [forms,
-        require('tailwindcss-plugins/pagination'),
-    ],
+    plugins: [forms],
 };
