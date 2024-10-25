@@ -50,7 +50,7 @@ new class extends Component {
     private function getFilteredNotes()
     {
         return $this->selectedArea == 'None'
-        ? Note::orderBy('created_at', 'desc')->paginate(6)  // 6 notes per page
+        ? Note::orderBy('created_at', 'desc')->paginate(3)  // 6 notes per page
         : Note::where('area', $this->selectedArea)
             ->orderBy('created_at', 'desc')
             ->paginate(6);

@@ -1,24 +1,30 @@
-# fly.toml app configuration file generated for megyamelo on 2024-10-24T16:17:10+02:00
+# fly.toml app configuration file generated for megyamelo on 2024-10-25T12:45:06+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'megyamelo'
-primary_region = 'arn'
+primary_region = 'otp'
 console_command = 'php /var/www/html/artisan tinker'
 
 [build]
   [build.args]
     NODE_VERSION = '18'
-    PHP_VERSION = '8.2'
-#php muito importante para isso
+    PHP_VERSION = "8.2"
+
 [env]
   APP_ENV = 'production'
+  DB_CONNECTION = "pgsql"
+  DATABASE_URL = "postgres://postgres:vWgtus2I8k7JQHv@megyamelo-db.flycast:5432"
   LOG_CHANNEL = 'stderr'
+  APP_URL = "https://megyamelo.fly.dev"
   LOG_LEVEL = 'info'
   LOG_STDERR_FORMATTER = 'Monolog\Formatter\JsonFormatter'
   SESSION_DRIVER = 'cookie'
   SESSION_SECURE_COOKIE = 'true'
+
+[deploy]
+release_command = "php /var/www/html/artisan migrate --force"
 
 [http_service]
   internal_port = 8080
@@ -27,6 +33,7 @@ console_command = 'php /var/www/html/artisan tinker'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
+
 
 [[vm]]
   memory = '1gb'
