@@ -6,7 +6,7 @@
     </x-slot>
     <div class='flex flex-col items-center justify-center px-4 pt-10'>
         <div class="flex justify-start w-full">
-             <x-button icon="arrow-left" class="mt-12" href="{{ route('dashboard') }}">
+             <x-button icon="arrow-left" class="mt-12" href="{{ route('notes.index') }}">
                 {{ __('create-note.create-1') }}</x-button>
         </div>
         <main class='flex flex-col justify-center gap-6 pt-12 pb-32 md:flex-row'>
