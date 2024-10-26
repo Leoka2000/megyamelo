@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->uuid('id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->string('email');
-            $table->string('university');
-            $table->string('photo');
-            $table->string('degree');
-            $table->string('area');
-            $table->text('description');
-            $table->string('cv')->default('default_value');
-            $table->boolean('accept');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('university')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('degree')->nullable();
+            $table->string('area')->nullable();
+            $table->text('description')->nullable();
+            $table->string('cv')->nullable();
+            $table->boolean('accept')->nullable();
             $table->string('linkedin')->default('');
             $table->string('referral')->nullable();
             $table->string('other_links')->default('');
